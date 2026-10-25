@@ -1,0 +1,260 @@
+/* ---------------------------------------------------------------------- */
+/* Design tokens                                                          */
+/* ---------------------------------------------------------------------- */
+:root {
+  --color-bg: #f7f5f1;
+  --color-surface: #ffffff;
+  --color-border: #e5e1d8;
+  --color-text: #24262b;
+  --color-text-muted: #6b6f76;
+
+  /* ---------------------------------------------------------------------- */
+  /* Brand palette: warm cream paper + deep navy ink + sparse terracotta.   */
+  /*                                                                        */
+  /* Two tonal scales (the Tailwind / Material 3 / Radix methodology: one   */
+  /* hue, locked, stepped across fixed lightness stops). Why these hues:    */
+  /*                                                                        */
+  /*   - The background is warm (hue 40deg). A high-chroma blue accent sits */
+  /*     ~179deg from it — essentially exact complementary — which at high  */
+  /*     saturation causes visual vibration and is tiring to read against.  */
+  /*     So the warm accent (hue 19deg) is only 21deg from the background:  */
+  /*     analogous, and restful.                                            */
+  /*   - Navy carries the interactive weight instead. It is ~178deg from    */
+  /*     the background too, but at L<=30% it reads as a dark *neutral*     */
+  /*     (ink), not a competing chroma, so it produces no vibration — the   */
+  /*     classic cream-paper / navy-ink / warm-accent editorial pairing.    */
+  /*   - Terracotta sits 19deg from danger (red) and 17deg from warning     */
+  /*     (amber), so it stays distinguishable from the feedback colors.     */
+  /*                                                                        */
+  /* ink-950 is the Sermokey logo's navy, exactly. */
+  --color-ink-50: #f5f7fa;
+  --color-ink-100: #e7ecf3;
+  --color-ink-200: #ccd5e6;
+  --color-ink-300: #a5b6d5;
+  --color-ink-400: #708ec2;
+  --color-ink-500: #4167aa;
+  --color-ink-600: #2c4f8c;
+  --color-ink-700: #1d3c72;
+  --color-ink-800: #132e5d;
+  --color-ink-900: #091e43;
+  --color-ink-950: #03122c; /* = logo navy, exact */
+
+  --color-accent-50: #fcf2ee;
+  --color-accent-100: #f9e5dc;
+  --color-accent-200: #f3ccba;
+  --color-accent-300: #e7a688;
+  --color-accent-400: #d67c51;
+  --color-accent-500: #cc6333;
+  --color-accent-600: #b2552a;
+  --color-accent-700: #924420;
+  --color-accent-800: #74371b;
+  --color-accent-900: #512815;
+  --color-accent-950: #331a0f;
+
+  /* Semantic roles — aliases onto the scales above, not new colors.
+     Navy does the heavy interactive lifting (buttons, links, selected
+     states) so the terracotta stays sparse and therefore still feels
+     special where it does appear. */
+  --color-primary: var(--color-ink-800); /* resting: buttons, links, selected */
+  --color-primary-hover: var(--color-ink-700); /* dark fills lift on hover */
+  --color-primary-active: var(--color-ink-950); /* pressed: logo navy */
+  --color-primary-contrast: #ffffff;
+
+  /* Warm highlight. Reserved for progress, attention and focus — the
+     "something is happening / look here" colour — never for large resting
+     surfaces, so it never competes with the navy. */
+  --color-accent: var(--color-accent-600);
+  /* Darker step for accent-coloured *text* on light backgrounds, where
+     4.5:1 is required rather than the 3:1 that bars and borders need. */
+  --color-accent-text: var(--color-accent-700);
+  /* Headings only — body copy stays on --color-text for comfortable
+     long-form reading. */
+  --color-heading: var(--color-ink-950);
+
+  --color-success: #2f8f5b;
+  --color-success-bg: #e8f5ee;
+  --color-danger: #b23b3b;
+  --color-danger-bg: #fbeaea;
+  --color-warning-bg: #fdf3e2;
+  --color-warning-text: #8a5a10;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --shadow-card: 0 1px 2px rgba(20, 20, 20, 0.04), 0 4px 16px rgba(20, 20, 20, 0.05);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  font-family: var(--font-sans);
+  color-scheme: light;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Reset-ish base                                                          */
+/* ---------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.25;
+  margin: 0 0 var(--space-3);
+  color: var(--color-heading);
+}
+
+p {
+  margin: 0 0 var(--space-3);
+}
+
+a {
+  color: var(--color-primary);
+}
+
+button,
+input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Shared utility classes (used with scoped component styles)             */
+/* ---------------------------------------------------------------------- */
+.page {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5) var(--space-8);
+  flex: 1;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-5);
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+  text-decoration: none;
+}
+
+.btn:hover {
+  border-color: var(--color-primary);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.btn-primary:active {
+  background: var(--color-primary-active);
+  border-color: var(--color-primary-active);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid var(--color-border);
+  padding: var(--space-2) var(--space-3);
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+th {
+  background: var(--color-bg);
+  font-weight: 600;
+}

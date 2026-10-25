@@ -1,0 +1,18 @@
+# Go
+/backend/bin/
+*.test
+*.out
+
+# Node / frontend
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.vite/
+
+# Runtime artifacts from `make run` (pids, logs)
+/.run/
+
+# Editor / OS
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+*.log
