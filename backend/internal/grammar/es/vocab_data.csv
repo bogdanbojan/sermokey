@@ -1,0 +1,1721 @@
+lemma,pos,gender,translation,category,tier
+uno,other,,one,numeros,1
+dos,other,,two,numeros,1
+tres,other,,three,numeros,1
+cuatro,other,,four,numeros,1
+cinco,other,,five,numeros,1
+seis,other,,six,numeros,1
+siete,other,,seven,numeros,1
+ocho,other,,eight,numeros,1
+nueve,other,,nine,numeros,1
+diez,other,,ten,numeros,1
+once,other,,eleven,numeros,1
+doce,other,,twelve,numeros,1
+trece,other,,thirteen,numeros,1
+catorce,other,,fourteen,numeros,1
+quince,other,,fifteen,numeros,1
+dieciséis,other,,sixteen,numeros,1
+veinte,other,,twenty,numeros,1
+treinta,other,,thirty,numeros,1
+cuarenta,other,,forty,numeros,1
+cincuenta,other,,fifty,numeros,1
+sesenta,other,,sixty,numeros,1
+cien,other,,hundred,numeros,1
+mil,other,,thousand,numeros,1
+primero,adj,,first,numeros,1
+segundo,adj,,second,numeros,1
+tercero,adj,,third,numeros,2
+último,adj,,last,numeros,2
+cero,other,,zero,numeros,1
+millón,noun,m,million,numeros,2
+mitad,noun,f,half,numeros,2
+lunes,noun,m,Monday,tiempo,1
+martes,noun,m,Tuesday,tiempo,1
+miércoles,noun,m,Wednesday,tiempo,1
+jueves,noun,m,Thursday,tiempo,1
+viernes,noun,m,Friday,tiempo,1
+sábado,noun,m,Saturday,tiempo,1
+domingo,noun,m,Sunday,tiempo,1
+enero,noun,m,January,tiempo,2
+febrero,noun,m,February,tiempo,2
+marzo,noun,m,March,tiempo,2
+abril,noun,m,April,tiempo,2
+mayo,noun,m,May,tiempo,2
+junio,noun,m,June,tiempo,2
+julio,noun,m,July,tiempo,2
+agosto,noun,m,August,tiempo,2
+septiembre,noun,m,September,tiempo,2
+octubre,noun,m,October,tiempo,2
+noviembre,noun,m,November,tiempo,2
+diciembre,noun,m,December,tiempo,2
+primavera,noun,f,spring,tiempo,2
+verano,noun,m,summer,tiempo,1
+otoño,noun,m,autumn,tiempo,2
+invierno,noun,m,winter,tiempo,1
+hora,noun,f,hour,tiempo,1
+minuto,noun,m,minute,tiempo,1
+padre,noun,m,father,familia,1
+madre,noun,f,mother,familia,1
+hermano,noun,m,brother,familia,1
+hermana,noun,f,sister,familia,1
+hijo,noun,m,son,familia,1
+hija,noun,f,daughter,familia,1
+esposo,noun,m,husband,familia,1
+esposa,noun,f,wife,familia,1
+abuelo,noun,m,grandfather,familia,1
+abuela,noun,f,grandmother,familia,1
+primo,noun,m,male cousin,familia,2
+prima,noun,f,female cousin,familia,2
+tío,noun,m,uncle,familia,2
+tía,noun,f,aunt,familia,2
+sobrino,noun,m,nephew,familia,2
+sobrina,noun,f,niece,familia,2
+pariente,noun,m,relative,familia,1
+niño,noun,m,child,familia,1
+bebé,noun,m,baby,familia,2
+amigo,noun,m,friend,familia,1
+cabeza,noun,f,head,cuerpo,1
+cara,noun,f,face,cuerpo,1
+ojo,noun,m,eye,cuerpo,1
+nariz,noun,f,nose,cuerpo,1
+boca,noun,f,mouth,cuerpo,1
+oreja,noun,f,ear,cuerpo,1
+pelo,noun,m,hair,cuerpo,1
+mano,noun,f,hand,cuerpo,1
+brazo,noun,m,arm,cuerpo,1
+pierna,noun,f,leg,cuerpo,1
+pie,noun,m,foot,cuerpo,1
+espalda,noun,f,back,cuerpo,2
+corazón,noun,m,heart,cuerpo,1
+estómago,noun,m,stomach,cuerpo,2
+dedo,noun,m,finger,cuerpo,2
+diente,noun,m,tooth,cuerpo,2
+piel,noun,f,skin,cuerpo,2
+hombro,noun,m,shoulder,cuerpo,2
+rodilla,noun,f,knee,cuerpo,2
+cuerpo,noun,m,body,cuerpo,1
+camisa,noun,f,shirt,ropa,2
+pantalón,noun,m,trousers,ropa,2
+vestido,noun,m,dress,ropa,2
+falda,noun,f,skirt,ropa,2
+abrigo,noun,m,coat,ropa,2
+chaqueta,noun,f,jacket,ropa,2
+zapato,noun,m,shoe,ropa,1
+calcetín,noun,m,sock,ropa,2
+sombrero,noun,m,hat,ropa,2
+bufanda,noun,f,scarf,ropa,3
+guante,noun,m,glove,ropa,3
+cinturón,noun,m,belt,ropa,3
+suéter,noun,m,sweater,ropa,2
+pantalón corto,noun,m,shorts,ropa,3
+ropa,noun,f,clothing,ropa,1
+pan,noun,m,bread,comida,1
+queso,noun,m,cheese,comida,1
+carne,noun,f,meat,comida,1
+pescado,noun,m,fish,comida,1
+verdura,noun,f,vegetable,comida,1
+fruta,noun,f,fruit,comida,1
+agua,noun,f,water,comida,1
+leche,noun,f,milk,comida,1
+café,noun,m,coffee,comida,1
+té,noun,m,tea,comida,2
+azúcar,noun,m,sugar,comida,2
+sal,noun,f,salt,comida,2
+manzana,noun,f,apple,comida,1
+pastel,noun,m,cake,comida,2
+huevo,noun,m,egg,comida,1
+pollo,noun,m,chicken,comida,2
+carne de res,noun,f,beef,comida,2
+cerdo,noun,m,pork,comida,2
+arroz,noun,m,rice,comida,1
+pasta,noun,f,pasta,comida,2
+sopa,noun,f,soup,comida,2
+ensalada,noun,f,salad,comida,2
+naranja,noun,f,orange,comida,1
+plátano,noun,m,banana,comida,1
+fresa,noun,f,strawberry,comida,2
+limón,noun,m,lemon,comida,2
+uva,noun,f,grape,comida,2
+zanahoria,noun,f,carrot,comida,2
+patata,noun,f,potato,comida,1
+tomate,noun,m,tomato,comida,1
+cebolla,noun,f,onion,comida,2
+vino,noun,m,wine,comida,1
+cerveza,noun,f,beer,comida,2
+jugo,noun,m,juice,comida,2
+comida,noun,f,meal/food,comida,1
+desayuno,noun,m,breakfast,comida,1
+almuerzo,noun,m,lunch,comida,1
+cena,noun,f,dinner,comida,1
+postre,noun,m,dessert,comida,2
+plato,noun,m,plate,comida,2
+vaso,noun,m,glass,comida,2
+cuchillo,noun,m,knife,comida,2
+tenedor,noun,m,fork,comida,2
+cuchara,noun,f,spoon,comida,2
+hambre,noun,f,hunger,comida,1
+sed,noun,f,thirst,comida,1
+mantequilla,noun,f,butter,comida,2
+chocolate,noun,m,chocolate,comida,1
+helado,noun,m,ice cream,comida,2
+mermelada,noun,f,jam,comida,3
+casa,noun,f,house,casa,1
+apartamento,noun,m,apartment,casa,1
+dormitorio,noun,m,bedroom,casa,1
+cocina,noun,f,kitchen,casa,1
+salón,noun,m,living room,casa,1
+baño,noun,m,bathroom,casa,1
+jardín,noun,m,garden,casa,1
+puerta,noun,f,door,casa,1
+ventana,noun,f,window,casa,1
+pared,noun,f,wall,casa,2
+techo,noun,m,roof/ceiling,casa,2
+mesa,noun,f,table,casa,1
+silla,noun,f,chair,casa,1
+cama,noun,f,bed,casa,1
+sofá,noun,m,sofa,casa,2
+armario,noun,m,wardrobe,casa,3
+estante,noun,m,shelf,casa,3
+lámpara,noun,f,lamp,casa,2
+espejo,noun,m,mirror,casa,2
+alfombra,noun,f,rug,casa,3
+llave,noun,f,key,casa,1
+escalera,noun,f,staircase,casa,2
+suelo,noun,m,floor,casa,2
+piso,noun,m,floor/apartment,casa,2
+habitación,noun,f,room,casa,1
+garaje,noun,m,garage,casa,2
+balcón,noun,m,balcony,casa,3
+piscina,noun,f,pool,casa,2
+cortina,noun,f,curtain,casa,3
+patio,noun,m,patio/yard,casa,2
+rojo,adj,,red,colores,1
+azul,adj,,blue,colores,1
+verde,adj,,green,colores,1
+amarillo,adj,,yellow,colores,1
+negro,adj,,black,colores,1
+blanco,adj,,white,colores,1
+gris,adj,,gray,colores,2
+naranja,adj,,orange,colores,2
+marrón,adj,,brown,colores,2
+rosado,adj,,pink,colores,2
+morado,adj,,purple,colores,2
+beige,adj,,beige,colores,3
+dorado,adj,,golden,colores,3
+plateado,adj,,silver,colores,3
+grande,adj,,big,adjetivos,1
+pequeño,adj,,small,adjetivos,1
+hermoso,adj,,beautiful,adjetivos,1
+bonito,adj,,pretty,adjetivos,1
+nuevo,adj,,new,adjetivos,1
+viejo,adj,,old,adjetivos,1
+joven,adj,,young,adjetivos,1
+bueno,adj,,good,adjetivos,1
+malo,adj,,bad,adjetivos,1
+feliz,adj,,happy,adjetivos,1
+triste,adj,,sad,adjetivos,1
+difícil,adj,,difficult,adjetivos,1
+fácil,adj,,easy,adjetivos,1
+importante,adj,,important,adjetivos,1
+interesante,adj,,interesting,adjetivos,1
+aburrido,adj,,boring,adjetivos,2
+fuerte,adj,,strong,adjetivos,1
+débil,adj,,weak,adjetivos,2
+rico,adj,,rich,adjetivos,2
+pobre,adj,,poor,adjetivos,2
+inteligente,adj,,intelligent,adjetivos,1
+tonto,adj,,silly/stupid,adjetivos,2
+amable,adj,,kind,adjetivos,1
+malvado,adj,,wicked,adjetivos,3
+caliente,adj,,hot,adjetivos,1
+frío,adj,,cold,adjetivos,1
+rápido,adj,,fast,adjetivos,1
+lento,adj,,slow,adjetivos,1
+largo,adj,,long,adjetivos,1
+corto,adj,,short,adjetivos,1
+alto,adj,,tall/high,adjetivos,1
+bajo,adj,,low/short,adjetivos,2
+limpio,adj,,clean,adjetivos,2
+sucio,adj,,dirty,adjetivos,2
+lleno,adj,,full,adjetivos,2
+vacío,adj,,empty,adjetivos,2
+pesado,adj,,heavy,adjetivos,2
+ligero,adj,,light (weight),adjetivos,2
+caro,adj,,expensive,adjetivos,1
+gratis,adj,,free (cost),adjetivos,2
+sencillo,adj,,simple,adjetivos,1
+complicado,adj,,complicated,adjetivos,2
+tranquilo,adj,,calm,adjetivos,2
+ocupado,adj,,busy,adjetivos,2
+libre,adj,,free (available),adjetivos,2
+seguro,adj,,sure/safe,adjetivos,2
+peligroso,adj,,dangerous,adjetivos,2
+famoso,adj,,famous,adjetivos,2
+normal,adj,,normal,adjetivos,2
+extraño,adj,,strange,adjetivos,2
+gracioso,adj,,funny,adjetivos,2
+serio,adj,,serious,adjetivos,2
+educado,adj,,polite,adjetivos,2
+maleducado,adj,,rude,adjetivos,3
+curioso,adj,,curious,adjetivos,2
+paciente,adj,,patient,adjetivos,2
+impaciente,adj,,impatient,adjetivos,3
+cansado,adj,,tired,adjetivos,1
+enfermo,adj,,sick,adjetivos,1
+sano,adj,,healthy,adjetivos,2
+orgulloso,adj,,proud,adjetivos,2
+celoso,adj,,jealous,adjetivos,3
+enamorado,adj,,in love,adjetivos,2
+solo,adj,,alone,adjetivos,1
+casado,adj,,married,adjetivos,2
+soltero,adj,,single,adjetivos,2
+diferente,adj,,different,adjetivos,1
+parecido,adj,,similar,adjetivos,2
+entero,adj,,whole,adjetivos,2
+listo,adj,,ready/clever,adjetivos,1
+ser,verb,,to be (permanent),verbos,1
+estar,verb,,to be (state/location),verbos,1
+tener,verb,,to have,verbos,1
+hacer,verb,,to do/make,verbos,1
+ir,verb,,to go,verbos,1
+venir,verb,,to come,verbos,1
+ver,verb,,to see,verbos,1
+saber,verb,,to know (fact),verbos,1
+poder,verb,,to be able to,verbos,1
+querer,verb,,to want,verbos,1
+deber,verb,,to have to,verbos,1
+decir,verb,,to say,verbos,1
+hablar,verb,,to speak,verbos,1
+tomar,verb,,to take,verbos,1
+dar,verb,,to give,verbos,1
+encontrar,verb,,to find,verbos,1
+pensar,verb,,to think,verbos,1
+creer,verb,,to believe,verbos,1
+pasar,verb,,to pass/happen,verbos,1
+poner,verb,,to put,verbos,1
+preguntar,verb,,to ask,verbos,1
+quedar,verb,,to stay/remain,verbos,1
+parecer,verb,,to seem,verbos,2
+sostener,verb,,to hold,verbos,2
+conocer,verb,,to know (person/place),verbos,1
+mirar,verb,,to look/watch,verbos,1
+sentir,verb,,to feel,verbos,2
+llevar,verb,,to carry/wear,verbos,2
+dejar,verb,,to leave/let,verbos,2
+entender,verb,,to understand,verbos,1
+llegar,verb,,to arrive,verbos,1
+oír,verb,,to hear,verbos,1
+escuchar,verb,,to listen,verbos,1
+responder,verb,,to answer,verbos,1
+comer,verb,,to eat,verbos,1
+beber,verb,,to drink,verbos,1
+leer,verb,,to read,verbos,1
+escribir,verb,,to write,verbos,1
+vivir,verb,,to live,verbos,1
+buscar,verb,,to look for,verbos,1
+amar,verb,,to love,verbos,1
+odiar,verb,,to hate,verbos,2
+trabajar,verb,,to work,verbos,1
+jugar,verb,,to play,verbos,1
+aprender,verb,,to learn,verbos,1
+estudiar,verb,,to study,verbos,2
+enseñar,verb,,to teach,verbos,2
+empezar,verb,,to start,verbos,1
+terminar,verb,,to finish,verbos,1
+continuar,verb,,to continue,verbos,1
+parar,verb,,to stop,verbos,2
+intentar,verb,,to try,verbos,1
+lograr,verb,,to achieve/succeed,verbos,2
+fallar,verb,,to fail,verbos,3
+ganar,verb,,to win/earn,verbos,1
+perder,verb,,to lose,verbos,1
+comprar,verb,,to buy,verbos,1
+vender,verb,,to sell,verbos,2
+pagar,verb,,to pay,verbos,1
+costar,verb,,to cost,verbos,2
+abrir,verb,,to open,verbos,1
+cerrar,verb,,to close,verbos,1
+subir,verb,,to go up,verbos,2
+bajar,verb,,to go down,verbos,2
+entrar,verb,,to enter,verbos,1
+salir,verb,,to go out,verbos,1
+partir,verb,,to depart,verbos,2
+volver,verb,,to come back/return,verbos,1
+caer,verb,,to fall,verbos,2
+correr,verb,,to run,verbos,1
+caminar,verb,,to walk,verbos,1
+viajar,verb,,to travel,verbos,2
+conducir,verb,,to drive,verbos,2
+volar,verb,,to fly,verbos,2
+nadar,verb,,to swim,verbos,2
+dormir,verb,,to sleep,verbos,1
+despertar,verb,,to wake (someone),verbos,2
+levantarse,verb,,to get up,verbos,1
+acostarse,verb,,to go to bed,verbos,2
+lavar,verb,,to wash,verbos,2
+limpiar,verb,,to clean,verbos,2
+construir,verb,,to build,verbos,2
+romper,verb,,to break,verbos,2
+arreglar,verb,,to fix,verbos,2
+cambiar,verb,,to change,verbos,1
+elegir,verb,,to choose,verbos,1
+decidir,verb,,to decide,verbos,1
+olvidar,verb,,to forget,verbos,1
+recordar,verb,,to remember,verbos,1
+ayudar,verb,,to help,verbos,1
+sol,noun,m,sun,naturaleza,1
+luna,noun,f,moon,naturaleza,1
+estrella,noun,f,star,naturaleza,1
+cielo,noun,m,sky,naturaleza,1
+nube,noun,f,cloud,naturaleza,2
+lluvia,noun,f,rain,naturaleza,1
+nieve,noun,f,snow,naturaleza,1
+viento,noun,m,wind,naturaleza,1
+montaña,noun,f,mountain,naturaleza,1
+mar,noun,m,sea,naturaleza,1
+río,noun,m,river,naturaleza,2
+lago,noun,m,lake,naturaleza,2
+bosque,noun,m,forest,naturaleza,1
+árbol,noun,m,tree,naturaleza,1
+flor,noun,f,flower,naturaleza,1
+hierba,noun,f,grass,naturaleza,2
+playa,noun,f,beach,naturaleza,1
+isla,noun,f,island,naturaleza,2
+tierra,noun,f,earth/land,naturaleza,1
+mundo,noun,m,world,naturaleza,1
+piedra,noun,f,stone,naturaleza,2
+fuego,noun,m,fire,naturaleza,1
+hielo,noun,m,ice,naturaleza,2
+calor,noun,m,heat,naturaleza,2
+frío,noun,m,cold,naturaleza,2
+tormenta,noun,f,storm,naturaleza,2
+niebla,noun,f,fog,naturaleza,3
+desierto,noun,m,desert,naturaleza,2
+valle,noun,m,valley,naturaleza,3
+campo,noun,m,countryside/field,naturaleza,2
+perro,noun,m,dog,animales,1
+gato,noun,m,cat,animales,1
+pájaro,noun,m,bird,animales,1
+pez,noun,m,fish (animal),animales,1
+caballo,noun,m,horse,animales,1
+vaca,noun,f,cow,animales,2
+cerdo,noun,m,pig,animales,2
+oveja,noun,f,sheep,animales,2
+gallina,noun,f,hen,animales,2
+conejo,noun,m,rabbit,animales,2
+ratón,noun,m,mouse,animales,2
+lobo,noun,m,wolf,animales,2
+oso,noun,m,bear,animales,2
+león,noun,m,lion,animales,2
+tigre,noun,m,tiger,animales,2
+elefante,noun,m,elephant,animales,2
+mono,noun,m,monkey,animales,2
+serpiente,noun,f,snake,animales,2
+rana,noun,f,frog,animales,3
+abeja,noun,f,bee,animales,2
+mosca,noun,f,fly,animales,3
+mariposa,noun,f,butterfly,animales,2
+araña,noun,f,spider,animales,2
+insecto,noun,m,insect,animales,2
+animal,noun,m,animal,animales,1
+zorro,noun,m,fox,animales,3
+pato,noun,m,duck,animales,2
+cabra,noun,f,goat,animales,3
+tortuga,noun,f,turtle,animales,3
+delfín,noun,m,dolphin,animales,3
+médico,noun,m,doctor,profesiones,1
+profesor,noun,m,teacher,profesiones,1
+abogado,noun,m,lawyer,profesiones,2
+ingeniero,noun,m,engineer,profesiones,2
+enfermero,noun,m,nurse,profesiones,2
+policía,noun,m,police officer,profesiones,2
+bombero,noun,m,firefighter,profesiones,2
+cocinero,noun,m,cook,profesiones,2
+camarero,noun,m,waiter,profesiones,2
+vendedor,noun,m,salesperson,profesiones,2
+empleado,noun,m,employee,profesiones,1
+director,noun,m,director/manager,profesiones,2
+jefe,noun,m,boss,profesiones,2
+estudiante,noun,m,student,profesiones,1
+conductor,noun,m,driver,profesiones,2
+agricultor,noun,m,farmer,profesiones,2
+artista,noun,m,artist,profesiones,2
+escritor,noun,m,writer,profesiones,2
+periodista,noun,m,journalist,profesiones,2
+músico,noun,m,musician,profesiones,2
+actor,noun,m,actor,profesiones,2
+cantante,noun,m,singer,profesiones,2
+secretario,noun,m,secretary,profesiones,2
+peluquero,noun,m,hairdresser,profesiones,3
+panadero,noun,m,baker,profesiones,3
+ciudad,noun,f,city,lugares,1
+pueblo,noun,m,village/town,lugares,2
+país,noun,m,country,lugares,1
+calle,noun,f,street,lugares,1
+tienda,noun,f,shop,lugares,1
+mercado,noun,m,market,lugares,2
+restaurante,noun,m,restaurant,lugares,1
+hotel,noun,m,hotel,lugares,1
+hospital,noun,m,hospital,lugares,1
+escuela,noun,f,school,lugares,1
+universidad,noun,f,university,lugares,2
+iglesia,noun,f,church,lugares,2
+biblioteca,noun,f,library,lugares,2
+museo,noun,m,museum,lugares,2
+banco,noun,m,bank,lugares,1
+oficina,noun,f,office,lugares,1
+fábrica,noun,f,factory,lugares,2
+aeropuerto,noun,m,airport,lugares,1
+estación,noun,f,train station,lugares,1
+farmacia,noun,f,pharmacy,lugares,2
+supermercado,noun,m,supermarket,lugares,1
+parque,noun,m,park,lugares,1
+plaza,noun,f,square,lugares,1
+puente,noun,m,bridge,lugares,2
+barrio,noun,m,neighborhood,lugares,2
+coche,noun,m,car,transporte,1
+bicicleta,noun,f,bicycle,transporte,1
+autobús,noun,m,bus,transporte,1
+tren,noun,m,train,transporte,1
+avión,noun,m,airplane,transporte,1
+barco,noun,m,boat,transporte,2
+metro,noun,m,subway,transporte,1
+taxi,noun,m,taxi,transporte,1
+moto,noun,f,motorcycle,transporte,2
+camión,noun,m,truck,transporte,2
+carretera,noun,f,road,transporte,1
+billete,noun,m,ticket,transporte,1
+viaje,noun,m,trip,transporte,1
+maleta,noun,f,suitcase,transporte,2
+pasaporte,noun,m,passport,transporte,2
+libro,noun,m,book,escuela,1
+cuaderno,noun,m,notebook,escuela,2
+bolígrafo,noun,m,pen,escuela,2
+lápiz,noun,m,pencil,escuela,2
+página,noun,f,page,escuela,2
+lección,noun,f,lesson,escuela,2
+tarea,noun,f,homework,escuela,1
+examen,noun,m,exam,escuela,1
+nota,noun,f,grade,escuela,2
+clase,noun,f,class,escuela,1
+curso,noun,m,course,escuela,1
+pregunta,noun,f,question,escuela,1
+respuesta,noun,f,answer,escuela,1
+problema,noun,m,problem,escuela,1
+ejemplo,noun,m,example,escuela,1
+palabra,noun,f,word,escuela,1
+frase,noun,f,sentence,escuela,1
+idioma,noun,m,language,escuela,1
+alumno,noun,m,pupil,escuela,2
+historia,noun,f,story/history,escuela,1
+trabajo,noun,m,work,trabajo,1
+empresa,noun,f,company,trabajo,1
+reunión,noun,f,meeting,trabajo,2
+proyecto,noun,m,project,trabajo,1
+ordenador,noun,m,computer,trabajo,1
+teléfono,noun,m,telephone,trabajo,1
+internet,noun,m,internet,trabajo,1
+correo electrónico,noun,m,email,trabajo,2
+pantalla,noun,f,screen,trabajo,2
+carpeta,noun,f,file/folder,trabajo,2
+documento,noun,m,document,trabajo,1
+informe,noun,m,report,trabajo,2
+salario,noun,m,salary,trabajo,2
+oficio,noun,m,trade/job,trabajo,2
+carrera,noun,f,career,trabajo,2
+sociedad,noun,f,company/society,trabajo,2
+cliente,noun,m,client,trabajo,1
+colega,noun,m,colleague,trabajo,2
+equipo,noun,m,team,trabajo,1
+jefe,noun,m,boss,trabajo,1
+contrato,noun,m,contract,trabajo,2
+empleo,noun,m,job,trabajo,1
+desempleo,noun,m,unemployment,trabajo,3
+jubilación,noun,f,retirement,trabajo,2
+aumento,noun,m,raise/increase,trabajo,3
+amor,noun,m,love,emociones,1
+alegría,noun,f,joy,emociones,2
+miedo,noun,m,fear,emociones,1
+enojo,noun,m,anger,emociones,2
+sorpresa,noun,f,surprise,emociones,2
+tristeza,noun,f,sadness,emociones,2
+felicidad,noun,f,happiness,emociones,1
+esperanza,noun,f,hope,emociones,2
+confianza,noun,f,trust/confidence,emociones,2
+coraje,noun,m,courage,emociones,2
+vergüenza,noun,f,shame,emociones,3
+celos,noun,m,jealousy,emociones,3
+estrés,noun,m,stress,emociones,2
+aburrimiento,noun,m,boredom,emociones,3
+sonrisa,noun,f,smile,emociones,2
+lágrima,noun,f,tear,emociones,2
+risa,noun,f,laugh,emociones,2
+carácter,noun,m,character,emociones,2
+personalidad,noun,f,personality,emociones,2
+humor,noun,m,mood,emociones,2
+paciencia,noun,f,patience,emociones,2
+generosidad,noun,f,generosity,emociones,3
+curiosidad,noun,f,curiosity,emociones,3
+timidez,noun,f,shyness,emociones,3
+orgullo,noun,m,pride,emociones,3
+amabilidad,noun,f,kindness,emociones,2
+maldad,noun,f,meanness,emociones,3
+sentimiento,noun,m,feeling,emociones,1
+emoción,noun,f,emotion,emociones,1
+deseo,noun,m,desire,emociones,2
+de,other,,of/from,funcion,1
+a,other,,to/at,funcion,1
+en,other,,in/on,funcion,1
+sobre,other,,on/about,funcion,1
+bajo,other,,under,funcion,1
+con,other,,with,funcion,1
+sin,other,,without,funcion,1
+para,other,,for,funcion,1
+por,other,,by/through,funcion,1
+entre,other,,between,funcion,1
+hacia,other,,towards,funcion,2
+durante,other,,during,funcion,1
+antes,other,,before,funcion,1
+después,other,,after,funcion,1
+desde,other,,since/from,funcion,1
+hasta,other,,until,funcion,1
+y,other,,and,funcion,1
+o,other,,or,funcion,1
+pero,other,,but,funcion,1
+entonces,other,,so/then,funcion,1
+porque,other,,because,funcion,1
+si,other,,if,funcion,1
+cuando,other,,when,funcion,1
+como,other,,like/as,funcion,1
+también,adv,,also,funcion,1
+todavía,adv,,still/yet,funcion,1
+ya,adv,,already,funcion,1
+siempre,adv,,always,funcion,1
+nunca,adv,,never,funcion,1
+mucho,adv,,a lot,funcion,1
+poco,adv,,little/few,funcion,1
+muy,adv,,very,funcion,1
+demasiado,adv,,too much,funcion,1
+bastante,adv,,enough/quite,funcion,1
+más,adv,,more,funcion,1
+menos,adv,,less,funcion,1
+casi,adv,,almost,funcion,2
+vida,noun,f,life,abstracto,1
+muerte,noun,f,death,abstracto,1
+tiempo,noun,m,time,abstracto,1
+día,noun,m,day,abstracto,1
+noche,noun,f,night,abstracto,1
+mañana,noun,f,morning,abstracto,1
+tarde,noun,f,afternoon/evening,abstracto,1
+semana,noun,f,week,abstracto,1
+mes,noun,m,month,abstracto,1
+año,noun,m,year,abstracto,1
+momento,noun,m,moment,abstracto,1
+idea,noun,f,idea,abstracto,1
+razón,noun,f,reason,abstracto,1
+manera,noun,f,way/manner,abstracto,1
+cosa,noun,f,thing,abstracto,1
+hecho,noun,m,fact,abstracto,1
+caso,noun,m,case,abstracto,1
+nivel,noun,m,level,abstracto,2
+parte,noun,f,part,abstracto,1
+grupo,noun,m,group,abstracto,1
+número,noun,m,number,abstracto,1
+lista,noun,f,list,abstracto,2
+orden,noun,m,order,abstracto,2
+ley,noun,f,law,abstracto,2
+derecho,noun,m,right/law,abstracto,2
+libertad,noun,f,freedom,abstracto,2
+paz,noun,f,peace,abstracto,2
+guerra,noun,f,war,abstracto,2
+poder,noun,m,power,abstracto,2
+gobierno,noun,m,government,abstracto,2
+política,noun,f,politics,abstracto,2
+sociedad,noun,f,society,abstracto,2
+cultura,noun,f,culture,abstracto,2
+religión,noun,f,religion,abstracto,2
+historia,noun,f,history/story,abstracto,1
+futuro,noun,m,future,abstracto,1
+pasado,noun,m,past,abstracto,1
+presente,noun,m,present,abstracto,2
+principio,noun,m,beginning,abstracto,1
+final,noun,m,end,abstracto,1
+medio,noun,m,middle,abstracto,2
+lado,noun,m,side,abstracto,1
+diferencia,noun,f,difference,abstracto,2
+cambio,noun,m,change,abstracto,2
+necesidad,noun,f,need,abstracto,1
+ganas,noun,f,desire/urge,abstracto,1
+secreto,noun,m,secret,abstracto,2
+misterio,noun,m,mystery,abstracto,2
+verdad,noun,f,truth,abstracto,1
+mentira,noun,f,lie,abstracto,2
+dinero,noun,m,money,dinero,1
+precio,noun,m,price,dinero,1
+peso,noun,m,peso (currency),dinero,2
+cambio,noun,m,change/currency,dinero,2
+tarjeta,noun,f,card,dinero,1
+caja,noun,f,checkout/box,dinero,2
+compra,noun,f,purchase,dinero,2
+venta,noun,f,sale,dinero,2
+descuento,noun,m,discount,dinero,3
+factura,noun,f,bill/invoice,dinero,2
+deuda,noun,f,debt,dinero,2
+ahorro,noun,m,savings,dinero,2
+presupuesto,noun,m,budget,dinero,2
+riqueza,noun,f,wealth,dinero,3
+pobreza,noun,f,poverty,dinero,3
+salud,noun,f,health,salud,1
+enfermedad,noun,f,illness,salud,1
+medicina,noun,f,medicine,salud,2
+dolor,noun,m,pain,salud,1
+fiebre,noun,f,fever,salud,2
+resfriado,noun,m,cold (illness),salud,2
+herida,noun,f,wound,salud,2
+accidente,noun,m,accident,salud,2
+emergencia,noun,f,emergency,salud,2
+tratamiento,noun,m,treatment,salud,2
+recuperación,noun,f,recovery,salud,3
+dieta,noun,f,diet,salud,2
+sueño,noun,m,sleep,salud,1
+ejercicio,noun,m,exercise,salud,1
+vacuna,noun,f,vaccine,salud,2
+deporte,noun,m,sport,ocio,1
+fútbol,noun,m,soccer,ocio,1
+baloncesto,noun,m,basketball,ocio,2
+tenis,noun,m,tennis,ocio,2
+natación,noun,f,swimming,ocio,2
+música,noun,f,music,ocio,1
+película,noun,f,film,ocio,1
+juego,noun,m,game,ocio,1
+fiesta,noun,f,party,ocio,1
+vacaciones,noun,f,vacation,ocio,1
+pasatiempo,noun,m,hobby,ocio,2
+baile,noun,m,dance,ocio,2
+pintura,noun,f,painting,ocio,2
+foto,noun,f,photo,ocio,1
+concierto,noun,m,concert,ocio,2
+derecha,noun,f,right (direction),ciudad,1
+izquierda,noun,f,left (direction),ciudad,1
+norte,noun,m,north,ciudad,2
+sur,noun,m,south,ciudad,2
+este,noun,m,east,ciudad,2
+oeste,noun,m,west,ciudad,2
+dirección,noun,f,direction,ciudad,1
+mapa,noun,m,map,ciudad,1
+domicilio,noun,m,address,ciudad,2
+esquina,noun,f,corner,ciudad,2
+distancia,noun,f,distance,ciudad,2
+centro,noun,m,center,ciudad,1
+salida,noun,f,exit,ciudad,1
+entrada,noun,f,entrance,ciudad,1
+señal,noun,f,sign,ciudad,2
+diecisiete,other,,seventeen,numeros,1
+dieciocho,other,,eighteen,numeros,1
+diecinueve,other,,nineteen,numeros,1
+setenta,other,,seventy,numeros,1
+ochenta,other,,eighty,numeros,1
+noventa,other,,ninety,numeros,1
+doscientos,other,,two hundred,numeros,2
+trescientos,other,,three hundred,numeros,2
+quinientos,other,,five hundred,numeros,2
+novecientos,other,,nine hundred,numeros,2
+dos mil,other,,two thousand,numeros,2
+diez mil,other,,ten thousand,numeros,2
+cien mil,other,,one hundred thousand,numeros,2
+mil millones,noun,m,billion,numeros,2
+cuarto,adj,,fourth,numeros,2
+quinto,adj,,fifth,numeros,2
+sexto,adj,,sixth,numeros,2
+séptimo,adj,,seventh,numeros,2
+octavo,adj,,eighth,numeros,2
+noveno,adj,,ninth,numeros,2
+décimo,adj,,tenth,numeros,2
+undécimo,adj,,eleventh,numeros,3
+vigésimo,adj,,twentieth,numeros,3
+centésimo,adj,,hundredth,numeros,3
+milésimo,adj,,thousandth,numeros,3
+medio,noun,m,half,numeros,2
+tercio,noun,m,third (fraction),numeros,2
+cuarta parte,noun,f,quarter,numeros,2
+doble,noun,m,double,numeros,2
+triple,noun,m,triple,numeros,3
+conjunto,noun,m,set/group,numeros,2
+decena,noun,f,about ten,numeros,2
+docena,noun,f,dozen,numeros,2
+centena,noun,f,about a hundred,numeros,2
+algunos,adj,,a few,numeros,1
+varios,adj,,several,numeros,1
+cada,adj,,each,numeros,1
+todo,adj,,all,numeros,1
+todos,adj,,all (plural),numeros,1
+ninguno,adj,,none,numeros,1
+cierto,adj,,certain/some,numeros,2
+numeroso,adj,,numerous,numeros,2
+par,adj,,even (number),numeros,2
+impar,adj,,odd (number),numeros,2
+positivo,adj,,positive,numeros,2
+negativo,adj,,negative,numeros,2
+entero,adj,,whole (number),numeros,2
+fracción,noun,f,fraction,numeros,2
+porcentaje,noun,m,percentage,numeros,2
+total,noun,m,total,numeros,1
+suma,noun,f,sum,numeros,2
+adición,noun,f,addition,numeros,2
+resta,noun,f,subtraction,numeros,3
+multiplicación,noun,f,multiplication,numeros,3
+división,noun,f,division,numeros,3
+igual,adj,,equal,numeros,2
+aproximadamente,adv,,approximately,numeros,1
+exactamente,adv,,exactly,numeros,1
+más o menos,adv,,roughly,numeros,2
+contar,verb,,to count,numeros,1
+calcular,verb,,to calculate,numeros,2
+dígito,noun,m,digit,numeros,2
+cantidad,noun,f,quantity,numeros,2
+medida,noun,f,measurement,numeros,2
+tamaño,noun,m,size,numeros,1
+longitud,noun,f,length,numeros,2
+anchura,noun,f,width,numeros,3
+altura,noun,f,height,numeros,2
+profundidad,noun,f,depth,numeros,3
+velocidad,noun,f,speed,numeros,2
+kilómetro,noun,m,kilometer,numeros,2
+metro,noun,m,meter,numeros,1
+centímetro,noun,m,centimeter,numeros,2
+kilogramo,noun,m,kilogram,numeros,2
+litro,noun,m,liter,numeros,2
+número,noun,m,number (e.g. phone),numeros,1
+código,noun,m,code,numeros,1
+medir,verb,,to measure,numeros,2
+pesar,verb,,to weigh,numeros,2
+aumentar,verb,,to increase,numeros,1
+disminuir,verb,,to decrease,numeros,2
+duplicar,verb,,to double,numeros,2
+compartir,verb,,to share,numeros,1
+añadir,verb,,to add,numeros,1
+quitar,verb,,to remove,numeros,1
+cuello,noun,m,neck,cuerpo,1
+pecho,noun,m,chest,cuerpo,2
+cadera,noun,f,hip,cuerpo,3
+tobillo,noun,m,ankle,cuerpo,3
+muñeca,noun,f,wrist,cuerpo,3
+codo,noun,m,elbow,cuerpo,3
+muslo,noun,m,thigh,cuerpo,3
+pantorrilla,noun,f,calf,cuerpo,3
+talón,noun,m,heel,cuerpo,3
+uña,noun,f,fingernail,cuerpo,3
+ceja,noun,f,eyebrow,cuerpo,3
+pestaña,noun,f,eyelash,cuerpo,3
+párpado,noun,m,eyelid,cuerpo,3
+mejilla,noun,f,cheek,cuerpo,2
+barbilla,noun,f,chin,cuerpo,2
+frente,noun,f,forehead,cuerpo,2
+labio,noun,m,lip,cuerpo,2
+garganta,noun,f,throat,cuerpo,2
+pulmón,noun,m,lung,cuerpo,2
+hígado,noun,m,liver,cuerpo,3
+riñón,noun,m,kidney,cuerpo,3
+cerebro,noun,m,brain,cuerpo,2
+sangre,noun,f,blood,cuerpo,2
+hueso,noun,m,bone,cuerpo,2
+músculo,noun,m,muscle,cuerpo,2
+esqueleto,noun,m,skeleton,cuerpo,3
+nervio,noun,m,nerve,cuerpo,3
+vena,noun,f,vein,cuerpo,3
+puño,noun,m,fist,cuerpo,3
+palma,noun,f,palm,cuerpo,3
+dedo del pie,noun,m,toe,cuerpo,3
+ombligo,noun,m,belly button,cuerpo,3
+nalgas,noun,f,buttocks,cuerpo,3
+barba,noun,f,beard,cuerpo,2
+bigote,noun,m,mustache,cuerpo,3
+arruga,noun,f,wrinkle,cuerpo,3
+articulación,noun,f,joint,cuerpo,3
+columna vertebral,noun,f,spine,cuerpo,3
+intestino,noun,m,intestine,cuerpo,3
+mandíbula,noun,f,jaw,cuerpo,3
+fosa nasal,noun,f,nostril,cuerpo,3
+pupila,noun,f,pupil,cuerpo,3
+retina,noun,f,retina,cuerpo,3
+voz,noun,f,voice,cuerpo,2
+aliento,noun,m,breath,cuerpo,2
+pulso,noun,m,pulse,cuerpo,3
+sudor,noun,m,sweat,cuerpo,3
+saliva,noun,f,saliva,cuerpo,3
+respirar,verb,,to breathe,cuerpo,2
+tragar,verb,,to swallow,cuerpo,3
+tocar,verb,,to touch,cuerpo,2
+saborear,verb,,to taste,cuerpo,2
+crecer,verb,,to grow,cuerpo,2
+envejecer,verb,,to age,cuerpo,2
+adelgazar,verb,,to lose weight,cuerpo,3
+engordar,verb,,to gain weight,cuerpo,3
+musculoso,adj,,muscular,cuerpo,3
+delgado,adj,,slim,cuerpo,2
+gordo,adj,,fat,cuerpo,2
+flaco,adj,,thin,cuerpo,3
+fornido,adj,,sturdy,cuerpo,3
+cabellera,noun,f,head of hair,cuerpo,3
+calvicie,noun,f,baldness,cuerpo,3
+silueta,noun,f,figure/silhouette,cuerpo,3
+tez,noun,f,complexion,cuerpo,3
+lunar,noun,m,mole,cuerpo,3
+cicatriz,noun,f,scar,cuerpo,2
+tatuaje,noun,m,tattoo,cuerpo,3
+transpirar,verb,,to sweat,cuerpo,3
+parpadear,verb,,to blink,cuerpo,3
+bostezar,verb,,to yawn,cuerpo,3
+estornudar,verb,,to sneeze,cuerpo,3
+toser,verb,,to cough,cuerpo,2
+sangrar,verb,,to bleed,cuerpo,2
+curar,verb,,to heal,cuerpo,2
+miembro,noun,m,limb,cuerpo,2
+órgano,noun,m,organ,cuerpo,2
+sistema inmunológico,noun,m,immune system,cuerpo,3
+ritmo cardíaco,noun,m,heart rate,cuerpo,3
+cintura,noun,f,waist,cuerpo,2
+valor,noun,m,value,abstracto,2
+calidad,noun,f,quality,abstracto,1
+condición,noun,f,condition,abstracto,2
+situación,noun,f,situation,abstracto,1
+circunstancia,noun,f,circumstance,abstracto,3
+evento,noun,m,event,abstracto,1
+oportunidad,noun,f,opportunity,abstracto,1
+suerte,noun,f,luck,abstracto,1
+destino,noun,m,fate,abstracto,2
+azar,noun,m,chance/randomness,abstracto,2
+riesgo,noun,m,risk,abstracto,2
+peligro,noun,m,danger,abstracto,2
+seguridad,noun,f,security,abstracto,2
+comodidad,noun,f,comfort,abstracto,2
+existencia,noun,f,existence,abstracto,2
+realidad,noun,f,reality,abstracto,1
+imaginación,noun,f,imagination,abstracto,2
+pesadilla,noun,f,nightmare,abstracto,3
+recuerdo,noun,m,memory/souvenir,abstracto,1
+memoria,noun,f,memory (faculty),abstracto,2
+experiencia,noun,f,experience,abstracto,1
+conocimiento,noun,m,knowledge,abstracto,2
+sabiduría,noun,f,wisdom,abstracto,3
+inteligencia,noun,f,intelligence,abstracto,2
+creatividad,noun,f,creativity,abstracto,3
+talento,noun,m,talent,abstracto,2
+capacidad,noun,f,ability,abstracto,2
+competencia,noun,f,skill,abstracto,2
+esfuerzo,noun,m,effort,abstracto,1
+progreso,noun,m,progress,abstracto,2
+éxito,noun,m,success,abstracto,2
+fracaso,noun,m,failure,abstracto,2
+error,noun,m,mistake,abstracto,1
+solución,noun,f,solution,abstracto,1
+resultado,noun,m,result,abstracto,1
+consecuencia,noun,f,consequence,abstracto,2
+causa,noun,f,cause,abstracto,1
+efecto,noun,m,effect,abstracto,2
+meta,noun,f,goal,abstracto,1
+objetivo,noun,m,objective,abstracto,2
+estrategia,noun,f,strategy,abstracto,2
+método,noun,m,method,abstracto,2
+sistema,noun,m,system,abstracto,2
+proceso,noun,m,process,abstracto,2
+etapa,noun,f,step/stage,abstracto,2
+límite,noun,m,limit,abstracto,2
+frontera,noun,f,border,abstracto,2
+espacio,noun,m,space,abstracto,1
+universo,noun,m,universe,abstracto,2
+eternidad,noun,f,eternity,abstracto,3
+instante,noun,m,instant,abstracto,2
+duración,noun,f,duration,abstracto,2
+silencio,noun,m,silence,abstracto,2
+ruido,noun,m,noise,abstracto,1
+armonía,noun,f,harmony,abstracto,2
+equilibrio,noun,m,balance,abstracto,2
+justicia,noun,f,justice,abstracto,1
+injusticia,noun,f,injustice,abstracto,2
+igualdad,noun,f,equality,abstracto,2
+desigualdad,noun,f,inequality,abstracto,3
+hoy,adv,,today,tiempo,1
+ayer,adv,,yesterday,tiempo,1
+mañana,adv,,tomorrow,tiempo,1
+pasado mañana,adv,,the day after tomorrow,tiempo,2
+anteayer,adv,,the day before yesterday,tiempo,2
+ahora,adv,,now,tiempo,1
+pronto,adv,,soon,tiempo,1
+tarde,adv,,late,tiempo,1
+temprano,adv,,early,tiempo,1
+de ahora en adelante,adv,,from now on,tiempo,2
+antiguamente,adv,,in the past,tiempo,2
+actualmente,adv,,currently,tiempo,2
+próximo,adj,,next,tiempo,1
+siguiente,adj,,following,tiempo,2
+anterior,adj,,previous,tiempo,2
+diario,adj,,daily,tiempo,2
+semanal,adj,,weekly,tiempo,2
+mensual,adj,,monthly,tiempo,2
+anual,adj,,annual,tiempo,2
+estación,noun,f,season,tiempo,1
+fecha,noun,f,date,tiempo,1
+calendario,noun,m,calendar,tiempo,2
+horario,noun,m,schedule,tiempo,2
+cita,noun,f,appointment,tiempo,1
+cumpleaños,noun,m,birthday,tiempo,1
+día festivo,noun,m,public holiday,tiempo,2
+fin de semana,noun,m,weekend,tiempo,1
+víspera,noun,f,the day before,tiempo,2
+época,noun,f,era,tiempo,2
+siglo,noun,m,century,tiempo,2
+década,noun,f,decade,tiempo,2
+amanecer,noun,m,dawn,tiempo,2
+anochecer,noun,m,dusk,tiempo,3
+medianoche,noun,f,midnight,tiempo,1
+mediodía,noun,m,noon,tiempo,1
+duración,noun,f,duration,tiempo,2
+durar,verb,,to last,tiempo,2
+esperar,verb,,to wait,tiempo,1
+adelantar,verb,,to move forward,tiempo,2
+atrasar,verb,,to move back,tiempo,2
+programar,verb,,to schedule,tiempo,2
+planificar,verb,,to plan,tiempo,2
+reloj,noun,m,clock/watch,tiempo,1
+despertador,noun,m,alarm clock,tiempo,2
+agenda,noun,f,planner,tiempo,2
+ansiedad,noun,f,anxiety,emociones,2
+angustia,noun,f,anguish,emociones,3
+alivio,noun,m,relief,emociones,2
+decepción,noun,f,disappointment,emociones,2
+arrepentimiento,noun,m,regret,emociones,2
+remordimiento,noun,m,remorse,emociones,3
+culpa,noun,f,guilt,emociones,2
+asco,noun,m,disgust,emociones,2
+desprecio,noun,m,contempt,emociones,3
+admiración,noun,f,admiration,emociones,2
+respeto,noun,m,respect,emociones,1
+optimismo,noun,m,optimism,emociones,2
+pesimismo,noun,m,pessimism,emociones,3
+entusiasmo,noun,m,enthusiasm,emociones,2
+pasión,noun,f,passion,emociones,2
+indiferencia,noun,f,indifference,emociones,2
+nostalgia,noun,f,nostalgia,emociones,2
+melancolía,noun,f,melancholy,emociones,3
+euforia,noun,f,euphoria,emociones,3
+pánico,noun,m,panic,emociones,2
+terror,noun,m,terror,emociones,2
+horror,noun,m,horror,emociones,2
+frustración,noun,f,frustration,emociones,2
+depresión,noun,f,depression,emociones,2
+soledad,noun,f,loneliness,emociones,2
+compasión,noun,f,compassion,emociones,2
+lástima,noun,f,pity,emociones,2
+rencor,noun,m,grudge,emociones,3
+odio,noun,m,hatred,emociones,2
+afecto,noun,m,affection,emociones,2
+ternura,noun,f,tenderness,emociones,2
+simpatía,noun,f,sympathy,emociones,2
+empatía,noun,f,empathy,emociones,2
+bondad,noun,f,kindness,emociones,2
+llamar,verb,,to call,verbos,1
+enviar,verb,,to send,verbos,1
+recibir,verb,,to receive,verbos,1
+regalar,verb,,to give (a gift),verbos,1
+pedir prestado,verb,,to borrow,verbos,2
+prestar,verb,,to lend,verbos,2
+devolver,verb,,to give back,verbos,1
+permitir,verb,,to allow,verbos,1
+impedir,verb,,to prevent,verbos,2
+rechazar,verb,,to refuse,verbos,1
+aceptar,verb,,to accept,verbos,1
+proponer,verb,,to propose,verbos,1
+sugerir,verb,,to suggest,verbos,2
+aconsejar,verb,,to advise,verbos,2
+prometer,verb,,to promise,verbos,1
+mentir,verb,,to lie,verbos,2
+confesar,verb,,to admit,verbos,2
+negar,verb,,to deny,verbos,2
+confirmar,verb,,to confirm,verbos,2
+comprobar,verb,,to check,verbos,1
+organizar,verb,,to organize,verbos,1
+preparar,verb,,to prepare,verbos,1
+ordenar,verb,,to tidy/order,verbos,2
+molestar,verb,,to disturb/bother,verbos,2
+agradar,verb,,to please,verbos,2
+agradecer,verb,,to thank,verbos,1
+felicitar,verb,,to congratulate,verbos,2
+perdonar,verb,,to forgive,verbos,2
+castigar,verb,,to punish,verbos,2
+animar,verb,,to encourage,verbos,2
+preocupar,verb,,to worry,verbos,2
+tranquilizar,verb,,to reassure,verbos,2
+sorprender,verb,,to surprise,verbos,2
+asombrar,verb,,to astonish,verbos,2
+divertir,verb,,to amuse,verbos,2
+aburrir,verb,,to bore,verbos,2
+enfadar,verb,,to anger,verbos,2
+calmar,verb,,to calm,verbos,2
+abrazar,verb,,to hug,verbos,2
+apretar,verb,,to squeeze,verbos,2
+profundo,adj,,deep,adjetivos,2
+ancho,adj,,wide,adjetivos,1
+estrecho,adj,,narrow,adjetivos,2
+grueso,adj,,thick,adjetivos,2
+delgado,adj,,thin/slim,adjetivos,2
+sólido,adj,,solid,adjetivos,2
+frágil,adj,,fragile,adjetivos,2
+flexible,adj,,flexible,adjetivos,3
+rígido,adj,,rigid,adjetivos,3
+suave,adj,,soft,adjetivos,1
+duro,adj,,hard,adjetivos,1
+liso,adj,,smooth,adjetivos,3
+brillante,adj,,shiny,adjetivos,2
+transparente,adj,,transparent,adjetivos,2
+claro,adj,,light/clear,adjetivos,1
+oscuro,adj,,dark,adjetivos,2
+pálido,adj,,pale,adjetivos,2
+fresco,adj,,fresh/cool,adjetivos,1
+seco,adj,,dry,adjetivos,1
+húmedo,adj,,humid/wet,adjetivos,2
+mojado,adj,,wet,adjetivos,2
+salado,adj,,salty,adjetivos,2
+dulce,adj,,sweet,adjetivos,2
+amargo,adj,,bitter,adjetivos,2
+picante,adj,,spicy,adjetivos,2
+delicioso,adj,,delicious,adjetivos,1
+moderno,adj,,modern,adjetivos,1
+antiguo,adj,,old/ancient,adjetivos,1
+tradicional,adj,,traditional,adjetivos,2
+original,adj,,original,adjetivos,1
+único,adj,,unique,adjetivos,1
+común,adj,,common,adjetivos,1
+raro,adj,,rare,adjetivos,1
+especial,adj,,special,adjetivos,1
+general,adj,,general,adjetivos,2
+particular,adj,,particular,adjetivos,2
+principal,adj,,main,adjetivos,2
+esencial,adj,,essential,adjetivos,2
+necesario,adj,,necessary,adjetivos,1
+útil,adj,,useful,adjetivos,1
+eficaz,adj,,efficient,adjetivos,2
+práctico,adj,,practical,adjetivos,2
+lógico,adj,,logical,adjetivos,2
+razonable,adj,,reasonable,adjetivos,2
+verdadero,adj,,true,adjetivos,1
+falso,adj,,false,adjetivos,1
+a pesar de,other,,despite,funcion,2
+gracias a,other,,thanks to,funcion,2
+debido a,other,,because of,funcion,1
+excepto,other,,except,funcion,2
+según,other,,according to,funcion,1
+contra,other,,against,funcion,1
+alrededor de,other,,around,funcion,2
+encima de,other,,above,funcion,2
+debajo de,other,,below,funcion,2
+a través de,other,,through,funcion,2
+cerca de,other,,near,funcion,1
+lejos de,other,,far from,funcion,1
+enfrente de,other,,opposite,funcion,2
+así,adv,,thus,funcion,2
+sin embargo,adv,,however,funcion,1
+no obstante,adv,,nevertheless,funcion,2
+además,adv,,besides/moreover,funcion,1
+de hecho,adv,,in fact,funcion,1
+en resumen,adv,,in short,funcion,2
+por fin,adv,,finally,funcion,1
+primero,adv,,first,funcion,1
+luego,adv,,then,funcion,1
+finalmente,adv,,finally,funcion,1
+en primer lugar,adv,,firstly,funcion,2
+en segundo lugar,adv,,secondly,funcion,2
+seguramente,adv,,surely,funcion,1
+probablemente,adv,,probably,funcion,1
+quizás,adv,,maybe,funcion,1
+de verdad,adv,,really,funcion,1
+absolutamente,adv,,absolutely,funcion,1
+completamente,adv,,completely,funcion,1
+totalmente,adv,,totally,funcion,2
+enteramente,adv,,entirely,funcion,2
+sobre todo,adv,,especially,funcion,1
+especialmente,adv,,especially,funcion,1
+particularmente,adv,,particularly,funcion,2
+igualmente,adv,,equally,funcion,1
+chimenea,noun,f,fireplace,casa,2
+horno,noun,m,oven,casa,1
+refrigerador,noun,m,fridge,casa,1
+congelador,noun,m,freezer,casa,2
+microondas,noun,m,microwave,casa,2
+lavavajillas,noun,m,dishwasher,casa,2
+lavadora,noun,f,washing machine,casa,1
+aspiradora,noun,f,vacuum cleaner,casa,2
+fregadero,noun,m,sink,casa,2
+grifo,noun,m,faucet,casa,2
+basura,noun,f,trash,casa,1
+cajón,noun,m,drawer,casa,2
+cojín,noun,m,cushion,casa,2
+manta,noun,f,blanket,casa,2
+almohada,noun,f,pillow,casa,2
+sábana,noun,f,bedsheet,casa,2
+toalla,noun,f,towel,casa,1
+jabón,noun,m,soap,casa,1
+champú,noun,m,shampoo,casa,2
+cepillo de dientes,noun,m,toothbrush,casa,1
+pasta de dientes,noun,f,toothpaste,casa,2
+ducha,noun,f,shower,casa,1
+bañera,noun,f,bathtub,casa,2
+inodoro,noun,m,toilet,casa,1
+pasillo,noun,m,hallway,casa,2
+desván,noun,m,attic,casa,3
+sótano,noun,m,cellar,casa,2
+valla,noun,f,fence,casa,3
+portón,noun,m,gate,casa,3
+buzón,noun,m,mailbox,casa,2
+timbre,noun,m,doorbell,casa,2
+cerradura,noun,f,lock,casa,2
+interruptor,noun,m,light switch,casa,2
+enchufe,noun,m,electrical outlet,casa,2
+bombilla,noun,f,lightbulb,casa,2
+calefacción,noun,f,heating,casa,2
+aire acondicionado,noun,m,air conditioning,casa,2
+persiana,noun,f,shutter/blind,casa,3
+viga,noun,f,beam,casa,3
+propietario,noun,m,owner,casa,2
+inquilino,noun,m,tenant,casa,2
+alquiler,noun,m,rent,casa,2
+mudarse,verb,,to move house,casa,2
+comedor,noun,m,dining room,casa,1
+estudio,noun,m,studio apartment,casa,2
+edificio,noun,m,building,casa,1
+residencia,noun,f,residence,casa,2
+vecino,noun,m,neighbor,casa,1
+terraza,noun,f,terrace,casa,2
+turquesa,adj,,turquoise,colores,2
+índigo,adj,,indigo,colores,3
+caqui,adj,,khaki,colores,2
+granate,adj,,burgundy,colores,3
+coral,adj,,coral,colores,3
+marfil,adj,,ivory,colores,3
+escarlata,adj,,scarlet,colores,3
+púrpura,adj,,purple,colores,2
+oliva,adj,,olive,colores,2
+esmeralda,adj,,emerald,colores,3
+antracita,adj,,charcoal gray,colores,3
+crema,adj,,cream (color),colores,2
+fluorescente,adj,,fluorescent,colores,3
+pastel,adj,,pastel,colores,2
+oscuro,adj,,dark (shade),colores,1
+multicolor,adj,,multicolored,colores,2
+liso,adj,,solid/plain (color),colores,2
+vivo,adj,,bright/vivid,colores,1
+claro,adj,,light (shade),colores,1
+planeta,noun,m,planet,naturaleza,1
+galaxia,noun,f,galaxy,naturaleza,2
+sistema solar,noun,m,solar system,naturaleza,2
+atmósfera,noun,f,atmosphere,naturaleza,2
+clima,noun,m,climate,naturaleza,1
+medio ambiente,noun,m,environment,naturaleza,1
+ecosistema,noun,m,ecosystem,naturaleza,2
+contaminación,noun,f,pollution,naturaleza,1
+reciclaje,noun,m,recycling,naturaleza,2
+energía,noun,f,energy,naturaleza,1
+recurso,noun,m,resource,naturaleza,2
+petróleo,noun,m,oil,naturaleza,2
+carbón,noun,m,coal,naturaleza,2
+gas,noun,m,gas,naturaleza,2
+electricidad,noun,f,electricity,naturaleza,1
+océano,noun,m,ocean,naturaleza,1
+ola,noun,f,wave,naturaleza,1
+marea,noun,f,tide,naturaleza,2
+corriente,noun,f,current,naturaleza,2
+arena,noun,f,sand,naturaleza,1
+roca,noun,f,rock/boulder,naturaleza,2
+acantilado,noun,m,cliff,naturaleza,2
+cueva,noun,f,cave,naturaleza,2
+volcán,noun,m,volcano,naturaleza,2
+terremoto,noun,m,earthquake,naturaleza,2
+inundación,noun,f,flood,naturaleza,2
+sequía,noun,f,drought,naturaleza,2
+huracán,noun,m,hurricane,naturaleza,2
+tornado,noun,m,tornado,naturaleza,2
+relámpago,noun,m,lightning,naturaleza,2
+trueno,noun,m,thunder,naturaleza,2
+arcoíris,noun,m,rainbow,naturaleza,1
+rocío,noun,m,dew,naturaleza,3
+escarcha,noun,f,frost,naturaleza,3
+raíz,noun,f,root,naturaleza,2
+tronco,noun,m,trunk,naturaleza,2
+rama,noun,f,branch,naturaleza,1
+hoja,noun,f,leaf,naturaleza,1
+semilla,noun,f,seed,naturaleza,2
+corteza,noun,f,bark,naturaleza,3
+pétalo,noun,m,petal,naturaleza,2
+arbusto,noun,m,bush,naturaleza,2
+césped,noun,m,lawn,naturaleza,2
+pradera,noun,f,meadow,naturaleza,2
+selva,noun,f,jungle,naturaleza,2
+sabana,noun,f,savanna,naturaleza,3
+oasis,noun,m,oasis,naturaleza,3
+glaciar,noun,m,glacier,naturaleza,2
+cascada,noun,f,waterfall,naturaleza,2
+colina,noun,f,hill,naturaleza,1
+cumbre,noun,f,summit,naturaleza,2
+ciervo,noun,m,deer,animales,2
+jabalí,noun,m,wild boar,animales,3
+ardilla,noun,f,squirrel,animales,2
+erizo,noun,m,hedgehog,animales,3
+topo,noun,m,mole,animales,3
+murciélago,noun,m,bat,animales,2
+búho,noun,m,owl,animales,2
+águila,noun,f,eagle,animales,2
+halcón,noun,m,falcon,animales,3
+cuervo,noun,m,crow,animales,2
+paloma,noun,f,pigeon,animales,1
+gorrión,noun,m,sparrow,animales,3
+cisne,noun,m,swan,animales,2
+tiburón,noun,m,shark,animales,1
+ballena,noun,f,whale,animales,1
+foca,noun,f,seal,animales,2
+cangrejo,noun,m,crab,animales,2
+langosta,noun,f,lobster,animales,2
+camarón,noun,m,shrimp,animales,2
+medusa,noun,f,jellyfish,animales,2
+pulpo,noun,m,octopus,animales,2
+caracol,noun,m,snail,animales,2
+escorpión,noun,m,scorpion,animales,2
+cocodrilo,noun,m,crocodile,animales,1
+lagarto,noun,m,lizard,animales,2
+iguana,noun,f,iguana,animales,3
+pantera,noun,f,panther,animales,3
+leopardo,noun,m,leopard,animales,2
+jirafa,noun,f,giraffe,animales,1
+cebra,noun,f,zebra,animales,2
+rinoceronte,noun,m,rhinoceros,animales,2
+hipopótamo,noun,m,hippopotamus,animales,2
+gorila,noun,m,gorilla,animales,2
+chimpancé,noun,m,chimpanzee,animales,2
+canguro,noun,m,kangaroo,animales,2
+koala,noun,m,koala,animales,2
+pavo real,noun,m,peacock,animales,3
+loro,noun,m,parrot,animales,2
+pavo,noun,m,turkey,animales,2
+cachorro,noun,m,puppy,animales,2
+gatito,noun,m,kitten,animales,2
+rebaño,noun,m,herd/flock,animales,2
+nido,noun,m,nest,animales,2
+cola,noun,f,tail,animales,1
+pata,noun,f,paw,animales,1
+ala,noun,f,wing,animales,1
+pluma,noun,f,feather,animales,2
+pelaje,noun,m,fur,animales,2
+garra,noun,f,claw,animales,2
+pico,noun,m,beak,animales,2
+piloto,noun,m,pilot,profesiones,2
+azafata,noun,f,flight attendant,profesiones,2
+dentista,noun,m,dentist,profesiones,1
+farmacéutico,noun,m,pharmacist,profesiones,2
+veterinario,noun,m,veterinarian,profesiones,2
+arquitecto,noun,m,architect,profesiones,2
+contador,noun,m,accountant,profesiones,2
+banquero,noun,m,banker,profesiones,2
+recepcionista,noun,m,receptionist,profesiones,2
+traductor,noun,m,translator,profesiones,2
+intérprete,noun,m,interpreter,profesiones,3
+investigador,noun,m,researcher,profesiones,2
+científico,noun,m,scientist,profesiones,2
+programador,noun,m,programmer,profesiones,2
+desarrollador,noun,m,developer,profesiones,2
+diseñador,noun,m,designer,profesiones,2
+fotógrafo,noun,m,photographer,profesiones,2
+director de cine,noun,m,filmmaker,profesiones,2
+productor,noun,m,producer,profesiones,2
+electricista,noun,m,electrician,profesiones,2
+fontanero,noun,m,plumber,profesiones,2
+mecánico,noun,m,mechanic,profesiones,2
+carpintero,noun,m,carpenter,profesiones,3
+albañil,noun,m,mason/builder,profesiones,2
+jardinero,noun,m,gardener,profesiones,2
+cartero,noun,m,mail carrier,profesiones,2
+juez,noun,m,judge,profesiones,2
+notario,noun,m,notary,profesiones,3
+psicólogo,noun,m,psychologist,profesiones,2
+cirujano,noun,m,surgeon,profesiones,2
+partera,noun,f,midwife,profesiones,3
+fisioterapeuta,noun,m,physiotherapist,profesiones,3
+entrenador,noun,m,coach,profesiones,2
+árbitro,noun,m,referee,profesiones,2
+instructor,noun,m,instructor,profesiones,3
+guía,noun,m,guide,profesiones,2
+florista,noun,m,florist,profesiones,2
+joyero,noun,m,jeweler,profesiones,3
+guardia,noun,m,guard,profesiones,2
+soldado,noun,m,soldier,profesiones,2
+marinero,noun,m,sailor,profesiones,2
+pescador,noun,m,fisherman,profesiones,2
+cine,noun,m,cinema,lugares,1
+teatro,noun,m,theater,lugares,1
+ópera,noun,f,opera house,lugares,2
+estadio,noun,m,stadium,lugares,1
+gimnasio,noun,m,gym,lugares,2
+zoológico,noun,m,zoo,lugares,1
+circo,noun,m,circus,lugares,2
+centro comercial,noun,m,shopping mall,lugares,1
+librería,noun,f,bookshop,lugares,1
+carnicería,noun,f,butcher shop,lugares,2
+panadería,noun,f,bakery,lugares,1
+pastelería,noun,f,pastry shop,lugares,2
+tienda de comestibles,noun,f,grocery store,lugares,1
+pescadería,noun,f,fish market,lugares,2
+joyería,noun,f,jewelry store,lugares,2
+tintorería,noun,f,dry cleaner,lugares,2
+peluquería,noun,f,hair salon,lugares,2
+consultorio médico,noun,m,doctor's office,lugares,2
+clínica,noun,f,clinic,lugares,2
+estación de bomberos,noun,f,fire station,lugares,3
+comisaría,noun,f,police station,lugares,2
+ayuntamiento,noun,m,town hall,lugares,1
+embajada,noun,f,embassy,lugares,2
+tribunal,noun,m,court,lugares,2
+cárcel,noun,f,prison,lugares,1
+cementerio,noun,m,cemetery,lugares,2
+monumento,noun,m,monument,lugares,2
+castillo,noun,m,castle,lugares,1
+palacio,noun,m,palace,lugares,2
+catedral,noun,f,cathedral,lugares,2
+templo,noun,m,temple,lugares,2
+mezquita,noun,f,mosque,lugares,2
+sinagoga,noun,f,synagogue,lugares,3
+camping,noun,m,campsite,lugares,2
+albergue,noun,m,inn/hostel,lugares,2
+gasolinera,noun,f,gas station,lugares,1
+parada de autobús,noun,f,bus stop,lugares,1
+entrevista,noun,f,interview,trabajo,1
+currículum,noun,m,resume,trabajo,1
+puesto,noun,m,position/job,trabajo,1
+solicitud,noun,f,application,trabajo,2
+capacitación,noun,f,training,trabajo,1
+diploma,noun,m,diploma,trabajo,1
+prácticas,noun,f,internship,trabajo,1
+becario,noun,m,intern,trabajo,2
+negociación,noun,f,negotiation,trabajo,2
+acuerdo,noun,m,agreement,trabajo,1
+desacuerdo,noun,m,disagreement,trabajo,2
+huelga,noun,f,strike,trabajo,2
+sindicato,noun,m,union,trabajo,2
+permiso,noun,m,leave,trabajo,1
+teletrabajo,noun,m,remote work,trabajo,2
+presentación,noun,f,presentation,trabajo,1
+impresora,noun,f,printer,trabajo,1
+fotocopiadora,noun,f,photocopier,trabajo,2
+misión,noun,f,mission/task,trabajo,1
+tarea,noun,f,task,trabajo,1
+plazo,noun,m,deadline,trabajo,1
+prioridad,noun,f,priority,trabajo,1
+responsabilidad,noun,f,responsibility,trabajo,1
+ascenso,noun,m,promotion,trabajo,2
+despido,noun,m,layoff,trabajo,2
+dimisión,noun,f,resignation,trabajo,2
+contratación,noun,f,hiring,trabajo,2
+reclutamiento,noun,m,recruitment,trabajo,2
+ambición,noun,f,ambition,trabajo,2
+motivación,noun,f,motivation,trabajo,1
+satisfacción,noun,f,satisfaction,trabajo,2
+agotamiento,noun,m,burnout,trabajo,3
+productividad,noun,f,productivity,trabajo,2
+eficiencia,noun,f,efficiency,trabajo,2
+innovación,noun,f,innovation,trabajo,2
+competencia,noun,f,competition,trabajo,2
+inversión,noun,f,investment,trabajo,2
+ganancia,noun,f,profit,trabajo,2
+pérdida,noun,f,loss,trabajo,2
+ingreso,noun,m,income,trabajo,2
+impuesto,noun,m,tax,trabajo,2
+suegro,noun,m,father-in-law,familia,2
+suegra,noun,f,mother-in-law,familia,2
+cuñado,noun,m,brother-in-law,familia,2
+cuñada,noun,f,sister-in-law,familia,2
+yerno,noun,m,son-in-law,familia,3
+nuera,noun,f,daughter-in-law,familia,3
+nieto,noun,m,grandson,familia,2
+nieta,noun,f,granddaughter,familia,2
+bisabuelo,noun,m,great-grandfather,familia,3
+bisabuela,noun,f,great-grandmother,familia,3
+gemelo,noun,m,twin (male),familia,2
+gemela,noun,f,twin (female),familia,2
+mayor,noun,m,eldest,familia,2
+menor,noun,m,youngest,familia,2
+medio hermano,noun,m,half-brother,familia,2
+media hermana,noun,f,half-sister,familia,2
+cónyuge,noun,m,spouse,familia,2
+prometido,noun,m,fiancé,familia,2
+prometida,noun,f,fiancée,familia,2
+novio,noun,m,boyfriend,familia,1
+novia,noun,f,girlfriend,familia,1
+viudo,noun,m,widower,familia,2
+viuda,noun,f,widow,familia,2
+divorciado,noun,m,divorced person,familia,2
+ahijado,noun,m,godson,familia,3
+ahijada,noun,f,goddaughter,familia,3
+padrino,noun,m,godfather,familia,3
+madrina,noun,f,godmother,familia,3
+herencia,noun,f,inheritance,familia,2
+generación,noun,f,generation,familia,2
+antepasado,noun,m,ancestor,familia,2
+descendiente,noun,m,descendant,familia,3
+adopción,noun,f,adoption,familia,2
+hijastro,noun,m,stepson,familia,3
+matemáticas,noun,f,math,escuela,1
+ciencias,noun,f,science,escuela,1
+física,noun,f,physics,escuela,2
+química,noun,f,chemistry,escuela,2
+biología,noun,f,biology,escuela,2
+geografía,noun,f,geography,escuela,1
+literatura,noun,f,literature,escuela,2
+filosofía,noun,f,philosophy,escuela,2
+informática,noun,f,computer science,escuela,1
+tecnología,noun,f,technology,escuela,1
+arte,noun,m,art,escuela,1
+educación física,noun,f,PE,escuela,2
+recreo,noun,m,recess,escuela,2
+comedor escolar,noun,m,cafeteria,escuela,1
+supervisor,noun,m,supervisor,escuela,3
+compañero de clase,noun,m,classmate,escuela,1
+matrícula,noun,f,enrollment,escuela,2
+vuelta al cole,noun,f,back to school,escuela,2
+horario de clases,noun,m,schedule,escuela,1
+asignatura,noun,f,subject,escuela,1
+bachillerato,noun,m,baccalaureate,escuela,2
+licenciatura,noun,f,bachelor's degree,escuela,2
+maestría,noun,f,master's degree,escuela,2
+doctorado,noun,m,doctorate,escuela,3
+beca,noun,f,scholarship,escuela,2
+pizarra,noun,f,blackboard,escuela,2
+tiza,noun,f,chalk,escuela,2
+goma de borrar,noun,f,eraser,escuela,2
+regla,noun,f,ruler,escuela,1
+tijeras,noun,f,scissors,escuela,2
+pegamento,noun,m,glue,escuela,2
+estuche,noun,m,pencil case,escuela,2
+mochila,noun,f,school bag,escuela,2
+uniforme,noun,m,uniform,escuela,2
+acera,noun,f,sidewalk,ciudad,1
+semáforo,noun,m,traffic light,ciudad,1
+paso de peatones,noun,m,crosswalk,ciudad,1
+cruce,noun,m,intersection,ciudad,2
+rotonda,noun,f,roundabout,ciudad,2
+autopista,noun,f,highway,ciudad,1
+peaje,noun,m,toll,ciudad,2
+atasco,noun,m,traffic jam,ciudad,2
+estacionamiento,noun,m,parking,ciudad,2
+multa,noun,f,fine/ticket,ciudad,2
+carnet de conducir,noun,m,driver's license,ciudad,1
+peatón,noun,m,pedestrian,ciudad,2
+ciclista,noun,m,cyclist,ciudad,2
+tráfico,noun,m,traffic flow,ciudad,1
+señal de tráfico,noun,f,road sign,ciudad,2
+dirección única,noun,f,one way,ciudad,2
+dirección prohibida,noun,f,no entry,ciudad,2
+afueras,noun,f,suburb,ciudad,1
+centro de la ciudad,noun,m,city center,ciudad,1
+periferia,noun,f,periphery,ciudad,3
+distrito,noun,m,district,ciudad,2
+fuente,noun,f,fountain,ciudad,2
+estatua,noun,f,statue,ciudad,2
+torre,noun,f,tower,ciudad,2
+rascacielos,noun,m,skyscraper,ciudad,2
+población,noun,f,population,ciudad,2
+habitante,noun,m,inhabitant,ciudad,2
+urbano,adj,,urban,ciudad,2
+rural,adj,,rural,ciudad,2
+traje de baño,noun,m,swimsuit,ropa,1
+pijama,noun,m,pajamas,ropa,1
+ropa interior,noun,f,underwear,ropa,1
+sujetador,noun,m,bra,ropa,2
+medias,noun,f,tights,ropa,2
+botas,noun,f,boots,ropa,1
+sandalias,noun,f,sandals,ropa,1
+zapatillas,noun,f,sneakers,ropa,1
+chanclas,noun,f,flip-flops,ropa,2
+traje,noun,m,suit,ropa,1
+corbata,noun,f,tie,ropa,1
+pajarita,noun,f,bow tie,ropa,3
+blazer,noun,m,blazer,ropa,2
+chaleco,noun,m,vest,ropa,2
+polo,noun,m,polo shirt,ropa,2
+camiseta de tirantes,noun,f,tank top,ropa,2
+mallas,noun,f,leggings,ropa,2
+peto,noun,m,overalls,ropa,3
+impermeable,noun,m,raincoat,ropa,2
+plumífero,noun,m,puffer jacket,ropa,2
+pañuelo,noun,m,headscarf,ropa,2
+joya,noun,f,jewelry,ropa,1
+anillo,noun,m,ring,ropa,1
+pulsera,noun,f,bracelet,ropa,1
+collar,noun,m,necklace,ropa,1
+pendiente,noun,m,earring,ropa,2
+gafas,noun,f,glasses,ropa,1
+bolso,noun,m,handbag,ropa,1
+cartera,noun,f,wallet,ropa,1
+paraguas,noun,m,umbrella,ropa,1
+moda,noun,f,fashion,ropa,1
+equipaje,noun,m,luggage,transporte,1
+cinturón de seguridad,noun,m,seatbelt,transporte,1
+volante,noun,m,steering wheel,transporte,2
+freno,noun,m,brake,transporte,2
+neumático,noun,m,tire,transporte,2
+gasolina,noun,f,gasoline,transporte,1
+depósito,noun,m,fuel tank,transporte,2
+motor,noun,m,engine,transporte,2
+bocina,noun,f,horn,transporte,3
+faro,noun,m,headlight,transporte,2
+parabrisas,noun,m,windshield,transporte,2
+capó,noun,m,hood,transporte,3
+maletero,noun,m,trunk,transporte,2
+asiento,noun,m,seat,transporte,1
+transbordo,noun,m,connection (transit),transporte,2
+andén,noun,m,platform,transporte,2
+compartimento,noun,m,compartment,transporte,3
+vagón,noun,m,train car,transporte,2
+revisor,noun,m,ticket inspector,transporte,2
+escala,noun,f,stopover,transporte,2
+vuelo,noun,m,flight,transporte,1
+aterrizaje,noun,m,landing,transporte,2
+despegue,noun,m,takeoff,transporte,2
+aduana,noun,f,customs,transporte,2
+embarque,noun,m,boarding,transporte,2
+retraso,noun,m,delay,transporte,1
+cancelación,noun,f,cancellation,transporte,2
+itinerario,noun,m,itinerary/route,transporte,2
+trayecto,noun,m,trip/journey,transporte,1
+destino,noun,m,destination,transporte,1
+llegada,noun,f,arrival,transporte,1
+salida,noun,f,departure,transporte,1
+receta,noun,f,prescription,salud,2
+pastilla,noun,f,pill/tablet,salud,2
+jarabe,noun,m,syrup,salud,2
+venda,noun,f,bandage,salud,2
+termómetro,noun,m,thermometer,salud,2
+presión arterial,noun,f,blood pressure,salud,2
+alergia,noun,f,allergy,salud,1
+asma,noun,m,asthma,salud,2
+diabetes,noun,f,diabetes,salud,2
+cáncer,noun,m,cancer,salud,2
+gripe,noun,f,flu,salud,1
+tos,noun,f,cough,salud,1
+dolor de cabeza,noun,m,headache,salud,1
+dolor de espalda,noun,m,back pain,salud,2
+dolor de estómago,noun,m,stomachache,salud,1
+náusea,noun,f,nausea,salud,2
+mareo,noun,m,dizziness,salud,2
+cansancio,noun,m,tiredness,salud,1
+infección,noun,f,infection,salud,2
+virus,noun,m,virus,salud,1
+bacteria,noun,f,bacteria,salud,2
+síntoma,noun,m,symptom,salud,2
+diagnóstico,noun,m,diagnosis,salud,2
+cirugía,noun,f,surgery,salud,2
+operación,noun,f,operation,salud,1
+anestesia,noun,f,anesthesia,salud,3
+inyección,noun,f,injection,salud,2
+radiografía,noun,f,x-ray,salud,2
+ambulancia,noun,f,ambulance,salud,1
+camilla,noun,f,stretcher,salud,3
+voleibol,noun,m,volleyball,ocio,2
+golf,noun,m,golf,ocio,2
+esquí,noun,m,skiing,ocio,1
+snowboard,noun,m,snowboarding,ocio,2
+escalada,noun,f,climbing,ocio,2
+senderismo,noun,m,hiking,ocio,1
+pesca,noun,f,fishing,ocio,1
+caza,noun,f,hunting,ocio,2
+yoga,noun,m,yoga,ocio,1
+gimnasia,noun,f,gymnastics,ocio,2
+boxeo,noun,m,boxing,ocio,2
+judo,noun,m,judo,ocio,2
+karate,noun,m,karate,ocio,2
+equitación,noun,f,horseback riding,ocio,2
+vela,noun,f,sailing,ocio,2
+surf,noun,m,surfing,ocio,2
+buceo,noun,m,diving,ocio,2
+patinaje,noun,m,skating,ocio,2
+bolos,noun,m,bowling,ocio,2
+billar,noun,m,billiards,ocio,2
+ajedrez,noun,m,chess,ocio,1
+rompecabezas,noun,m,puzzle,ocio,2
+videojuego,noun,m,video game,ocio,1
+costura,noun,f,sewing,ocio,2
+bricolaje,noun,m,DIY,ocio,2
+jardinería,noun,f,gardening,ocio,2
+colección,noun,f,collection,ocio,2
+espectáculo,noun,m,show,ocio,1
+exposición,noun,f,exhibition,ocio,2
+festival,noun,m,festival,ocio,1
+carnaval,noun,m,carnival,ocio,2
+karaoke,noun,m,karaoke,ocio,2
+caja fuerte,noun,f,safe,dinero,2
+cajero automático,noun,m,ATM,dinero,1
+cuenta bancaria,noun,f,bank account,dinero,1
+cheque,noun,m,check,dinero,2
+transferencia,noun,f,bank transfer,dinero,2
+retiro,noun,m,withdrawal,dinero,2
+depósito,noun,m,deposit,dinero,2
+interés,noun,m,interest,dinero,2
+préstamo,noun,m,loan,dinero,2
+hipoteca,noun,f,mortgage,dinero,3
+seguro,noun,m,insurance,dinero,2
+impuesto,noun,m,tax,dinero,2
+reembolso,noun,m,reimbursement,dinero,2
+pago,noun,m,payment,dinero,1
+efectivo,noun,m,cash,dinero,1
+bono,noun,m,bonus,dinero,2
+propina,noun,f,tip,dinero,1
+recibo,noun,m,receipt,dinero,1
+saldo,noun,m,balance,dinero,2
+invertir,verb,,to invest,dinero,2
+ahorrar,verb,,to save money,dinero,1
+gastar,verb,,to spend,dinero,1
+reembolsar,verb,,to reimburse,dinero,2
+moneda,noun,f,coin,dinero,1
+billete,noun,m,banknote,dinero,1
+croissant,noun,m,croissant,comida,1
+baguette,noun,f,baguette,comida,1
+tarta,noun,f,pie/tart,comida,2
+crepa,noun,f,crepe,comida,1
+tostada,noun,f,buttered toast,comida,2
+galleta,noun,f,cookie,comida,1
+caramelo,noun,m,candy,comida,1
+miel,noun,f,honey,comida,2
+yogur,noun,m,yogurt,comida,1
+mayonesa,noun,f,mayonnaise,comida,2
+mostaza,noun,f,mustard,comida,2
+vinagre,noun,m,vinegar,comida,2
+aceite,noun,m,oil,comida,1
+especia,noun,f,spice,comida,2
+pimienta,noun,f,pepper,comida,1
+ajo,noun,m,garlic,comida,1
+perejil,noun,m,parsley,comida,2
+albahaca,noun,f,basil,comida,2
+champiñón,noun,m,mushroom,comida,1
+calabacín,noun,m,zucchini,comida,2
+berenjena,noun,f,eggplant,comida,2
+pimiento,noun,m,bell pepper,comida,2
+pepino,noun,m,cucumber,comida,1
+col,noun,f,cabbage,comida,2
+brócoli,noun,m,broccoli,comida,2
+espinacas,noun,f,spinach,comida,2
+frijol,noun,m,bean,comida,1
+guisante,noun,m,pea,comida,2
+maíz,noun,m,corn,comida,1
+melocotón,noun,m,peach,comida,2
+pera,noun,f,pear,comida,1
+piña,noun,f,pineapple,comida,1
+sandía,noun,f,watermelon,comida,1
+melón,noun,m,melon,comida,2
+cereza,noun,f,cherry,comida,1
+albaricoque,noun,m,apricot,comida,2
+mango,noun,m,mango,comida,2
+kiwi,noun,m,kiwi,comida,2
+nuez,noun,f,walnut,comida,2
+almendra,noun,f,almond,comida,2
+cacahuete,noun,m,peanut,comida,2
+salmón,noun,m,salmon,comida,1
+atún,noun,m,tuna,comida,1
+cordero,noun,m,lamb,comida,2
+jamón,noun,m,ham,comida,1
+salchicha,noun,f,sausage,comida,1
