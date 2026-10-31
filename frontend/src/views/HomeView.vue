@@ -408,6 +408,12 @@ const mixedStats = computed(() => statsFor(vocabWords.value))
 
 .tabs {
   display: inline-flex;
+  /* Three word-labelled tabs do not fit across a 320px screen. Wrapping
+     is preferable to the alternatives: abbreviating the labels makes the
+     sections harder to recognise, and letting them overflow drags the
+     whole page into a horizontal scroll. */
+  flex-wrap: wrap;
+  max-width: 100%;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   padding: 3px;
@@ -430,6 +436,13 @@ const mixedStats = computed(() => statsFor(vocabWords.value))
 .tab-btn.active {
   background: var(--color-primary);
   color: var(--color-primary-contrast);
+}
+
+@media (max-width: 640px) {
+  .tab-btn {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.88rem;
+  }
 }
 
 .search-input {

@@ -39,6 +39,12 @@ const { lang, languages } = useLanguage()
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* Wrapping is the backstop. The wordmark and the switcher both refuse to
+     shrink — the logo because a squashed wordmark looks broken, the
+     switcher because its labels are words rather than icons — so on a
+     screen too narrow for both they stack instead of pushing the page into
+     a horizontal scroll, which would drag every view sideways with it. */
+  flex-wrap: wrap;
   gap: var(--space-3);
   max-width: 880px;
   margin: 0 auto;
@@ -89,5 +95,23 @@ const { lang, languages } = useLanguage()
 .lang-btn.active {
   background: var(--color-primary);
   color: var(--color-primary-contrast);
+}
+
+/* On a phone the wordmark and three language names do not fit side by side
+   at desktop sizes. Scaling both down a step keeps them on one row, which
+   is worth more than the extra few pixels of logo: a header that wraps
+   costs vertical space on the screen where it is scarcest. */
+@media (max-width: 640px) {
+  .header-inner {
+    padding: var(--space-2) var(--space-3);
+    gap: var(--space-2);
+  }
+  .brand-mark {
+    height: 2.5rem;
+  }
+  .lang-btn {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.78rem;
+  }
 }
 </style>
