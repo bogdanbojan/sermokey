@@ -11,7 +11,7 @@ flashcards, with immersive UI text in the language you're studying.
 Currently supported: **French**, **Spanish**, and **German**.
 
 <p align="center">
-  <img src="assets/screenshots/homepage.png" alt="Sermokey homepage" width="720" />
+  <img src="assets/screenshots/homepage.png" alt="The Sermokey library, showing three French texts with per-reader difficulty" width="720" />
 </p>
 
 ## Features
@@ -58,6 +58,10 @@ is the practical core of that, with the remainder acquired incidentally and
 through cognates.
 
 ## Reading
+
+<p align="center">
+  <img src="assets/screenshots/reader.png" alt="Reading a French text, hovering a word for its definition" width="720" />
+</p>
 
 The reading tab is built around four replaceable parts, because the goal is
 to read an imported EPUB with the same interface that reads the bundled
