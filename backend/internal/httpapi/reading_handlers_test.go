@@ -66,15 +66,23 @@ func TestHandleTextsListsFrenchCorpus(t *testing.T) {
 	}
 }
 
-// Reading ships for fewer languages than grammar does. A language that
-// exists but has no corpus is a 404 — the language is valid, the resource
-// just is not there yet — whereas a language that does not exist is a 400.
+// Every studied language now has a corpus. The registry still models
+// reading as a subset of the supported languages — adding a fourth
+// language's grammar should not oblige anyone to write it a corpus on the
+// same day — so the distinction that matters is kept under test: a known
+// language without reading would be a 404, an unknown one is a 400.
 func TestHandleTextsLanguageAvailability(t *testing.T) {
-	if rec := getReading(t, "/api/texts?lang=es"); rec.Code != http.StatusNotFound {
-		t.Errorf("Spanish: status = %d, want 404", rec.Code)
-	}
-	if rec := getReading(t, "/api/texts?lang=de"); rec.Code != http.StatusNotFound {
-		t.Errorf("German: status = %d, want 404", rec.Code)
+	for _, lang := range []string{"fr", "es", "de"} {
+		texts := decode[[]ReadingTextDTO](t, getReading(t, "/api/texts?lang="+lang))
+		if len(texts) != 3 {
+			t.Errorf("%s: got %d texts, want 3", lang, len(texts))
+		}
+		for _, x := range texts {
+			if x.TokenCount == 0 || len(x.WordFrequency) == 0 || x.FunctionTokenCount == 0 {
+				t.Errorf("%s/%s: not analyzed (%d tokens, %d vocab, %d function)",
+					lang, x.ID, x.TokenCount, len(x.WordFrequency), x.FunctionTokenCount)
+			}
+		}
 	}
 	if rec := getReading(t, "/api/texts?lang=xx"); rec.Code != http.StatusBadRequest {
 		t.Errorf("unknown language: status = %d, want 400", rec.Code)
@@ -82,6 +90,37 @@ func TestHandleTextsLanguageAvailability(t *testing.T) {
 	// French is the default language, so an absent lang must still work.
 	if rec := getReading(t, "/api/texts"); rec.Code != http.StatusOK {
 		t.Errorf("default language: status = %d, want 200", rec.Code)
+	}
+}
+
+// Each language's reader has to actually work end to end, not merely list
+// texts: tokens resolving to glosses is the whole feature.
+func TestEachLanguageServesAReadableSection(t *testing.T) {
+	for _, tc := range []struct{ lang, id, word string }{
+		{"fr", "le-marche-du-samedi", "fenêtre"},
+		{"es", "el-mercado-del-sabado", "ventana"},
+		{"de", "der-samstagsmarkt", "Fenster"},
+	} {
+		t.Run(tc.lang, func(t *testing.T) {
+			sec := decode[ReadingSectionDTO](t, getReading(t, "/api/texts/"+tc.id+"?lang="+tc.lang))
+			if len(sec.Paragraphs) == 0 || len(sec.Lexicon) == 0 {
+				t.Fatalf("%d paragraphs, %d lexicon entries", len(sec.Paragraphs), len(sec.Lexicon))
+			}
+			var curated int
+			for _, e := range sec.Lexicon {
+				if e.Curated {
+					curated++
+				}
+			}
+			if curated == 0 {
+				t.Error("no curated words resolved, so nothing links back to the vocabulary deck")
+			}
+
+			got := decode[[]ReadingEntryDTO](t, getReading(t, "/api/lookup?lang="+tc.lang+"&q="+tc.word))
+			if len(got) == 0 || len(got[0].Senses) == 0 {
+				t.Errorf("lookup of %q returned nothing usable", tc.word)
+			}
+		})
 	}
 }
 

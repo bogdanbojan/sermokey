@@ -1,0 +1,57 @@
+id: una-carta-de-sevilla
+title: Una carta de Sevilla
+author: Sermokey
+level: B1
+license: CC BY-SA 4.0
+source: Texto original, escrito para Sermokey
+blurb: Un joven escribe a su hermana después de su primer mes en una ciudad desconocida. Pretérito e imperfecto, vocabulario del trabajo y los sentimientos.
+
+# Querida Carmen
+
+Querida Carmen :
+
+Por fin te escribo. Debes de pensar que te he olvidado, pero no : he
+pensado en ti casi todos los días desde que llegué. El problema es que no
+tenía ni un minuto para mí. Ahora que las cosas se han calmado, puedo
+contarte este primer mes.
+
+Cuando bajé del tren, en septiembre, todavía hacía mucho calor. Llevaba dos
+maletas y ninguna idea del lugar donde iba a dormir. La estación estaba
+llena de gente : todo el mundo corría. Durante unos minutos tuve ganas de
+coger otra vez el tren y volver a casa.
+
+# El trabajo
+
+Por suerte, no tuve tiempo de tener miedo mucho rato. A la mañana
+siguiente ya empezaba en la oficina. Mis compañeros son más jóvenes de lo
+que imaginaba, y nadie me preguntó de dónde venía ni por qué me había ido.
+Al principio me sorprendió. Después entendí que era amable.
+
+Mi jefe se llama el señor Ramos. Es un jefe tranquilo, que habla sin prisa
+y que escucha de verdad las respuestas. La primera semana cometí varios
+errores. Esperaba palabras duras ; solo me enseñó cómo hacerlo. Desde
+entonces trabajo bien y tengo mucho menos miedo de equivocarme.
+
+# La ciudad
+
+Por la tarde camino. Lo hago cada día. Bajo hacia el río, miro el agua, y
+vuelvo cuando cae la noche. El sol, aquí, no es el mismo que en casa : es
+más duro, más blanco. Los primeros días la ciudad me parecía demasiado
+grande y yo estaba cansado. Hoy creo que empiezo a quererla.
+
+Sin embargo me falta algo, y sabes bien qué. Nadie conoce mi historia aquí.
+Es tranquilo, pero también es un poco triste. Cuando hablo de nuestro
+abuelo, nadie entiende de quién hablo.
+
+# Ven a verme
+
+Así que esta es mi verdadera razón para escribir : ven a verme. No en
+verano, cuando llega todo el mundo ; ven mejor en noviembre, cuando la
+ciudad se queda tranquila. Te enseñaré el mercado, el río por la mañana
+temprano, y el café donde paso los domingos.
+
+Escríbeme pronto. Dime cómo están los padres, y si el perro sigue siendo
+tan malo.
+
+Un abrazo,
+Julián

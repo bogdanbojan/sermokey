@@ -8,6 +8,8 @@ import (
 
 	// Importing a language's reading package is what registers it in
 	// reading.Registry and therefore what makes /api/texts serve it.
+	_ "github.com/bogdanbojan/sermokey/backend/internal/reading/de"
+	_ "github.com/bogdanbojan/sermokey/backend/internal/reading/es"
 	_ "github.com/bogdanbojan/sermokey/backend/internal/reading/fr"
 )
 

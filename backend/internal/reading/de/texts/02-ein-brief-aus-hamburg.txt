@@ -1,0 +1,60 @@
+id: ein-brief-aus-hamburg
+title: Ein Brief aus Hamburg
+author: Sermokey
+level: B1
+license: CC BY-SA 4.0
+source: Originaltext, geschrieben für Sermokey
+blurb: Ein junger Mann schreibt seiner Schwester nach dem ersten Monat in einer fremden Stadt. Perfekt und Präteritum, Wortschatz zu Arbeit und Gefühlen.
+
+# Liebe Karin
+
+Liebe Karin,
+
+endlich schreibe ich dir. Du denkst sicher, dass ich dich vergessen habe,
+aber nein : ich habe fast jeden Tag an dich gedacht, seit ich angekommen
+bin. Das Problem war, dass ich keine Minute für mich hatte. Jetzt, wo alles
+ruhiger geworden ist, kann ich dir von diesem ersten Monat erzählen.
+
+Als ich im September aus dem Zug stieg, war es noch sehr warm. Ich hatte
+zwei Koffer und keine Ahnung, wo ich schlafen würde. Der Bahnhof war voller
+Leute : alle liefen. Ein paar Minuten lang wollte ich wieder in den Zug
+steigen und nach Hause fahren.
+
+# Die Arbeit
+
+Zum Glück hatte ich keine Zeit, lange Angst zu haben. Am nächsten Morgen
+fing ich schon im Büro an. Meine Kollegen sind jünger, als ich dachte, und
+niemand hat mich gefragt, woher ich komme oder warum ich weggegangen bin.
+Am Anfang hat mich das überrascht. Später habe ich verstanden, dass es
+freundlich war.
+
+Mein Chef heißt Herr Berger. Er ist ein ruhiger Chef, der langsam spricht
+und der wirklich zuhört. In der ersten Woche habe ich mehrere Fehler
+gemacht. Ich erwartete harte Worte ; er hat mir nur gezeigt, wie man es
+macht. Seitdem arbeite ich gut und habe viel weniger Angst, etwas falsch zu
+machen.
+
+# Die Stadt
+
+Am Abend gehe ich spazieren. Ich mache das jeden Tag. Ich gehe hinunter zum
+Hafen, sehe das Wasser an und komme zurück, wenn es dunkel wird. Das Licht
+ist hier nicht dasselbe wie bei uns : es ist härter, weißer. In den ersten
+Tagen fand ich die Stadt zu groß und war müde. Heute glaube ich, dass ich
+anfange, sie zu mögen.
+
+Trotzdem fehlt mir etwas, und du weißt genau was. Niemand kennt hier meine
+Geschichte. Das ist ruhig, aber es ist auch ein wenig traurig. Wenn ich von
+unserem Großvater spreche, versteht niemand, von wem ich rede.
+
+# Komm mich besuchen
+
+Also hier ist mein wirklicher Grund zu schreiben : komm mich besuchen.
+Nicht im Sommer, wenn alle kommen ; komm lieber im November, wenn die Stadt
+wieder ruhig wird. Ich zeige dir den Markt, das Wasser am frühen Morgen und
+das Café, wo ich meine Sonntage verbringe.
+
+Schreib mir bald. Sag mir, wie es den Eltern geht, und ob der Hund immer
+noch so böse ist.
+
+Ich umarme dich,
+Julian

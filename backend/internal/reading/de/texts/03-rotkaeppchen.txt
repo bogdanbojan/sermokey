@@ -1,0 +1,38 @@
+id: rotkaeppchen
+title: Rotkäppchen (Anfang)
+author: Brüder Grimm
+level: B2
+license: Gemeinfrei
+source: Brüder Grimm, « Kinder- und Hausmärchen », 1812
+blurb: Der Anfang eines der bekanntesten Märchen der Brüder Grimm. Literarisches Deutsch des 19. Jahrhunderts : ältere Formen und lange Sätze.
+
+# Rotkäppchen
+
+Es war einmal ein kleines süßes Mädchen, das hatte jedermann lieb, der es
+nur ansah, am allerliebsten aber seine Großmutter, die wusste gar nicht,
+was sie alles dem Kinde geben sollte.
+
+Einmal schenkte sie ihm ein Käppchen von rotem Samt, und weil ihm das so
+wohl stand und es nichts anders mehr tragen wollte, hieß es nur das
+Rotkäppchen.
+
+Eines Tages sprach seine Mutter zu ihm : « Komm, Rotkäppchen, da hast du
+ein Stück Kuchen und eine Flasche Wein, bring das der Großmutter hinaus ;
+sie ist krank und schwach und wird sich daran laben. »
+
+# Im Wald
+
+Mach dich auf, bevor es heiß wird, und wenn du hinauskommst, so geh
+hübsch sittsam und lauf nicht vom Wege ab, sonst fällst du und zerbrichst
+das Glas, und die Großmutter hat nichts.
+
+Die Großmutter aber wohnte draußen im Wald, eine halbe Stunde vom Dorf.
+Wie nun Rotkäppchen in den Wald kam, begegnete ihm der Wolf. Rotkäppchen
+aber wusste nicht, was das für ein böses Tier war, und fürchtete sich
+nicht vor ihm.
+
+« Guten Tag, Rotkäppchen », sprach er. « Schönen Dank, Wolf. » — « Wo
+hinaus so früh, Rotkäppchen ? » — « Zur Großmutter. » — « Was trägst du
+unter der Schürze ? » — « Kuchen und Wein : gestern haben wir gebacken, da
+soll sich die kranke und schwache Großmutter etwas zugut tun und sich
+damit stärken. »
