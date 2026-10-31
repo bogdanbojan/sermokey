@@ -19,8 +19,17 @@ var Vocabulary = mustParseVocab(vocabCSV)
 
 // VocabCategories describes every vocabulary category in display order
 // (the order categories first appear in vocab_data.csv).
+//
+// Category sizes are deliberately NOT uniform: they're budgeted by
+// communicative load, so the categories carrying the most tokens in real
+// speech (verbes, fonction, adjectifs, abstrait) are several times larger
+// than closed, finite ones (couleurs, nombres). An earlier version of this
+// list padded every theme to a similar size, which pushed the tail of
+// "corps" and "couleurs" into C1/C2 territory (rétine, anthracite) while
+// leaving top-300 items like "rien" and "pourquoi" missing entirely.
 var VocabCategories = []grammar.VocabCategoryInfo{
 	{ID: "nombres", NameNative: "Nombres", NameEn: "Numbers"},
+	{ID: "mesures", NameNative: "Mesures & quantités", NameEn: "Measurement & quantity"},
 	{ID: "temps", NameNative: "Le temps", NameEn: "Time & calendar"},
 	{ID: "famille", NameNative: "La famille", NameEn: "Family"},
 	{ID: "corps", NameNative: "Le corps", NameEn: "Body"},
@@ -36,7 +45,8 @@ var VocabCategories = []grammar.VocabCategoryInfo{
 	{ID: "lieux", NameNative: "Les lieux", NameEn: "Places"},
 	{ID: "transport", NameNative: "Les transports", NameEn: "Transportation"},
 	{ID: "ecole", NameNative: "L'école", NameEn: "School"},
-	{ID: "travail", NameNative: "Le travail", NameEn: "Work & technology"},
+	{ID: "travail", NameNative: "Le travail", NameEn: "Work"},
+	{ID: "medias", NameNative: "Médias & communication", NameEn: "Media & communication"},
 	{ID: "emotions", NameNative: "Les émotions", NameEn: "Emotions & personality"},
 	{ID: "fonction", NameNative: "Mots-outils", NameEn: "Function words"},
 	{ID: "abstrait", NameNative: "Mots abstraits", NameEn: "Abstract concepts"},
@@ -44,6 +54,7 @@ var VocabCategories = []grammar.VocabCategoryInfo{
 	{ID: "sante", NameNative: "La santé", NameEn: "Health"},
 	{ID: "loisirs", NameNative: "Les loisirs", NameEn: "Sports & leisure"},
 	{ID: "ville", NameNative: "En ville", NameEn: "City & directions"},
+	{ID: "societe", NameNative: "Société & environnement", NameEn: "Society & environment"},
 }
 
 // mustParseVocab parses the embedded CSV (header: lemma,pos,gender,translation,category,tier).

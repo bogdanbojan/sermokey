@@ -19,8 +19,15 @@ var Vocabulary = mustParseVocab(vocabCSV)
 
 // VocabCategories describes every vocabulary category in display order
 // (the order categories first appear in vocab_data.csv).
+//
+// Category sizes are budgeted by communicative load rather than split
+// evenly — see fr.VocabCategories for the rationale. Note that this list
+// is no longer a translation of the French one: it was reselected against
+// Spanish frequency and the Instituto Cervantes' CEFR inventory, so the
+// two datasets legitimately diverge where the languages do.
 var VocabCategories = []grammar.VocabCategoryInfo{
 	{ID: "numeros", NameNative: "Números", NameEn: "Numbers"},
+	{ID: "medidas", NameNative: "Medidas y cantidades", NameEn: "Measurement & quantity"},
 	{ID: "tiempo", NameNative: "El tiempo", NameEn: "Time & calendar"},
 	{ID: "familia", NameNative: "La familia", NameEn: "Family"},
 	{ID: "cuerpo", NameNative: "El cuerpo", NameEn: "Body"},
@@ -36,7 +43,8 @@ var VocabCategories = []grammar.VocabCategoryInfo{
 	{ID: "lugares", NameNative: "Los lugares", NameEn: "Places"},
 	{ID: "transporte", NameNative: "El transporte", NameEn: "Transportation"},
 	{ID: "escuela", NameNative: "La escuela", NameEn: "School"},
-	{ID: "trabajo", NameNative: "El trabajo", NameEn: "Work & technology"},
+	{ID: "trabajo", NameNative: "El trabajo", NameEn: "Work"},
+	{ID: "medios", NameNative: "Medios y comunicación", NameEn: "Media & communication"},
 	{ID: "emociones", NameNative: "Las emociones", NameEn: "Emotions & personality"},
 	{ID: "funcion", NameNative: "Palabras funcionales", NameEn: "Function words"},
 	{ID: "abstracto", NameNative: "Conceptos abstractos", NameEn: "Abstract concepts"},
@@ -44,6 +52,7 @@ var VocabCategories = []grammar.VocabCategoryInfo{
 	{ID: "salud", NameNative: "La salud", NameEn: "Health"},
 	{ID: "ocio", NameNative: "El ocio", NameEn: "Sports & leisure"},
 	{ID: "ciudad", NameNative: "En la ciudad", NameEn: "City & directions"},
+	{ID: "sociedad", NameNative: "Sociedad y medio ambiente", NameEn: "Society & environment"},
 }
 
 // mustParseVocab parses the embedded CSV (header: lemma,pos,gender,translation,category,tier).
