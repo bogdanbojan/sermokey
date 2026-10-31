@@ -5,6 +5,7 @@ import type { ReadingText, TenseSummary, VocabCategory, VocabWord } from '../typ
 import TenseCard from '../components/TenseCard.vue'
 import VocabCard from '../components/VocabCard.vue'
 import TextCard from '../components/TextCard.vue'
+import ImportText from '../components/ImportText.vue'
 import Accordion from '../components/Accordion.vue'
 import { useSavedWords } from '../reading/saved'
 import { useLanguage, t, format } from '../i18n/language'
@@ -69,6 +70,32 @@ watch(activeTab, (v) => localStorage.setItem(TAB_STORAGE_KEY, v))
 
 const visibleTexts = computed(() => texts.value.filter((x) => matches(x.title, x.blurb)))
 
+function onImported(text: ReadingText) {
+  // Replace rather than append: re-importing the same file returns the
+  // same id, and the library should show one copy.
+  texts.value = [text, ...texts.value.filter((x) => x.id !== text.id)]
+}
+
+async function onRemoveText(id: string) {
+  const text = texts.value.find((x) => x.id === id)
+  if (!text) return
+  if (!window.confirm(format(t.value.reading.removeConfirm, { title: text.title }))) return
+  try {
+    await api.deleteText(lang.value, id)
+    texts.value = texts.value.filter((x) => x.id !== id)
+  } catch (e) {
+    error.value = e instanceof ApiError ? e.message : t.value.home.error
+  }
+}
+const textsHaveNoResults = computed(
+  () => searchQuery.value.trim() !== '' && visibleTexts.value.length === 0,
+)
+
+// Words captured while reading surface in the vocabulary tab alongside the
+// curated categories, so the reading loop closes where a learner would
+// already look for their cards rather than in a separate place.
+const savedWords = computed(() => useSavedWords(lang.value).all())
+const savedStats = computed(() => statsFor(savedWords.value.map((w) => ({ id: w.id }))))
 
 // --- Search --------------------------------------------------------------
 const searchQuery = ref('')
@@ -329,8 +356,9 @@ const mixedStats = computed(() => statsFor(vocabWords.value))
 
       <template v-else>
         <p class="muted intro">{{ t.reading.sectionIntro }}</p>
+        <ImportText @imported="onImported" />
         <div class="grid grid-cols-2">
-          <TextCard v-for="x in visibleTexts" :key="x.id" :text="x" />
+          <TextCard v-for="x in visibleTexts" :key="x.id" :text="x" @remove="onRemoveText" />
         </div>
         <p v-if="textsHaveNoResults" class="muted no-results">{{ t.home.noResults }}</p>
       </template>
@@ -380,12 +408,6 @@ const mixedStats = computed(() => statsFor(vocabWords.value))
 
 .tabs {
   display: inline-flex;
-  /* Three word-labelled tabs do not fit across a 320px screen. Wrapping
-     is preferable to the alternatives: abbreviating the labels makes the
-     sections harder to recognise, and letting them overflow drags the
-     whole page into a horizontal scroll. */
-  flex-wrap: wrap;
-  max-width: 100%;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   padding: 3px;
@@ -408,13 +430,6 @@ const mixedStats = computed(() => statsFor(vocabWords.value))
 .tab-btn.active {
   background: var(--color-primary);
   color: var(--color-primary-contrast);
-}
-
-@media (max-width: 640px) {
-  .tab-btn {
-    padding: 0.5rem 0.85rem;
-    font-size: 0.88rem;
-  }
 }
 
 .search-input {

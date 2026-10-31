@@ -178,6 +178,15 @@ export interface UiStrings {
     savedDeckBlurb: string
     textDeckTitle: string // "{title}"
     contextLabel: string
+    // EPUB import
+    import: string
+    importing: string // "{name}"
+    importHint: string
+    importFailed: string
+    importWrongType: string
+    importedPill: string
+    remove: string
+    removeConfirm: string // "{title}"
   }
 }
 
@@ -351,6 +360,14 @@ export const strings: Record<LanguageCode, UiStrings> = {
       savedDeckBlurb: 'Les mots enregistrés pendant la lecture',
       textDeckTitle: 'Mots de « {title} »',
       contextLabel: 'Rencontré dans',
+      import: 'Importer un EPUB',
+      importing: 'Lecture de {name}…',
+      importHint: 'ou glissez un fichier .epub ici',
+      importFailed: 'Impossible d’importer ce fichier.',
+      importWrongType: 'Choisissez un fichier .epub.',
+      importedPill: 'Importé',
+      remove: 'Retirer',
+      removeConfirm: 'Retirer « {title} » de votre bibliothèque ?',
     },
   },
   es: {
@@ -521,6 +538,14 @@ export const strings: Record<LanguageCode, UiStrings> = {
       savedDeckBlurb: 'Las palabras guardadas durante la lectura',
       textDeckTitle: 'Palabras de «{title}»',
       contextLabel: 'Encontrada en',
+      import: 'Importar un EPUB',
+      importing: 'Leyendo {name}…',
+      importHint: 'o arrastra aquí un archivo .epub',
+      importFailed: 'No se ha podido importar este archivo.',
+      importWrongType: 'Elige un archivo .epub.',
+      importedPill: 'Importado',
+      remove: 'Quitar',
+      removeConfirm: '¿Quitar «{title}» de tu biblioteca?',
     },
   },
   de: {
@@ -691,6 +716,14 @@ export const strings: Record<LanguageCode, UiStrings> = {
       savedDeckBlurb: 'Beim Lesen gespeicherte Wörter',
       textDeckTitle: 'Wörter aus „{title}“',
       contextLabel: 'Gefunden in',
+      import: 'EPUB importieren',
+      importing: '{name} wird gelesen…',
+      importHint: 'oder eine .epub-Datei hierher ziehen',
+      importFailed: 'Diese Datei konnte nicht importiert werden.',
+      importWrongType: 'Bitte eine .epub-Datei wählen.',
+      importedPill: 'Importiert',
+      remove: 'Entfernen',
+      removeConfirm: '„{title}“ aus deiner Bibliothek entfernen?',
     },
   },
 }

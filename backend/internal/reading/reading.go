@@ -145,6 +145,18 @@ type Provider struct {
 	Code      string
 	Tokenizer Tokenizer
 	Analyzer  Analyzer
-	// Catalog is what handlers read from.
+	// Catalog is what handlers read from. Register replaces whatever a
+	// language supplies with a Library wrapping it, so this is always the
+	// bundled corpus plus any imported books.
 	Catalog Catalog
+	// Library is the same object as Catalog, typed so that import and
+	// removal are reachable. Set by Register; languages leave it nil.
+	Library *Library
+}
+
+// Build is a convenience wrapper that tokenizes and analyzes a document
+// with this provider's own tokenizer and analyzer — the path an imported
+// EPUB takes to become indistinguishable from a bundled text.
+func (p Provider) Build(meta DocumentMeta, sections []Section) Document {
+	return Build(meta, p.Tokenizer, p.Analyzer, sections)
 }

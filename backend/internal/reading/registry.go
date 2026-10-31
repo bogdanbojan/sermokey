@@ -17,6 +17,11 @@ var registry = map[string]Provider{}
 // Panics on a duplicate or incomplete registration: both are build-time
 // wiring bugs, consistent with how the vocabulary CSV parser treats
 // malformed data.
+//
+// The provider's bundled catalog is wrapped in a Library here rather than
+// by each language. That is what makes EPUB import a property of the
+// reading system as a whole: a language supplies a tokenizer, an analyzer
+// and its bundled texts, and gets importing without knowing it exists.
 func Register(p Provider) {
 	if p.Code == "" {
 		panic("reading: Register called with empty language code")
@@ -27,6 +32,9 @@ func Register(p Provider) {
 	if _, dup := registry[p.Code]; dup {
 		panic("reading: duplicate Register for language " + p.Code)
 	}
+	lib := NewLibrary(p.Catalog)
+	p.Catalog = lib
+	p.Library = lib
 	registry[p.Code] = p
 }
 

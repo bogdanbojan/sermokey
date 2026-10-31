@@ -16,6 +16,10 @@ import (
 // NewRouter builds the complete HTTP handler for the backend: routes,
 // request logging, and CORS for the local Vite dev server.
 func NewRouter() http.Handler {
+	// Bring back any EPUBs imported in a previous run, before the first
+	// request can ask for them.
+	RestoreLibrary()
+
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /api/health", handleHealth)
 	mux.HandleFunc("GET /api/languages", handleLanguages)
@@ -28,6 +32,11 @@ func NewRouter() http.Handler {
 	mux.HandleFunc("GET /api/texts", handleTexts)
 	mux.HandleFunc("GET /api/texts/{id}", handleTextSection)
 	mux.HandleFunc("GET /api/lookup", handleLookup)
+	// The only non-GET routes in the API. An imported book is content
+	// rather than user state, and is far too large to live in the browser
+	// alongside the decks; see reading_import.go.
+	mux.HandleFunc("POST /api/texts/import", handleImportText)
+	mux.HandleFunc("DELETE /api/texts/{id}", handleDeleteText)
 
 	return withLogging(withCORS(mux))
 }
@@ -41,7 +50,7 @@ func withCORS(next http.Handler) http.Handler {
 	}
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", allowedOrigin)
-		w.Header().Set("Access-Control-Allow-Methods", "GET, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS")
 		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 		if r.Method == http.MethodOptions {
 			w.WriteHeader(http.StatusNoContent)

@@ -43,6 +43,10 @@ type ReadingTextDTO struct {
 	// of the text it already knows, which is a far better difficulty
 	// signal for a given reader than the static CEFR Level above.
 	WordFrequency map[string]int `json:"wordFrequency"`
+
+	// Imported marks a book the reader added themselves, as opposed to a
+	// bundled text. Drives whether a delete control is offered.
+	Imported bool `json:"imported,omitempty"`
 }
 
 // ReadingSectionDTO is one chapter-sized unit, the quantum of delivery.

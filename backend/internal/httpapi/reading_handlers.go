@@ -42,13 +42,15 @@ func handleTexts(w http.ResponseWriter, r *http.Request) {
 	metas := p.Catalog.List()
 	out := make([]ReadingTextDTO, 0, len(metas))
 	for _, m := range metas {
-		out = append(out, toReadingTextDTO(m))
+		out = append(out, toReadingTextDTO(m, p.Library.IsImported(m.ID)))
 	}
 	writeJSON(w, http.StatusOK, out)
 }
 
-// toReadingTextDTO renders one text's library card.
-func toReadingTextDTO(m reading.DocumentMeta) ReadingTextDTO {
+// toReadingTextDTO is shared by the list and import endpoints so the two
+// cannot drift: an imported book must look exactly like a bundled one on
+// the library screen, bar the control that removes it.
+func toReadingTextDTO(m reading.DocumentMeta, imported bool) ReadingTextDTO {
 	return ReadingTextDTO{
 		ID:                 m.ID,
 		Title:              m.Title,
@@ -62,6 +64,7 @@ func toReadingTextDTO(m reading.DocumentMeta) ReadingTextDTO {
 		FunctionTokenCount: m.FunctionTokenCount,
 		ProperTokenCount:   m.ProperTokenCount,
 		WordFrequency:      m.WordFrequency,
+		Imported:           imported,
 	}
 }
 

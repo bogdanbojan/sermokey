@@ -102,6 +102,9 @@ export interface ReadingText {
    *  names as known words (Nation 2006), because a reader simply reads
    *  them rather than needing to have learned them. */
   properTokenCount: number
+  /** A book the reader added themselves rather than a bundled text.
+   *  Only these can be removed. */
+  imported?: boolean
   /**
    * SRS card id -> number of word tokens resolving to it. Intersected with
    * the reader's own deck and known-word set to produce the coverage

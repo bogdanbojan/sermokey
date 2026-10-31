@@ -16,6 +16,23 @@ const BASE_URL = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? 'h
 
 class ApiError extends Error {}
 
+async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  let res: Response
+  try {
+    res = await fetch(`${BASE_URL}${path}`, init)
+  } catch {
+    throw new ApiError(
+      `Could not reach the backend at ${BASE_URL}. Is it running? (cd backend && go run ./cmd/server)`,
+    )
+  }
+  if (!res.ok) {
+    const body = (await res.json().catch(() => null)) as { error?: string } | null
+    throw new ApiError(body?.error ?? `Request to ${path} failed with status ${res.status}`)
+  }
+  if (res.status === 204) return undefined as T
+  return (await res.json()) as T
+}
+
 async function getJSON<T>(path: string): Promise<T> {
   let res: Response
   try {
@@ -62,6 +79,18 @@ export const api = {
   lookup: (lang: LanguageCode, q: string) =>
     getJSON<ReadingEntry[]>(`/api/lookup?lang=${lang}&q=${encodeURIComponent(q)}`),
 
+  /** Uploads an EPUB and returns it as a readable text. The only
+   *  non-GET call in the app: a book is content rather than user state,
+   *  and has to be tokenized by the same engine that serves the bundled
+   *  corpus. */
+  importText: (lang: LanguageCode, file: File) => {
+    const body = new FormData()
+    body.append('file', file)
+    return request<ReadingText>(`/api/texts/import?lang=${lang}`, { method: 'POST', body })
+  },
+
+  deleteText: (lang: LanguageCode, id: string) =>
+    request<void>(`/api/texts/${encodeURIComponent(id)}?lang=${lang}`, { method: 'DELETE' }),
 }
 
 export { ApiError }

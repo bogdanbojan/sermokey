@@ -8,6 +8,7 @@ import { useWordStatus, coverageOf } from '../reading/status'
 import { loadPosition } from '../reading/prefs'
 
 const props = defineProps<{ text: ReadingText }>()
+const emit = defineEmits<{ remove: [id: string] }>()
 
 const { lang } = useLanguage()
 const { comprehensionOf } = useWordStatus(lang)
@@ -60,6 +61,18 @@ function open() {
       >
         {{ bandLabel }}
       </p>
+      <p v-if="text.imported" class="pill imported">{{ t.reading.importedPill }}</p>
+      <!-- Only imported books can be removed; the bundled corpus is part
+           of the product, not the reader's library. -->
+      <button
+        v-if="text.imported"
+        class="remove-btn"
+        :title="t.reading.remove"
+        :aria-label="t.reading.remove"
+        @click="emit('remove', text.id)"
+      >
+        ×
+      </button>
     </div>
 
     <h3>{{ text.title }}</h3>
@@ -102,6 +115,24 @@ function open() {
   align-items: center;
   gap: var(--space-2);
   margin-bottom: var(--space-2);
+}
+.pill.imported {
+  border-color: var(--color-ink-300);
+  color: var(--color-primary);
+}
+.remove-btn {
+  margin-left: auto;
+  border: none;
+  background: none;
+  color: var(--color-text-muted);
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 0 0.25rem;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+}
+.remove-btn:hover {
+  color: var(--color-danger);
 }
 .band.comfortable {
   border-color: var(--color-success);
