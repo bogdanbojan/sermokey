@@ -2,6 +2,9 @@
 /backend/bin/
 *.test
 *.out
+# `go build ./cmd/x` without -o drops the binary in the current directory.
+/backend/lexgen
+/backend/server
 
 # Node / frontend
 /frontend/node_modules/
@@ -10,6 +13,16 @@
 
 # Runtime artifacts from `make run` (pids, logs)
 /.run/
+
+# Imported EPUBs. The default library location when SERMOKEY_LIBRARY_DIR is
+# set by `make run`; these are the reader's own books, frequently still in
+# copyright, and have no business in the repository.
+/data/
+
+# Source extracts for `make lexicon`. ~1 GB each, and the distilled tables
+# under backend/internal/reading/*/data/ are what actually ships — those
+# ARE committed on purpose, so the project builds without a download.
+/.lexicon-src/
 
 # Editor / OS
 .DS_Store

@@ -21,8 +21,19 @@ FRONTEND_PID := $(RUN_DIR)/frontend.pid
 BACKEND_LOG  := $(RUN_DIR)/backend.log
 FRONTEND_LOG := $(RUN_DIR)/frontend.log
 
+# Where imported EPUBs are kept. Unset disables persistence entirely, which
+# is the right default for tests and for a read-only container; `make run`
+# points it at a working directory so books survive a restart. Override it
+# from the environment to keep a library somewhere else.
+LIBRARY_DIR  ?= $(ROOT_DIR)/data/library
+
+# Source extracts for `make lexicon`, which are ~1 GB each and deliberately
+# not committed. The distilled tables they produce are.
+LEXICON_SRC  := $(ROOT_DIR)/.lexicon-src
+LEXICON_LANGS := fr:French es:Spanish de:German
+
 .PHONY: help install build test run stop up down restart logs clean \
-	backend-build frontend-install
+	backend-build frontend-install lexicon
 
 help:
 	@echo "Targets:"
@@ -34,8 +45,13 @@ help:
 	@echo "  make restart    make stop && make run"
 	@echo "  make logs       Tail backend + frontend logs (Ctrl+C to stop watching)"
 	@echo "  make clean      Stop servers and remove build/log artifacts"
+	@echo "  make lexicon    Re-download Wiktionary extracts and regenerate"
+	@echo "                  the reading dictionaries (slow; rarely needed)"
 	@echo ""
 	@echo "Aliases: make up == make run, make down == make stop"
+	@echo ""
+	@echo "Imported EPUBs are stored under $(LIBRARY_DIR)"
+	@echo "(override with LIBRARY_DIR=... ; unset SERMOKEY_LIBRARY_DIR to disable)"
 
 install: frontend-install
 
@@ -57,11 +73,12 @@ $(RUN_DIR):
 	mkdir -p $(RUN_DIR)
 
 run up: backend-build frontend-install $(RUN_DIR)
+	@mkdir -p $(LIBRARY_DIR)
 	@if [ -f $(BACKEND_PID) ] && kill -0 "$$(cat $(BACKEND_PID))" 2>/dev/null; then \
 		echo "backend already running (pid $$(cat $(BACKEND_PID)))"; \
 	else \
 		echo "starting backend on :8080 ..."; \
-		set -m; ( nohup $(BACKEND_BIN) < /dev/null > $(BACKEND_LOG) 2>&1 & echo $$! > $(BACKEND_PID) ); \
+		set -m; ( SERMOKEY_LIBRARY_DIR=$(LIBRARY_DIR) nohup $(BACKEND_BIN) < /dev/null > $(BACKEND_LOG) 2>&1 & echo $$! > $(BACKEND_PID) ); \
 	fi
 	@if [ -f $(FRONTEND_PID) ] && kill -0 "$$(cat $(FRONTEND_PID))" 2>/dev/null; then \
 		echo "frontend already running (pid $$(cat $(FRONTEND_PID)))"; \
@@ -95,3 +112,32 @@ logs:
 
 clean: stop
 	rm -rf $(RUN_DIR) $(BACKEND_DIR)/bin $(FRONTEND_DIR)/dist
+
+# Regenerates the embedded reading dictionaries from English Wiktionary.
+#
+# Only needed when refreshing the data or adding a language — the distilled
+# tables are committed so an ordinary build never downloads anything. The
+# extracts are ~1 GB per language, so they are cached under .lexicon-src/
+# and the download is skipped if a file is already there.
+#
+# Source: English Wiktionary via wiktextract, dual-licensed CC BY-SA and
+# GFDL. The attribution that requires is rendered in the reader's word
+# panel.
+lexicon:
+	@mkdir -p $(LEXICON_SRC)
+	@for pair in $(LEXICON_LANGS); do \
+		code=$${pair%%:*}; name=$${pair##*:}; \
+		src=$(LEXICON_SRC)/$$code.jsonl; \
+		if [ -s "$$src" ]; then \
+			echo "using cached $$src"; \
+		else \
+			echo "downloading $$name extract (~1 GB) ..."; \
+			curl -fL --retry 3 -o "$$src" \
+				"https://kaikki.org/dictionary/$$name/kaikki.org-dictionary-$$name.jsonl" || exit 1; \
+		fi; \
+		echo "generating $$code lexicon ..."; \
+		( cd $(BACKEND_DIR) && go run ./cmd/lexgen \
+			-in "$$src" -out internal/reading/$$code/data ) || exit 1; \
+	done
+	@echo ""
+	@echo "Regenerated. Run 'make test' to check the corpora still validate."
