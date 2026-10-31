@@ -5,6 +5,10 @@ import (
 	"net/http"
 	"os"
 	"time"
+
+	// Importing a language's reading package is what registers it in
+	// reading.Registry and therefore what makes /api/texts serve it.
+	_ "github.com/bogdanbojan/sermokey/backend/internal/reading/fr"
 )
 
 // NewRouter builds the complete HTTP handler for the backend: routes,
@@ -19,6 +23,9 @@ func NewRouter() http.Handler {
 	mux.HandleFunc("GET /api/exercises", handleExercises)
 	mux.HandleFunc("GET /api/vocab-categories", handleVocabCategories)
 	mux.HandleFunc("GET /api/vocabulary", handleVocabulary)
+	mux.HandleFunc("GET /api/texts", handleTexts)
+	mux.HandleFunc("GET /api/texts/{id}", handleTextSection)
+	mux.HandleFunc("GET /api/lookup", handleLookup)
 
 	return withLogging(withCORS(mux))
 }

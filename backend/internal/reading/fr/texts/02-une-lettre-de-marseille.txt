@@ -1,0 +1,59 @@
+id: une-lettre-de-marseille
+title: Une lettre de Marseille
+author: Sermokey
+level: B1
+license: CC BY-SA 4.0
+source: Texte original, écrit pour Sermokey
+blurb: Un jeune homme écrit à sa sœur après son premier mois dans une ville inconnue. Passé composé et imparfait, vocabulaire du travail et des sentiments.
+
+# Chère Camille
+
+Chère Camille,
+
+Je t'écris enfin. Tu dois penser que je t'ai oubliée, mais non : j'ai pensé à toi presque chaque jour depuis mon arrivée. Le problème, c'est que je n'avais pas une minute à moi. Maintenant que les
+choses se sont calmées, je peux te raconter ce premier mois.
+
+Quand je suis descendu du train, au mois de septembre, il faisait encore
+très chaud. J'avais deux valises et aucune idée de la place où j'allais
+dormir. La gare était pleine de monde : tout le monde courait.
+Pendant quelques minutes, j'ai eu envie de reprendre le train et de
+rentrer à la maison.
+
+# Le travail
+
+Par chance, je n'ai pas eu le temps d'avoir peur longtemps. Le lendemain
+matin, je commençais déjà au bureau. Mes collègues sont plus jeunes que je
+ne l'imaginais, et personne ne m'a demandé d'où je venais ni pourquoi
+j'étais parti. Au début, cela m'a surpris. Ensuite, j'ai compris que c'était
+gentil.
+
+Mon chef s'appelle Monsieur Rahmani. C'est un chef calme, qui parle sans
+se presser et qui écoute vraiment les réponses. La première semaine, j'ai
+fait plusieurs erreurs. Je m'attendais à des mots durs ; il m'a seulement
+montré comment faire. Depuis, je travaille bien et j'ai beaucoup
+moins peur de faire des erreurs.
+
+# La ville
+
+Le soir, je marche. Je fais cela chaque soir. Je descends vers le port,
+je regarde les bateaux, et je rentre quand la nuit tombe. Le soleil, ici,
+n'est pas le même que chez nous : il est plus dur, plus blanc. Les
+premiers jours, je trouvais la ville trop grande et j'étais fatigué. Aujourd'hui,
+je crois que je commence à l'aimer.
+
+Il me manque pourtant quelque chose, et tu sais bien quoi. Personne ne
+connaît mon histoire ici. C'est calme, mais c'est aussi un peu triste.
+Quand je parle de notre grand-père, personne ne comprend de qui je parle.
+
+# Viens me voir
+
+Alors voilà ma vraie raison d'écrire : viens me voir. Pas en été, quand
+tout le monde arrive ; viens plutôt en novembre, quand la ville devient
+calme. Je te montrerai le marché, la mer au petit matin, et le café où je
+passe mes dimanches.
+
+Écris-moi bientôt. Dis-moi comment vont les parents, et si le chien est
+toujours aussi méchant.
+
+Je t'embrasse,
+Julien

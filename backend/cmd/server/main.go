@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"runtime/debug"
 	"syscall"
 	"time"
 
@@ -20,9 +21,16 @@ func main() {
 		port = "8080"
 	}
 
+	// Building the router loads every language's lexicon, which churns
+	// through a few hundred megabytes of decompression buffers. Hand the
+	// pages back before serving rather than carrying them for the life of
+	// the process.
+	handler := httpapi.NewRouter()
+	debug.FreeOSMemory()
+
 	srv := &http.Server{
 		Addr:              ":" + port,
-		Handler:           httpapi.NewRouter(),
+		Handler:           handler,
 		ReadHeaderTimeout: 5 * time.Second,
 		ReadTimeout:       10 * time.Second,
 		WriteTimeout:      10 * time.Second,

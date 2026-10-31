@@ -1,20 +1,26 @@
 <script setup lang="ts">
 import { ref, onMounted, computed, watch } from 'vue'
 import { api, ApiError } from '../api/client'
-import type { TenseSummary, VocabCategory, VocabWord } from '../types/api'
+import type { ReadingText, TenseSummary, VocabCategory, VocabWord } from '../types/api'
 import TenseCard from '../components/TenseCard.vue'
 import VocabCard from '../components/VocabCard.vue'
+import TextCard from '../components/TextCard.vue'
 import Accordion from '../components/Accordion.vue'
-import { useLanguage, t } from '../i18n/language'
+import { useSavedWords } from '../reading/saved'
+import { useLanguage, t, format } from '../i18n/language'
 import { useSrsDeck, cardIdsFor, vocabDirection } from '../srs/store'
 import { useRecents } from '../recent'
-import { CLUSTER_ORDER, clusterFor, type ClusterKey } from '../vocabClusters'
+import { CLUSTER_ORDER, clusterFor, assertEveryCategoryMapped, type ClusterKey } from '../vocabClusters'
 import { navigate } from '../router/router'
 
 const { lang } = useLanguage()
 const tenses = ref<TenseSummary[]>([])
 const vocabCategories = ref<VocabCategory[]>([])
 const vocabWords = ref<VocabWord[]>([])
+const texts = ref<ReadingText[]>([])
+// Reading ships for a subset of languages, so its absence is a normal
+// state the tab reflects, not an error that blocks the page.
+const readingAvailable = ref(true)
 const loading = ref(true)
 const error = ref('')
 
@@ -30,6 +36,17 @@ async function load() {
     tenses.value = tensesResult
     vocabCategories.value = categoriesResult
     vocabWords.value = wordsResult
+    assertEveryCategoryMapped(lang.value, categoriesResult.map((c) => c.id))
+
+    // Fetched separately and tolerantly: a language with no corpus 404s
+    // here, and that must not take down grammar and vocabulary with it.
+    try {
+      texts.value = await api.getTexts(lang.value)
+      readingAvailable.value = true
+    } catch {
+      texts.value = []
+      readingAvailable.value = false
+    }
   } catch (e) {
     error.value = e instanceof ApiError ? e.message : t.value.home.error
   } finally {
@@ -42,10 +59,16 @@ watch(lang, load)
 
 // --- Tabs: Grammar / Vocabulary, persisted like the language toggle --------
 const TAB_STORAGE_KEY = 'sermokey:home-tab'
-const activeTab = ref<'grammar' | 'vocab'>(
-  localStorage.getItem(TAB_STORAGE_KEY) === 'vocab' ? 'vocab' : 'grammar',
-)
+type Tab = 'grammar' | 'vocab' | 'texts'
+function loadTab(): Tab {
+  const stored = localStorage.getItem(TAB_STORAGE_KEY)
+  return stored === 'vocab' || stored === 'texts' ? stored : 'grammar'
+}
+const activeTab = ref<Tab>(loadTab())
 watch(activeTab, (v) => localStorage.setItem(TAB_STORAGE_KEY, v))
+
+const visibleTexts = computed(() => texts.value.filter((x) => matches(x.title, x.blurb)))
+
 
 // --- Search --------------------------------------------------------------
 const searchQuery = ref('')
@@ -125,7 +148,10 @@ const recents = computed(() => useRecents(lang.value).items.value)
 function goToRecent(kind: 'theory' | 'quiz' | 'vocab', id: string) {
   if (kind === 'theory') navigate({ name: 'theory', tense: id })
   else if (kind === 'quiz') navigate({ name: 'quiz-setup', tense: id })
-  else navigate({ name: 'flashcards', category: id })
+  // Texts are recorded under the same 'vocab' recent kind; if the id names
+  // a text, resume reading it, otherwise it is a vocabulary category.
+  else if (texts.value.some((x) => x.id === id)) navigate({ name: 'read', textId: id, section: 0 })
+  else navigate({ name: 'flashcards', deck: { kind: 'category', id } })
 }
 
 const deck = computed(() => useSrsDeck(lang.value))
@@ -137,7 +163,7 @@ const wordsByCategory = computed(() => {
   }
   return map
 })
-function statsFor(words: VocabWord[]) {
+function statsFor(words: { id: string }[]) {
   if (!words.length) return { dueNow: 0, new: 0 }
   const s = deck.value.stats(cardIdsFor(words, vocabDirection.value))
   return { dueNow: s.dueNow, new: s.new }
@@ -192,6 +218,17 @@ const mixedStats = computed(() => statsFor(vocabWords.value))
         >
           {{ t.home.vocabTab }}
         </button>
+        <button
+          v-if="readingAvailable"
+          type="button"
+          role="tab"
+          class="tab-btn"
+          :class="{ active: activeTab === 'texts' }"
+          :aria-selected="activeTab === 'texts'"
+          @click="activeTab = 'texts'"
+        >
+          {{ t.reading.tab }}
+        </button>
       </div>
 
       <input
@@ -235,7 +272,7 @@ const mixedStats = computed(() => statsFor(vocabWords.value))
         <p v-if="grammarHasNoResults" class="muted no-results">{{ t.home.noResults }}</p>
       </template>
 
-      <template v-else>
+      <template v-else-if="activeTab === 'vocab'">
         <div v-if="!searchQuery" class="grid grid-cols-2 mixed-row">
           <VocabCard
             id=""
@@ -246,6 +283,23 @@ const mixedStats = computed(() => statsFor(vocabWords.value))
             :new-count="mixedStats.new"
             is-mixed
           />
+          <div v-if="savedWords.length" class="card vocab-card saved-card">
+            <p class="pill">{{ t.reading.tab }}</p>
+            <h3>{{ t.reading.savedDeckTitle }}</h3>
+            <p class="muted usage">{{ t.reading.savedDeckBlurb }}</p>
+            <p class="progress-hint">
+              <span v-if="savedStats.dueNow" class="hint-due"
+                >{{ savedStats.dueNow }} {{ t.vocab.dueLabel }}</span
+              >
+              <span class="muted">{{ savedWords.length }} {{ t.vocab.wordsLabel }}</span>
+            </p>
+            <button
+              class="btn btn-primary btn-block"
+              @click="navigate({ name: 'flashcards', deck: { kind: 'saved' } })"
+            >
+              {{ t.vocab.startSession }}
+            </button>
+          </div>
         </div>
 
         <Accordion
@@ -271,6 +325,14 @@ const mixedStats = computed(() => statsFor(vocabWords.value))
         </Accordion>
 
         <p v-if="vocabHasNoResults" class="muted no-results">{{ t.home.noResults }}</p>
+      </template>
+
+      <template v-else>
+        <p class="muted intro">{{ t.reading.sectionIntro }}</p>
+        <div class="grid grid-cols-2">
+          <TextCard v-for="x in visibleTexts" :key="x.id" :text="x" />
+        </div>
+        <p v-if="textsHaveNoResults" class="muted no-results">{{ t.home.noResults }}</p>
       </template>
     </template>
   </section>
@@ -318,6 +380,12 @@ const mixedStats = computed(() => statsFor(vocabWords.value))
 
 .tabs {
   display: inline-flex;
+  /* Three word-labelled tabs do not fit across a 320px screen. Wrapping
+     is preferable to the alternatives: abbreviating the labels makes the
+     sections harder to recognise, and letting them overflow drags the
+     whole page into a horizontal scroll. */
+  flex-wrap: wrap;
+  max-width: 100%;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   padding: 3px;
@@ -342,6 +410,13 @@ const mixedStats = computed(() => statsFor(vocabWords.value))
   color: var(--color-primary-contrast);
 }
 
+@media (max-width: 640px) {
+  .tab-btn {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.88rem;
+  }
+}
+
 .search-input {
   display: block;
   width: 100%;
@@ -360,5 +435,29 @@ const mixedStats = computed(() => statsFor(vocabWords.value))
 
 .no-results {
   margin-top: var(--space-4);
+}
+
+.saved-card {
+  display: flex;
+  flex-direction: column;
+  border-color: var(--color-accent);
+  border-width: 2px;
+}
+.saved-card .usage {
+  flex: 1;
+  font-size: 0.92rem;
+}
+.saved-card .progress-hint {
+  display: flex;
+  gap: var(--space-2);
+  font-size: 0.8rem;
+  margin-top: var(--space-1);
+}
+.saved-card .hint-due {
+  color: var(--color-accent-text);
+  font-weight: 600;
+}
+.saved-card .btn {
+  margin-top: var(--space-3);
 }
 </style>

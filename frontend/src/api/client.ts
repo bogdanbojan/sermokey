@@ -7,6 +7,9 @@ import type {
   LanguageCode,
   VocabCategory,
   VocabWord,
+  ReadingText,
+  ReadingSection,
+  ReadingEntry,
 } from '../types/api'
 
 const BASE_URL = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? 'http://localhost:8080'
@@ -44,6 +47,21 @@ export const api = {
     getJSON<VocabWord[]>(
       `/api/vocabulary?lang=${lang}${category ? `&category=${encodeURIComponent(category)}` : ''}`,
     ),
+
+  // Reading. Note that these can legitimately 404 for a language that has
+  // grammar and vocabulary but no corpus yet — reading ships for a subset.
+  getTexts: (lang: LanguageCode) => getJSON<ReadingText[]>(`/api/texts?lang=${lang}`),
+  getTextSection: (lang: LanguageCode, textId: string, section: number) =>
+    getJSON<ReadingSection>(
+      `/api/texts/${encodeURIComponent(textId)}?lang=${lang}&section=${section}`,
+    ),
+  /** Resolves an arbitrary surface form or multi-word phrase. Used for
+   *  drag-selected spans, which are not single tokens and so cannot come
+   *  from the section lexicon. Returns [] when nothing matches — that is a
+   *  normal outcome, not an error. */
+  lookup: (lang: LanguageCode, q: string) =>
+    getJSON<ReadingEntry[]>(`/api/lookup?lang=${lang}&q=${encodeURIComponent(q)}`),
+
 }
 
 export { ApiError }

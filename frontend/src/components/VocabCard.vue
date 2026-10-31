@@ -17,7 +17,7 @@ const { lang } = useLanguage()
 
 function start() {
   useRecents(lang.value).record('vocab', props.id, props.nameNative)
-  navigate({ name: 'flashcards', category: props.id })
+  navigate({ name: 'flashcards', deck: { kind: 'category', id: props.id } })
 }
 </script>
 

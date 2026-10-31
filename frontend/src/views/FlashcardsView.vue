@@ -1,15 +1,60 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
 import { api, ApiError } from '../api/client'
-import type { VocabWord } from '../types/api'
-import { navigate } from '../router/router'
+import { navigate, type DeckRef } from '../router/router'
 import { useLanguage, t, format } from '../i18n/language'
 import { useSrsDeck, cardID, vocabDirection, type DeckStats, type Direction } from '../srs/store'
 import type { Grade } from '../srs/sm2'
+import { useSavedWords, type SavedWord } from '../reading/saved'
 
-const props = defineProps<{ category: string }>()
+const props = defineProps<{ deck: DeckRef }>()
 const { lang } = useLanguage()
 const deck = computed(() => useSrsDeck(lang.value))
+const savedWords = computed(() => useSavedWords(lang.value))
+
+// Words saved while reading are stored locally and carry the sentence they
+// were met in; curated words come from the API and do not. Both reduce to
+// the same shape here so the session logic below does not care where a card
+// came from — which is what let reading reuse the flashcard screen rather
+// than grow a parallel one.
+interface StudyWord {
+  id: string
+  lemma: string
+  pos: string
+  gender?: string
+  translationEn: string
+  context?: SavedWord['context']
+}
+
+function fromSaved(w: SavedWord): StudyWord {
+  return { id: w.id, lemma: w.lemma, pos: w.pos, gender: w.gender, translationEn: w.gloss, context: w.context }
+}
+
+/** Resolves a DeckRef to its words and its display label. */
+async function resolveDeck(ref: DeckRef): Promise<{ words: StudyWord[]; label: string }> {
+  switch (ref.kind) {
+    case 'saved':
+      return { words: savedWords.value.all().map(fromSaved), label: t.value.reading.savedDeckTitle }
+    case 'text': {
+      const words = savedWords.value.fromText(ref.id).map(fromSaved)
+      const title = savedWords.value.fromText(ref.id)[0]?.context?.textTitle ?? ref.id
+      return { words, label: format(t.value.reading.textDeckTitle, { title }) }
+    }
+    case 'category': {
+      const vocab = await api.getVocabulary(lang.value, ref.id || undefined)
+      const words: StudyWord[] = vocab.map((w) => ({
+        id: w.id,
+        lemma: w.lemma,
+        pos: w.pos,
+        gender: w.gender,
+        translationEn: w.translationEn,
+      }))
+      if (!ref.id) return { words, label: t.value.vocab.mixedTitle }
+      const cats = await api.getVocabCategories(lang.value)
+      return { words, label: cats.find((c) => c.id === ref.id)?.nameNative ?? ref.id }
+    }
+  }
+}
 
 // One flashcard = one word reviewed in one direction. Recognition ("see
 // the word, recall its meaning") and production ("see the meaning, recall
@@ -17,13 +62,13 @@ const deck = computed(() => useSrsDeck(lang.value))
 // comment for why that split matters.
 interface FlashCard {
   id: string
-  word: VocabWord
+  word: StudyWord
   direction: 'recognition' | 'production'
 }
 
 const direction = vocabDirection
 
-function buildCards(words: VocabWord[], dir: Direction | 'mixed'): FlashCard[] {
+function buildCards(words: StudyWord[], dir: Direction | 'mixed'): FlashCard[] {
   if (dir === 'mixed') {
     return words.flatMap((w) => [
       { id: cardID(w.id, 'recognition'), word: w, direction: 'recognition' as const },
@@ -37,7 +82,7 @@ type Phase = 'loading' | 'error' | 'empty' | 'studying' | 'done'
 
 const phase = ref<Phase>('loading')
 const error = ref('')
-const allWords = ref<VocabWord[]>([])
+const allWords = ref<StudyWord[]>([])
 const queue = ref<FlashCard[]>([])
 const index = ref(0)
 const revealed = ref(false)
@@ -54,13 +99,9 @@ async function load(includeNotDue = false) {
   index.value = 0
 
   try {
-    allWords.value = await api.getVocabulary(lang.value, props.category || undefined)
-    if (props.category) {
-      const cats = await api.getVocabCategories(lang.value)
-      categoryLabel.value = cats.find((c) => c.id === props.category)?.nameNative ?? props.category
-    } else {
-      categoryLabel.value = t.value.vocab.mixedTitle
-    }
+    const resolved = await resolveDeck(props.deck)
+    allWords.value = resolved.words
+    categoryLabel.value = resolved.label
 
     if (allWords.value.length === 0) {
       error.value = t.value.vocab.error
@@ -84,7 +125,7 @@ async function load(includeNotDue = false) {
 }
 
 onMounted(() => load())
-watch([() => props.category, lang, direction], () => load())
+watch([() => props.deck, lang, direction], () => load(), { deep: true })
 
 function reveal() {
   revealed.value = true
@@ -135,11 +176,14 @@ const stats = computed<DeckStats | null>(() => {
 // Gender is shown alongside whichever side of the card currently displays
 // the target-language word: immediately for recognition (it's part of the
 // prompt), only after reveal for production (it would otherwise give the
-// answer away).
+// answer away). German adds a third, neuter gender ('n') alongside
+// French/Spanish's masculine/feminine.
 const genderBadge = computed(() => {
   if (!current.value || current.value.word.pos !== 'noun' || !current.value.word.gender) return ''
   if (current.value.direction === 'production' && !revealed.value) return ''
-  return current.value.word.gender === 'm' ? '♂' : '♀'
+  if (current.value.word.gender === 'm') return '♂'
+  if (current.value.word.gender === 'f') return '♀'
+  return 'N'
 })
 
 const promptText = computed(() => {
@@ -219,6 +263,20 @@ const answerText = computed(() => {
 
         <div v-else class="answer-area">
           <p class="translation">{{ answerText }}</p>
+
+          <!-- The sentence the word was met in, for words captured while
+               reading. A gloss recalled in context is retained better than
+               a bare pair (Webb 2008), and it is the cheapest possible way
+               to give the card a meaningful back side. -->
+          <p v-if="current.word.context" class="context">
+            <span>{{ current.word.context.sentence }}</span>
+            <button
+              class="context-link"
+              @click="navigate({ name: 'read', textId: current.word.context.textId, section: current.word.context.section })"
+            >
+              {{ current.word.context.textTitle }}
+            </button>
+          </p>
           <div class="grade-buttons">
             <button class="btn grade-again" @click="grade('again')"><kbd>1</kbd> {{ t.vocab.again }}</button>
             <button class="btn grade-hard" @click="grade('hard')"><kbd>2</kbd> {{ t.vocab.hard }}</button>
@@ -346,6 +404,11 @@ section {
   color: var(--color-warning-text);
   border: 1px solid var(--color-warning-text);
 }
+.gender-badge.n {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+  border: 1px solid var(--color-success);
+}
 .pos-pill {
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -366,6 +429,28 @@ section {
 .translation {
   font-size: 1.4rem;
   color: var(--color-text-muted);
+}
+.context {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+  max-width: 32em;
+  border-left: 2px solid var(--color-border);
+  padding-left: var(--space-3);
+  text-align: left;
+  margin: 0;
+}
+.context-link {
+  display: block;
+  border: none;
+  background: none;
+  padding: 0;
+  margin-top: var(--space-1);
+  font: inherit;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
 }
 .grade-buttons {
   display: grid;

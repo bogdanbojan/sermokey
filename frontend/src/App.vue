@@ -6,6 +6,7 @@ import TheoryView from './views/TheoryView.vue'
 import QuizSetupView from './views/QuizSetupView.vue'
 import QuizView from './views/QuizView.vue'
 import FlashcardsView from './views/FlashcardsView.vue'
+import ReaderView from './views/ReaderView.vue'
 
 const route = useRoute()
 </script>
@@ -17,6 +18,7 @@ const route = useRoute()
     <TheoryView v-else-if="route.name === 'theory'" :tense="route.tense" />
     <QuizSetupView v-else-if="route.name === 'quiz-setup'" :tense="route.tense" />
     <QuizView v-else-if="route.name === 'quiz'" :tense="route.tense" :type="route.type" :count="route.count" />
-    <FlashcardsView v-else-if="route.name === 'flashcards'" :category="route.category" />
+    <FlashcardsView v-else-if="route.name === 'flashcards'" :deck="route.deck" />
+    <ReaderView v-else-if="route.name === 'read'" :text-id="route.textId" :section="route.section" />
   </main>
 </template>

@@ -110,6 +110,75 @@ export interface UiStrings {
     directionMixed: string
     directionMixedHint: string
   }
+  reading: {
+    tab: string
+    sectionIntro: string
+    loading: string
+    error: string
+    unavailable: string
+    levelLabel: string
+    tokensLabel: string // "{count}"
+    sectionsLabel: string // "{count}"
+    newWordsLabel: string // "{count}"
+    coverageLabel: string // "{percent}"
+    bandComfortable: string
+    bandChallenging: string
+    bandHard: string
+    bandHint: string
+    read: string
+    continueReading: string
+    back: string
+    prevSection: string
+    nextSection: string
+    sectionProgress: string // "{index} / {total}"
+    savedCount: string // "{count}"
+    finishTitle: string
+    finishDetail: string // "{count}"
+    reviewSaved: string
+    noneSaved: string
+    // Word panel
+    noDefinition: string
+    uncertainNote: string
+    otherReadings: string
+    chooseSense: string
+    save: string
+    saved: string
+    unsave: string
+    markKnown: string
+    knownNote: string
+    ignore: string
+    ignoredNote: string
+    undo: string
+    nudge: string // "{count}"
+    lookupHint: string
+    attribution: string
+    // Display controls
+    displayLabel: string
+    smaller: string
+    larger: string
+    serif: string
+    sans: string
+    highlightOn: string
+    highlightOff: string
+    statusUnknown: string
+    statusLearning: string
+    statusKnown: string
+    // Selection
+    selectionLookup: string
+    selectionSave: string
+    selectionTooLong: string // "{max}"
+    // Onboarding
+    coachTitle: string
+    coachHover: string
+    coachClick: string
+    coachSelect: string
+    coachDismiss: string
+    // Saved-words deck
+    savedDeckTitle: string
+    savedDeckBlurb: string
+    textDeckTitle: string // "{title}"
+    contextLabel: string
+  }
 }
 
 
@@ -219,6 +288,70 @@ export const strings: Record<LanguageCode, UiStrings> = {
       directionMixed: 'Mélange',
       directionMixedHint: 'Les deux sens, mélangés',
     },
+    reading: {
+      tab: 'Textes',
+      sectionIntro: 'Lisez, survolez un mot pour sa définition, et ajoutez-le à vos cartes.',
+      loading: 'Chargement…',
+      error: 'Impossible de charger le texte.',
+      unavailable: 'La lecture n’est pas encore disponible dans cette langue.',
+      levelLabel: 'Niveau',
+      tokensLabel: '{count} mots',
+      sectionsLabel: '{count} parties',
+      newWordsLabel: '{count} mots nouveaux',
+      coverageLabel: '{percent} % connus',
+      bandComfortable: 'Confortable',
+      bandChallenging: 'Exigeant',
+      bandHard: 'Difficile',
+      bandHint: 'Calculé à partir de vos cartes : au-dessus de 98 % de mots connus, on lit sans effort.',
+      read: 'Lire',
+      continueReading: 'Reprendre',
+      back: '← Bibliothèque',
+      prevSection: '← Précédent',
+      nextSection: 'Suivant →',
+      sectionProgress: 'Partie {index} / {total}',
+      savedCount: '{count} enregistrés',
+      finishTitle: 'Texte terminé',
+      finishDetail: 'Vous avez enregistré {count} mots dans ce texte.',
+      reviewSaved: 'Réviser ces mots',
+      noneSaved: 'Aucun mot enregistré pour l’instant.',
+      noDefinition: 'Aucune définition trouvée.',
+      uncertainNote: 'Forme devinée — à vérifier.',
+      otherReadings: 'Autres lectures',
+      chooseSense: 'Choisissez le sens à retenir',
+      save: 'Ajouter aux cartes',
+      saved: 'Enregistré',
+      unsave: 'Retirer',
+      markKnown: 'Je le sais déjà',
+      knownNote: 'Marqué comme connu',
+      ignore: 'Ignorer',
+      ignoredNote: 'Ignoré (nom propre, chiffre…)',
+      undo: 'Annuler',
+      nudge: 'Vous avez cherché ce mot {count} fois. À ajouter ?',
+      lookupHint: 'Cliquez pour épingler',
+      attribution: 'Définitions : Wiktionnaire (CC BY-SA)',
+      displayLabel: 'Affichage',
+      smaller: 'Réduire le texte',
+      larger: 'Agrandir le texte',
+      serif: 'Serif',
+      sans: 'Sans',
+      highlightOn: 'Surlignage activé',
+      highlightOff: 'Surlignage désactivé',
+      statusUnknown: 'nouveau',
+      statusLearning: 'en cours',
+      statusKnown: 'connu',
+      selectionLookup: 'Chercher',
+      selectionSave: 'Ajouter l’expression',
+      selectionTooLong: 'Sélection trop longue ({max} mots maximum).',
+      coachTitle: 'Comment lire ici',
+      coachHover: 'Survolez un mot pour un aperçu rapide.',
+      coachClick: 'Cliquez pour l’épingler et l’ajouter à vos cartes.',
+      coachSelect: 'Glissez sur plusieurs mots pour une expression.',
+      coachDismiss: 'Compris',
+      savedDeckTitle: 'Mes mots',
+      savedDeckBlurb: 'Les mots enregistrés pendant la lecture',
+      textDeckTitle: 'Mots de « {title} »',
+      contextLabel: 'Rencontré dans',
+    },
   },
   es: {
     brand: { title: 'Gramática', tagline: 'conjugación española' },
@@ -325,6 +458,70 @@ export const strings: Record<LanguageCode, UiStrings> = {
       directionMixed: 'Mezcla',
       directionMixedHint: 'Ambos sentidos, mezclados',
     },
+    reading: {
+      tab: 'Textos',
+      sectionIntro: 'Lee, pasa el ratón sobre una palabra para ver su definición y añádela a tus tarjetas.',
+      loading: 'Cargando…',
+      error: 'No se ha podido cargar el texto.',
+      unavailable: 'La lectura aún no está disponible en este idioma.',
+      levelLabel: 'Nivel',
+      tokensLabel: '{count} palabras',
+      sectionsLabel: '{count} partes',
+      newWordsLabel: '{count} palabras nuevas',
+      coverageLabel: '{percent} % conocidas',
+      bandComfortable: 'Cómodo',
+      bandChallenging: 'Exigente',
+      bandHard: 'Difícil',
+      bandHint: 'Calculado con tus tarjetas: por encima del 98 % de palabras conocidas se lee sin esfuerzo.',
+      read: 'Leer',
+      continueReading: 'Continuar',
+      back: '← Biblioteca',
+      prevSection: '← Anterior',
+      nextSection: 'Siguiente →',
+      sectionProgress: 'Parte {index} / {total}',
+      savedCount: '{count} guardadas',
+      finishTitle: 'Texto terminado',
+      finishDetail: 'Has guardado {count} palabras de este texto.',
+      reviewSaved: 'Repasar estas palabras',
+      noneSaved: 'Todavía no has guardado ninguna palabra.',
+      noDefinition: 'No se ha encontrado definición.',
+      uncertainNote: 'Forma deducida: conviene comprobarla.',
+      otherReadings: 'Otras lecturas',
+      chooseSense: 'Elige el sentido que quieres recordar',
+      save: 'Añadir a las tarjetas',
+      saved: 'Guardada',
+      unsave: 'Quitar',
+      markKnown: 'Ya la sé',
+      knownNote: 'Marcada como conocida',
+      ignore: 'Ignorar',
+      ignoredNote: 'Ignorada (nombre propio, cifra…)',
+      undo: 'Deshacer',
+      nudge: 'Has buscado esta palabra {count} veces. ¿La añades?',
+      lookupHint: 'Haz clic para fijar',
+      attribution: 'Definiciones: Wikcionario (CC BY-SA)',
+      displayLabel: 'Visualización',
+      smaller: 'Reducir el texto',
+      larger: 'Ampliar el texto',
+      serif: 'Serif',
+      sans: 'Sans',
+      highlightOn: 'Resaltado activado',
+      highlightOff: 'Resaltado desactivado',
+      statusUnknown: 'nueva',
+      statusLearning: 'en curso',
+      statusKnown: 'conocida',
+      selectionLookup: 'Buscar',
+      selectionSave: 'Añadir la expresión',
+      selectionTooLong: 'Selección demasiado larga ({max} palabras como máximo).',
+      coachTitle: 'Cómo leer aquí',
+      coachHover: 'Pasa el ratón sobre una palabra para una vista rápida.',
+      coachClick: 'Haz clic para fijarla y añadirla a tus tarjetas.',
+      coachSelect: 'Arrastra sobre varias palabras para una expresión.',
+      coachDismiss: 'Entendido',
+      savedDeckTitle: 'Mis palabras',
+      savedDeckBlurb: 'Las palabras guardadas durante la lectura',
+      textDeckTitle: 'Palabras de «{title}»',
+      contextLabel: 'Encontrada en',
+    },
   },
   de: {
     brand: { title: 'Grammatik', tagline: 'deutsche Konjugation' },
@@ -430,6 +627,70 @@ export const strings: Record<LanguageCode, UiStrings> = {
       directionProductionHint: 'Bedeutung sehen, Wort erraten',
       directionMixed: 'Gemischt',
       directionMixedHint: 'Beide Richtungen gemischt',
+    },
+    reading: {
+      tab: 'Texte',
+      sectionIntro: 'Lies, fahre über ein Wort für die Bedeutung und nimm es in deine Karten auf.',
+      loading: 'Wird geladen…',
+      error: 'Der Text konnte nicht geladen werden.',
+      unavailable: 'Lesen ist in dieser Sprache noch nicht verfügbar.',
+      levelLabel: 'Niveau',
+      tokensLabel: '{count} Wörter',
+      sectionsLabel: '{count} Teile',
+      newWordsLabel: '{count} neue Wörter',
+      coverageLabel: '{percent} % bekannt',
+      bandComfortable: 'Angenehm',
+      bandChallenging: 'Anspruchsvoll',
+      bandHard: 'Schwer',
+      bandHint: 'Berechnet aus deinen Karten: ab 98 % bekannter Wörter liest man mühelos.',
+      read: 'Lesen',
+      continueReading: 'Fortsetzen',
+      back: '← Bibliothek',
+      prevSection: '← Zurück',
+      nextSection: 'Weiter →',
+      sectionProgress: 'Teil {index} / {total}',
+      savedCount: '{count} gespeichert',
+      finishTitle: 'Text beendet',
+      finishDetail: 'Du hast {count} Wörter aus diesem Text gespeichert.',
+      reviewSaved: 'Diese Wörter wiederholen',
+      noneSaved: 'Noch keine Wörter gespeichert.',
+      noDefinition: 'Keine Bedeutung gefunden.',
+      uncertainNote: 'Geratene Form — bitte prüfen.',
+      otherReadings: 'Andere Lesarten',
+      chooseSense: 'Wähle die Bedeutung, die du lernen willst',
+      save: 'Zu den Karten hinzufügen',
+      saved: 'Gespeichert',
+      unsave: 'Entfernen',
+      markKnown: 'Kenne ich schon',
+      knownNote: 'Als bekannt markiert',
+      ignore: 'Ignorieren',
+      ignoredNote: 'Ignoriert (Eigenname, Zahl…)',
+      undo: 'Rückgängig',
+      nudge: 'Du hast dieses Wort {count}-mal nachgeschlagen. Hinzufügen?',
+      lookupHint: 'Klicken zum Anheften',
+      attribution: 'Bedeutungen: Wiktionary (CC BY-SA)',
+      displayLabel: 'Darstellung',
+      smaller: 'Text verkleinern',
+      larger: 'Text vergrößern',
+      serif: 'Serif',
+      sans: 'Sans',
+      highlightOn: 'Hervorhebung an',
+      highlightOff: 'Hervorhebung aus',
+      statusUnknown: 'neu',
+      statusLearning: 'im Lernen',
+      statusKnown: 'bekannt',
+      selectionLookup: 'Nachschlagen',
+      selectionSave: 'Wendung hinzufügen',
+      selectionTooLong: 'Auswahl zu lang (höchstens {max} Wörter).',
+      coachTitle: 'So liest du hier',
+      coachHover: 'Fahre über ein Wort für eine kurze Vorschau.',
+      coachClick: 'Klicke, um es anzuheften und zu den Karten hinzuzufügen.',
+      coachSelect: 'Ziehe über mehrere Wörter für eine Wendung.',
+      coachDismiss: 'Verstanden',
+      savedDeckTitle: 'Meine Wörter',
+      savedDeckBlurb: 'Beim Lesen gespeicherte Wörter',
+      textDeckTitle: 'Wörter aus „{title}“',
+      contextLabel: 'Gefunden in',
     },
   },
 }
