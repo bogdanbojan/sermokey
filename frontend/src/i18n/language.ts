@@ -8,7 +8,7 @@ const STORAGE_KEY = 'sermokey:lang'
 
 function loadInitialLang(): LanguageCode {
   const stored = localStorage.getItem(STORAGE_KEY)
-  return stored === 'es' ? 'es' : 'fr'
+  return stored === 'es' || stored === 'de' ? stored : 'fr'
 }
 
 // Module-level singletons (same pattern as router.ts's currentRoute): one
@@ -17,6 +17,7 @@ const lang = ref<LanguageCode>(loadInitialLang())
 const languages = ref<Language[]>([
   { code: 'fr', name: 'Français' },
   { code: 'es', name: 'Español' },
+  { code: 'de', name: 'Deutsch' },
 ])
 
 watch(lang, (value) => {

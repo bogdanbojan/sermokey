@@ -1,0 +1,1953 @@
+lemma,pos,gender,translation,category,tier
+acht,other,,eight,zahlen,1
+achtzehn,other,,eighteen,zahlen,1
+achtzig,other,,eighty,zahlen,1
+doppelt,adj,,double,zahlen,1
+drei,other,,three,zahlen,1
+dreizehn,other,,thirteen,zahlen,1
+dreißig,other,,thirty,zahlen,1
+eins,other,,one,zahlen,1
+elf,other,,eleven,zahlen,1
+fünf,other,,five,zahlen,1
+fünfzehn,other,,fifteen,zahlen,1
+fünfzig,other,,fifty,zahlen,1
+hundert,other,,one hundred,zahlen,1
+neun,other,,nine,zahlen,1
+neunzehn,other,,nineteen,zahlen,1
+neunzig,other,,ninety,zahlen,1
+null,other,,zero,zahlen,1
+sechs,other,,six,zahlen,1
+sechzehn,other,,sixteen,zahlen,1
+sechzig,other,,sixty,zahlen,1
+sieben,other,,seven,zahlen,1
+siebzehn,other,,seventeen,zahlen,1
+siebzig,other,,seventy,zahlen,1
+tausend,other,,one thousand,zahlen,1
+vier,other,,four,zahlen,1
+vierzehn,other,,fourteen,zahlen,1
+vierzig,other,,forty,zahlen,1
+zehn,other,,ten,zahlen,1
+zwanzig,other,,twenty,zahlen,1
+zwei,other,,two,zahlen,1
+zwölf,other,,twelve,zahlen,1
+der Rest,noun,m,remainder,zahlen,2
+die Milliarde,noun,f,billion,zahlen,2
+die Million,noun,f,million,zahlen,2
+dritte,adj,,third,zahlen,2
+ein paar,other,,a few,zahlen,2
+einzelne,adj,,single,zahlen,2
+erste,adj,,first,zahlen,2
+fünfte,adj,,fifth,zahlen,2
+letzte,adj,,last,zahlen,2
+vierte,adj,,fourth,zahlen,2
+zehnte,adj,,tenth,zahlen,2
+zweite,adj,,second,zahlen,2
+die Ziffer,noun,f,digit,zahlen,3
+das Gewicht,noun,n,weight,masse,1
+das Kilogramm,noun,n,kilogram,masse,1
+das Paar,noun,n,pair,masse,1
+das Prozent,noun,n,percent,masse,1
+das Viertel,noun,n,quarter,masse,1
+der Grad,noun,m,degree,masse,1
+der Kilometer,noun,m,kilometer,masse,1
+der Liter,noun,m,liter,masse,1
+der Meter,noun,m,meter,masse,1
+die Entfernung,noun,f,distance,masse,1
+die Geschwindigkeit,noun,f,speed,masse,1
+die Größe,noun,f,size,masse,1
+die Hälfte,noun,f,half,masse,1
+die Höhe,noun,f,height,masse,1
+die Länge,noun,f,length,masse,1
+die Menge,noun,f,amount,masse,1
+die Nummer,noun,f,number (e.g. phone),masse,1
+die Temperatur,noun,f,temperature,masse,1
+die Zahl,noun,f,number,masse,1
+rechnen,verb,,to calculate,masse,1
+zählen,verb,,to count,masse,1
+das Drittel,noun,n,third,masse,2
+das Dutzend,noun,n,dozen,masse,2
+das Gramm,noun,n,gram,masse,2
+das Maß,noun,n,measure,masse,2
+das Volumen,noun,n,volume,masse,2
+der Anteil,noun,m,share / portion,masse,2
+der Durchschnitt,noun,m,average,masse,2
+der Zentimeter,noun,m,centimeter,masse,2
+die Anzahl,noun,f,number of,masse,2
+die Breite,noun,f,width,masse,2
+die Einheit,noun,f,unit,masse,2
+die Fläche,noun,f,area,masse,2
+die Summe,noun,f,sum,masse,2
+die Tiefe,noun,f,depth,masse,2
+messen,verb,,to measure,masse,2
+wiegen,verb,,to weigh,masse,2
+der Millimeter,noun,m,millimeter,masse,3
+die Dicke,noun,f,thickness,masse,3
+die Dimension,noun,f,dimension,masse,3
+die Kapazität,noun,f,capacity,masse,3
+die Messung,noun,f,measurement,masse,3
+die Proportion,noun,f,proportion,masse,3
+die Tonne,noun,f,ton,masse,3
+abends,other,,in the evening,zeit,1
+das Alter,noun,n,age,zeit,1
+das Jahr,noun,n,year,zeit,1
+das Wochenende,noun,n,weekend,zeit,1
+der Abend,noun,m,evening,zeit,1
+der Augenblick,noun,m,moment,zeit,1
+der Dienstag,noun,m,Tuesday,zeit,1
+der Donnerstag,noun,m,Thursday,zeit,1
+der Feiertag,noun,m,public holiday,zeit,1
+der Freitag,noun,m,Friday,zeit,1
+der Frühling,noun,m,spring,zeit,1
+der Geburtstag,noun,m,birthday,zeit,1
+der Herbst,noun,m,autumn / fall,zeit,1
+der Mittwoch,noun,m,Wednesday,zeit,1
+der Monat,noun,m,month,zeit,1
+der Montag,noun,m,Monday,zeit,1
+der Morgen,noun,m,morning,zeit,1
+der Samstag,noun,m,Saturday,zeit,1
+der Sommer,noun,m,summer,zeit,1
+der Sonntag,noun,m,Sunday,zeit,1
+der Tag,noun,m,day,zeit,1
+der Wecker,noun,m,alarm clock,zeit,1
+der Winter,noun,m,winter,zeit,1
+die Geburt,noun,f,birth,zeit,1
+die Kindheit,noun,f,childhood,zeit,1
+die Minute,noun,f,minute,zeit,1
+die Nacht,noun,f,night,zeit,1
+die Stunde,noun,f,hour,zeit,1
+die Uhr,noun,f,clock / watch,zeit,1
+die Uhrzeit,noun,f,clock time,zeit,1
+die Verspätung,noun,f,delay,zeit,1
+die Woche,noun,f,week,zeit,1
+die Zeit,noun,f,time,zeit,1
+gestern,adv,,yesterday,zeit,1
+jetzt,adv,,now,zeit,1
+morgen,adv,,tomorrow,zeit,1
+morgens,other,,in the morning,zeit,1
+nachts,other,,at night,zeit,1
+täglich,adj,,daily,zeit,1
+das Jahrhundert,noun,n,century,zeit,2
+das Jahrzehnt,noun,n,decade,zeit,2
+das Semester,noun,n,semester,zeit,2
+der Alltag,noun,m,everyday life,zeit,2
+der April,noun,m,April,zeit,2
+der August,noun,m,August,zeit,2
+der Dezember,noun,m,December,zeit,2
+der Februar,noun,m,February,zeit,2
+der Januar,noun,m,January,zeit,2
+der Juli,noun,m,July,zeit,2
+der Juni,noun,m,June,zeit,2
+der Kalender,noun,m,calendar,zeit,2
+der Mai,noun,m,May,zeit,2
+der Mittag,noun,m,noon,zeit,2
+der Moment,noun,m,moment,zeit,2
+der März,noun,m,March,zeit,2
+der Nachmittag,noun,m,afternoon,zeit,2
+der November,noun,m,November,zeit,2
+der Oktober,noun,m,October,zeit,2
+der September,noun,m,September,zeit,2
+die Dauer,noun,f,duration,zeit,2
+die Halbstunde,noun,f,half hour,zeit,2
+die Jugend,noun,f,youth,zeit,2
+die Phase,noun,f,phase,zeit,2
+die Sekunde,noun,f,second,zeit,2
+früh,adv,,early,zeit,2
+jährlich,adj,,yearly,zeit,2
+monatlich,adj,,monthly,zeit,2
+spät,adv,,late,zeit,2
+später,adv,,later,zeit,2
+vorgestern,other,,day before yesterday,zeit,2
+wöchentlich,adj,,weekly,zeit,2
+übermorgen,other,,day after tomorrow,zeit,2
+das Jahrtausend,noun,n,millennium,zeit,3
+das Quartal,noun,n,quarter,zeit,3
+dauerhaft,adj,,permanent,zeit,3
+der Rhythmus,noun,m,rhythm,zeit,3
+der Terminkalender,noun,m,diary,zeit,3
+der Zeitraum,noun,m,time span,zeit,3
+die Epoche,noun,f,epoch,zeit,3
+die Häufigkeit,noun,f,frequency,zeit,3
+die Periode,noun,f,period,zeit,3
+die Pünktlichkeit,noun,f,punctuality,zeit,3
+vorübergehend,adj,,temporary,zeit,3
+das Baby,noun,n,baby,familie,1
+das Kind,noun,n,child,familie,1
+der Bruder,noun,m,brother,familie,1
+der Freund,noun,m,boyfriend / male friend,familie,1
+der Großvater,noun,m,grandfather,familie,1
+der Partner,noun,m,partner,familie,1
+der Sohn,noun,m,son,familie,1
+der Vater,noun,m,father,familie,1
+die Ehe,noun,f,marriage,familie,1
+die Eltern,noun,,parents,familie,1
+die Familie,noun,f,family,familie,1
+die Freundin,noun,f,girlfriend / female friend,familie,1
+die Großmutter,noun,f,grandmother,familie,1
+die Hochzeit,noun,f,wedding,familie,1
+die Mutter,noun,f,mother,familie,1
+die Schwester,noun,f,sister,familie,1
+die Tochter,noun,f,daughter,familie,1
+der Cousin,noun,m,male cousin,familie,2
+der Ehemann,noun,m,husband,familie,2
+der Enkel,noun,m,grandson,familie,2
+der Haushalt,noun,m,household,familie,2
+der Onkel,noun,m,uncle,familie,2
+die Ehefrau,noun,f,wife,familie,2
+die Enkelin,noun,f,granddaughter,familie,2
+die Erziehung,noun,f,upbringing,familie,2
+die Geschwister,noun,,siblings,familie,2
+die Großeltern,noun,,grandparents,familie,2
+die Kusine,noun,f,female cousin,familie,2
+die Scheidung,noun,f,divorce,familie,2
+die Tante,noun,f,aunt,familie,2
+ledig,adj,,single (unmarried),familie,2
+verheiratet,adj,,married,familie,2
+der Nachwuchs,noun,m,offspring,familie,3
+der Neffe,noun,m,nephew,familie,3
+der Schwager,noun,m,brother-in-law,familie,3
+der Schwiegervater,noun,m,father-in-law,familie,3
+der Stiefvater,noun,m,stepfather,familie,3
+der Vetter,noun,m,cousin,familie,3
+der Vorfahre,noun,m,ancestor,familie,3
+der Zwilling,noun,m,twin,familie,3
+die Nichte,noun,f,niece,familie,3
+die Schwiegermutter,noun,f,mother-in-law,familie,3
+die Schwägerin,noun,f,sister-in-law,familie,3
+die Stiefmutter,noun,f,stepmother,familie,3
+die Taufe,noun,f,christening,familie,3
+die Verlobte,noun,f,fiancee,familie,3
+die Verwandtschaft,noun,f,relatives,familie,3
+geschieden,adj,,divorced,familie,3
+das Auge,noun,n,eye,koerper,1
+das Bein,noun,n,leg,koerper,1
+das Gesicht,noun,n,face,koerper,1
+das Haar,noun,n,hair,koerper,1
+das Herz,noun,n,heart,koerper,1
+das Ohr,noun,n,ear,koerper,1
+der Arm,noun,m,arm,koerper,1
+der Bauch,noun,m,stomach / belly,koerper,1
+der Finger,noun,m,finger,koerper,1
+der Fuß,noun,m,foot,koerper,1
+der Hals,noun,m,neck / throat,koerper,1
+der Kopf,noun,m,head,koerper,1
+der Körper,noun,m,body,koerper,1
+der Magen,noun,m,stomach,koerper,1
+der Mund,noun,m,mouth,koerper,1
+der Rücken,noun,m,back,koerper,1
+der Zahn,noun,m,tooth,koerper,1
+die Hand,noun,f,hand,koerper,1
+die Nase,noun,f,nose,koerper,1
+das Blut,noun,n,blood,koerper,2
+das Knie,noun,n,knee,koerper,2
+der Daumen,noun,m,thumb,koerper,2
+der Knochen,noun,m,bone,koerper,2
+der Zeh,noun,m,toe,koerper,2
+die Brust,noun,f,chest,koerper,2
+die Haut,noun,f,skin,koerper,2
+die Hüfte,noun,f,hip,koerper,2
+die Lippe,noun,f,lip,koerper,2
+die Lunge,noun,f,lung,koerper,2
+die Schulter,noun,f,shoulder,koerper,2
+die Wange,noun,f,cheek,koerper,2
+das Handgelenk,noun,n,wrist,koerper,3
+das Kinn,noun,n,chin,koerper,3
+der Ellbogen,noun,m,elbow,koerper,3
+der Knöchel,noun,m,ankle,koerper,3
+der Muskel,noun,m,muscle,koerper,3
+der Nacken,noun,m,nape,koerper,3
+der Oberschenkel,noun,m,thigh,koerper,3
+die Augenbraue,noun,f,eyebrow,koerper,3
+die Ferse,noun,f,heel,koerper,3
+die Leber,noun,f,liver,koerper,3
+die Stirn,noun,f,forehead,koerper,3
+die Zunge,noun,f,tongue,koerper,3
+das Hemd,noun,n,shirt,kleidung,1
+das Kleid,noun,n,dress,kleidung,1
+das T-Shirt,noun,n,t-shirt,kleidung,1
+der Pulli,noun,m,jumper,kleidung,1
+der Pullover,noun,m,sweater,kleidung,1
+der Regenschirm,noun,m,umbrella,kleidung,1
+der Schuh,noun,m,shoe,kleidung,1
+der Turnschuh,noun,m,trainer,kleidung,1
+die Bluse,noun,f,blouse,kleidung,1
+die Geldbörse,noun,f,purse,kleidung,1
+die Hose,noun,f,trousers / pants,kleidung,1
+die Jacke,noun,f,jacket,kleidung,1
+die Jeans,noun,f,jeans,kleidung,1
+die Kleidung,noun,f,clothing,kleidung,1
+die Mode,noun,f,fashion,kleidung,1
+die Shorts,noun,,shorts,kleidung,1
+die Tasche,noun,f,bag,kleidung,1
+die Uhr,noun,f,watch,kleidung,1
+das Armband,noun,n,bracelet,kleidung,2
+das Leder,noun,n,leather,kleidung,2
+das Muster,noun,n,pattern,kleidung,2
+der Anzug,noun,m,suit,kleidung,2
+der Gürtel,noun,m,belt,kleidung,2
+der Handschuh,noun,m,glove,kleidung,2
+der Hut,noun,m,hat,kleidung,2
+der Mantel,noun,m,coat,kleidung,2
+der Ohrring,noun,m,earring,kleidung,2
+der Ring,noun,m,ring,kleidung,2
+der Rock,noun,m,skirt,kleidung,2
+der Schal,noun,m,scarf,kleidung,2
+der Schlafanzug,noun,m,pyjamas,kleidung,2
+der Schmuck,noun,m,jewellery,kleidung,2
+der Stiefel,noun,m,boot,kleidung,2
+der Stoff,noun,m,fabric,kleidung,2
+die Badehose,noun,f,swimming trunks,kleidung,2
+die Baumwolle,noun,f,cotton,kleidung,2
+die Brille,noun,f,glasses,kleidung,2
+die Kette,noun,f,necklace,kleidung,2
+die Mütze,noun,f,cap / hat,kleidung,2
+die Sandale,noun,f,sandal,kleidung,2
+die Socke,noun,f,sock,kleidung,2
+die Weste,noun,f,waistcoat,kleidung,2
+die Wolle,noun,f,wool,kleidung,2
+der Badeanzug,noun,m,swimsuit,kleidung,3
+der Bademantel,noun,m,bathrobe,kleidung,3
+der Blazer,noun,m,blazer,kleidung,3
+der Pantoffel,noun,m,slipper,kleidung,3
+die Krawatte,noun,f,tie,kleidung,3
+die Seide,noun,f,silk,kleidung,3
+die Strumpfhose,noun,f,tights,kleidung,3
+die Umkleidekabine,noun,f,fitting room,kleidung,3
+die Unterwäsche,noun,f,underwear,kleidung,3
+das Abendessen,noun,n,dinner,essen,1
+das Brot,noun,n,bread,essen,1
+das Brötchen,noun,n,bread roll,essen,1
+das Ei,noun,n,egg,essen,1
+das Eis,noun,n,ice cream,essen,1
+das Fleisch,noun,n,meat,essen,1
+das Frühstück,noun,n,breakfast,essen,1
+das Gemüse,noun,n,vegetables,essen,1
+das Hähnchen,noun,n,chicken (dish),essen,1
+das Mehl,noun,n,flour,essen,1
+das Mittagessen,noun,n,lunch,essen,1
+das Obst,noun,n,fruit,essen,1
+das Restaurant,noun,n,restaurant,essen,1
+das Rezept,noun,n,recipe,essen,1
+das Salz,noun,n,salt,essen,1
+das Sandwich,noun,n,sandwich,essen,1
+das Wasser,noun,n,water,essen,1
+der Apfel,noun,m,apple,essen,1
+der Durst,noun,m,thirst,essen,1
+der Fisch,noun,m,fish,essen,1
+der Hunger,noun,m,hunger,essen,1
+der Joghurt,noun,m,yoghurt,essen,1
+der Kaffee,noun,m,coffee,essen,1
+der Kuchen,noun,m,cake,essen,1
+der Käse,noun,m,cheese,essen,1
+der Reis,noun,m,rice,essen,1
+der Saft,noun,m,juice,essen,1
+der Salat,noun,m,salad,essen,1
+der Schinken,noun,m,ham,essen,1
+der Tee,noun,m,tea,essen,1
+der Zucker,noun,m,sugar,essen,1
+die Banane,noun,f,banana,essen,1
+die Birne,noun,f,pear,essen,1
+die Butter,noun,f,butter,essen,1
+die Erdbeere,noun,f,strawberry,essen,1
+die Flasche,noun,f,bottle,essen,1
+die Gurke,noun,f,cucumber,essen,1
+die Kartoffel,noun,f,potato,essen,1
+die Kirsche,noun,f,cherry,essen,1
+die Mahlzeit,noun,f,meal,essen,1
+die Milch,noun,f,milk,essen,1
+die Nudel,noun,f,noodle / pasta,essen,1
+die Orange,noun,f,orange,essen,1
+die Pizza,noun,f,pizza,essen,1
+die Pommes,noun,,fries,essen,1
+die Sahne,noun,f,cream,essen,1
+die Schokolade,noun,f,chocolate,essen,1
+die Soße,noun,f,sauce,essen,1
+die Suppe,noun,f,soup,essen,1
+die Tasse,noun,f,cup,essen,1
+die Tomate,noun,f,tomato,essen,1
+die Traube,noun,f,grape,essen,1
+die Wurst,noun,f,sausage,essen,1
+die Zitrone,noun,f,lemon,essen,1
+lecker,adj,,delicious,essen,1
+süß,adj,,sweet,essen,1
+das Bier,noun,n,beer,essen,2
+das Gewürz,noun,n,spice,essen,2
+das Glas,noun,n,glass,essen,2
+das Huhn,noun,n,chicken,essen,2
+das Messer,noun,n,knife,essen,2
+das Omelett,noun,n,omelette,essen,2
+das Rindfleisch,noun,n,beef,essen,2
+das Schweinefleisch,noun,n,pork,essen,2
+das Öl,noun,n,oil,essen,2
+der Essig,noun,m,vinegar,essen,2
+der Geschmack,noun,m,taste,essen,2
+der Honig,noun,m,honey,essen,2
+der Imbiss,noun,m,snack bar,essen,2
+der Knoblauch,noun,m,garlic,essen,2
+der Kohl,noun,m,cabbage,essen,2
+der Lachs,noun,m,salmon,essen,2
+der Löffel,noun,m,spoon,essen,2
+der Mais,noun,m,corn,essen,2
+der Nachtisch,noun,m,dessert,essen,2
+der Paprika,noun,m,bell pepper,essen,2
+der Pfeffer,noun,m,pepper,essen,2
+der Pfirsich,noun,m,peach,essen,2
+der Pilz,noun,m,mushroom,essen,2
+der Spinat,noun,m,spinach,essen,2
+der Teller,noun,m,plate,essen,2
+der Toast,noun,m,toast,essen,2
+der Wein,noun,m,wine,essen,2
+die Bohne,noun,f,bean,essen,2
+die Dose,noun,f,can,essen,2
+die Erbse,noun,f,pea,essen,2
+die Gabel,noun,f,fork,essen,2
+die Hauptspeise,noun,f,main course,essen,2
+die Limonade,noun,f,lemonade,essen,2
+die Marmelade,noun,f,jam,essen,2
+die Melone,noun,f,melon,essen,2
+die Nuss,noun,f,nut,essen,2
+die Portion,noun,f,portion,essen,2
+die Serviette,noun,f,napkin,essen,2
+die Speisekarte,noun,f,menu,essen,2
+die Vorspeise,noun,f,starter,essen,2
+die Zutat,noun,f,ingredient,essen,2
+die Zwiebel,noun,f,onion,essen,2
+salzig,adj,,salty,essen,2
+sauer,adj,,sour,essen,2
+scharf,adj,,spicy,essen,2
+das Mehlgebäck,noun,n,baked goods,essen,3
+der Sekt,noun,m,sparkling wine,essen,3
+die Beilage,noun,f,side dish,essen,3
+die Butterbrezel,noun,f,buttered pretzel,essen,3
+die Garnele,noun,f,shrimp,essen,3
+die Linse,noun,f,lentil,essen,3
+die Mandel,noun,f,almond,essen,3
+die Meeresfrüchte,noun,,seafood,essen,3
+die Petersilie,noun,f,parsley,essen,3
+die Pute,noun,f,turkey,essen,3
+das Badezimmer,noun,n,bathroom,haus,1
+das Bett,noun,n,bed,haus,1
+das Bild,noun,n,picture,haus,1
+das Fenster,noun,n,window,haus,1
+das Geschirr,noun,n,dishes,haus,1
+das Handtuch,noun,n,towel,haus,1
+das Haus,noun,n,house,haus,1
+das Kissen,noun,n,cushion,haus,1
+das Möbel,noun,n,furniture,haus,1
+das Schlafzimmer,noun,n,bedroom,haus,1
+das Sofa,noun,n,sofa,haus,1
+das Werkzeug,noun,n,tool,haus,1
+das Wohnzimmer,noun,n,living room,haus,1
+das Zimmer,noun,n,room,haus,1
+der Flur,noun,m,hallway,haus,1
+der Kühlschrank,noun,m,fridge,haus,1
+der Mülleimer,noun,m,bin,haus,1
+der Schlüssel,noun,m,key,haus,1
+der Schrank,noun,m,cupboard / closet,haus,1
+der Schreibtisch,noun,m,desk,haus,1
+der Sessel,noun,m,armchair,haus,1
+der Strom,noun,m,electricity,haus,1
+der Stuhl,noun,m,chair,haus,1
+der Tisch,noun,m,table,haus,1
+die Adresse,noun,f,address,haus,1
+die Decke,noun,f,blanket / ceiling,haus,1
+die Dusche,noun,f,shower,haus,1
+die Garage,noun,f,garage,haus,1
+die Hausarbeit,noun,f,housework,haus,1
+die Heizung,noun,f,heating,haus,1
+die Küche,noun,f,kitchen,haus,1
+die Lampe,noun,f,lamp,haus,1
+die Mikrowelle,noun,f,microwave,haus,1
+die Pflanze,noun,f,plant,haus,1
+die Seife,noun,f,soap,haus,1
+die Tür,noun,f,door,haus,1
+die Wand,noun,f,wall,haus,1
+die Wohnung,noun,f,apartment,haus,1
+die Wäsche,noun,f,laundry,haus,1
+die Zahnbürste,noun,f,toothbrush,haus,1
+das Bücherregal,noun,n,bookshelf,haus,2
+das Dach,noun,n,roof,haus,2
+das Gas,noun,n,gas,haus,2
+das Shampoo,noun,n,shampoo,haus,2
+der Aufzug,noun,m,lift,haus,2
+der Balkon,noun,m,balcony,haus,2
+der Besen,noun,m,broom,haus,2
+der Boden,noun,m,floor,haus,2
+der Eimer,noun,m,bucket,haus,2
+der Gefrierschrank,noun,m,freezer,haus,2
+der Hammer,noun,m,hammer,haus,2
+der Herd,noun,m,stove,haus,2
+der Hof,noun,m,yard,haus,2
+der Keller,noun,m,basement,haus,2
+der Mieter,noun,m,tenant,haus,2
+der Nachbar,noun,m,neighbor,haus,2
+der Nagel,noun,m,nail,haus,2
+der Schalter,noun,m,switch,haus,2
+der Spiegel,noun,m,mirror,haus,2
+der Staubsauger,noun,m,vacuum cleaner,haus,2
+der Teppich,noun,m,carpet,haus,2
+der Umzug,noun,m,house move,haus,2
+der Vermieter,noun,m,landlord,haus,2
+der Vorhang,noun,m,curtain,haus,2
+der Wasserhahn,noun,m,tap,haus,2
+der Zaun,noun,m,fence,haus,2
+die Badewanne,noun,f,bathtub,haus,2
+die Glühbirne,noun,f,light bulb,haus,2
+die Kerze,noun,f,candle,haus,2
+die Klimaanlage,noun,f,air conditioning,haus,2
+die Leiter,noun,f,ladder,haus,2
+die Schraube,noun,f,screw,haus,2
+die Schublade,noun,f,drawer,haus,2
+die Spülmaschine,noun,f,dishwasher,haus,2
+die Steckdose,noun,f,power socket,haus,2
+die Treppe,noun,f,stairs,haus,2
+die Vase,noun,f,vase,haus,2
+die Waschmaschine,noun,f,washing machine,haus,2
+die Zahnpasta,noun,f,toothpaste,haus,2
+das Bettlaken,noun,n,bed sheet,haus,3
+das Waschmittel,noun,n,detergent,haus,3
+der Dachboden,noun,m,attic,haus,3
+der Mietvertrag,noun,m,lease,haus,3
+der Pinsel,noun,m,paintbrush,haus,3
+der Schwamm,noun,m,sponge,haus,3
+die Kommode,noun,f,chest of drawers,haus,3
+die Nebenkosten,noun,,utility costs,haus,3
+die Unordnung,noun,f,mess,haus,3
+blau,adj,,blue,farben,1
+braun,adj,,brown,farben,1
+gelb,adj,,yellow,farben,1
+grau,adj,,gray,farben,1
+grün,adj,,green,farben,1
+orange,adj,,orange,farben,1
+rosa,adj,,pink,farben,1
+rot,adj,,red,farben,1
+schwarz,adj,,black,farben,1
+weiß,adj,,white,farben,1
+beige,adj,,beige,farben,2
+bunt,adj,,colorful,farben,2
+dunkelblau,adj,,dark blue,farben,2
+hell,adj,,light / bright,farben,2
+hellgrün,adj,,light green,farben,2
+lila,adj,,purple,farben,2
+golden,adj,,golden,farben,3
+silbern,adj,,silver,farben,3
+türkis,adj,,turquoise,farben,3
+alt,adj,,old,adjektive,1
+bekannt,adj,,well-known,adjektive,1
+berühmt,adj,,famous,adjektive,1
+billig,adj,,cheap,adjektive,1
+dick,adj,,thick / fat,adjektive,1
+dunkel,adj,,dark,adjektive,1
+durstig,adj,,thirsty,adjektive,1
+dünn,adj,,thin,adjektive,1
+eigen,adj,,own,adjektive,1
+einfach,adj,,easy / simple,adjektive,1
+eng,adj,,narrow / tight,adjektive,1
+enttäuscht,adj,,disappointed,adjektive,1
+falsch,adj,,wrong,adjektive,1
+frei,adj,,free,adjektive,1
+fremd,adj,,foreign / strange,adjektive,1
+freundlich,adj,,friendly,adjektive,1
+frisch,adj,,fresh,adjektive,1
+ganz,adj,,whole,adjektive,1
+gefährlich,adj,,dangerous,adjektive,1
+geschlossen,adj,,closed,adjektive,1
+gestresst,adj,,stressed,adjektive,1
+gesund,adj,,healthy,adjektive,1
+gleich,adj,,same,adjektive,1
+glücklich,adj,,happy,adjektive,1
+groß,adj,,big / tall,adjektive,1
+gut,adj,,good,adjektive,1
+hart,adj,,hard,adjektive,1
+heiß,adj,,hot,adjektive,1
+hell,adj,,bright,adjektive,1
+hoch,adj,,high / tall,adjektive,1
+hungrig,adj,,hungry,adjektive,1
+interessant,adj,,interesting,adjektive,1
+jung,adj,,young,adjektive,1
+kalt,adj,,cold,adjektive,1
+klein,adj,,small,adjektive,1
+klug,adj,,smart,adjektive,1
+kurz,adj,,short,adjektive,1
+lang,adj,,long,adjektive,1
+langsam,adj,,slow,adjektive,1
+laut,adj,,loud,adjektive,1
+leer,adj,,empty,adjektive,1
+leicht,adj,,light (weight) / easy,adjektive,1
+leise,adj,,quiet,adjektive,1
+lustig,adj,,funny,adjektive,1
+modern,adj,,modern,adjektive,1
+möglich,adj,,possible,adjektive,1
+müde,adj,,tired,adjektive,1
+nass,adj,,wet,adjektive,1
+nett,adj,,nice,adjektive,1
+neu,adj,,new,adjektive,1
+normal,adj,,normal,adjektive,1
+nötig,adj,,necessary,adjektive,1
+nützlich,adj,,useful,adjektive,1
+offen,adj,,open,adjektive,1
+richtig,adj,,correct,adjektive,1
+ruhig,adj,,calm / quiet,adjektive,1
+rund,adj,,round,adjektive,1
+sauber,adj,,clean,adjektive,1
+schlecht,adj,,bad,adjektive,1
+schmutzig,adj,,dirty,adjektive,1
+schnell,adj,,fast,adjektive,1
+schwer,adj,,heavy / difficult,adjektive,1
+schwierig,adj,,difficult,adjektive,1
+schön,adj,,beautiful,adjektive,1
+sicher,adj,,safe / sure,adjektive,1
+spannend,adj,,exciting,adjektive,1
+stark,adj,,strong,adjektive,1
+teuer,adj,,expensive,adjektive,1
+tief,adj,,deep,adjektive,1
+traurig,adj,,sad,adjektive,1
+trocken,adj,,dry,adjektive,1
+unmöglich,adj,,impossible,adjektive,1
+verschieden,adj,,different,adjektive,1
+voll,adj,,full,adjektive,1
+wach,adj,,awake,adjektive,1
+wahr,adj,,true,adjektive,1
+warm,adj,,warm,adjektive,1
+weich,adj,,soft,adjektive,1
+weit,adj,,wide / far,adjektive,1
+wichtig,adj,,important,adjektive,1
+zufrieden,adj,,content,adjektive,1
+ähnlich,adj,,similar,adjektive,1
+überrascht,adj,,surprised,adjektive,1
+allgemein,adj,,general,adjektive,2
+arm,adj,,poor,adjektive,2
+beliebt,adj,,popular,adjektive,2
+besetzt,adj,,occupied,adjektive,2
+besonder,adj,,special,adjektive,2
+besorgt,adj,,worried,adjektive,2
+bitter,adj,,bitter,adjektive,2
+breit,adj,,wide,adjektive,2
+dringend,adj,,urgent,adjektive,2
+dumm,adj,,stupid,adjektive,2
+ehrlich,adj,,honest,adjektive,2
+einzeln,adj,,individual,adjektive,2
+einzig,adj,,only / sole,adjektive,2
+entspannt,adj,,relaxed,adjektive,2
+erfahren,adj,,experienced,adjektive,2
+ernst,adj,,serious,adjektive,2
+erwachsen,adj,,grown-up,adjektive,2
+faul,adj,,lazy,adjektive,2
+fett,adj,,fatty,adjektive,2
+flach,adj,,flat,adjektive,2
+fleißig,adj,,hardworking,adjektive,2
+gekocht,adj,,cooked,adjektive,2
+gemein,adj,,mean,adjektive,2
+glatt,adj,,smooth,adjektive,2
+hässlich,adj,,ugly,adjektive,2
+höflich,adj,,polite,adjektive,2
+kühl,adj,,cool,adjektive,2
+langweilig,adj,,boring,adjektive,2
+mild,adj,,mild,adjektive,2
+mutig,adj,,brave,adjektive,2
+niedrig,adj,,low,adjektive,2
+pünktlich,adj,,punctual,adjektive,2
+reich,adj,,rich,adjektive,2
+reif,adj,,ripe,adjektive,2
+roh,adj,,raw,adjektive,2
+satt,adj,,full (sated),adjektive,2
+schwach,adj,,weak,adjektive,2
+seltsam,adj,,strange,adjektive,2
+traditionell,adj,,traditional,adjektive,2
+ungewöhnlich,adj,,unusual,adjektive,2
+unzufrieden,adj,,dissatisfied,adjektive,2
+vorsichtig,adj,,careful,adjektive,2
+üblich,adj,,usual,adjektive,2
+altmodisch,adj,,old-fashioned,adjektive,3
+begabt,adj,,talented,adjektive,3
+eckig,adj,,angular,adjektive,3
+frech,adj,,cheeky / rude,adjektive,3
+geizig,adj,,stingy,adjektive,3
+großzügig,adj,,generous,adjektive,3
+nutzlos,adj,,useless,adjektive,3
+rau,adj,,rough,adjektive,3
+schmal,adj,,narrow,adjektive,3
+spitz,adj,,pointed,adjektive,3
+teilweise,adj,,partial,adjektive,3
+unfreundlich,adj,,unfriendly,adjektive,3
+unhöflich,adj,,impolite,adjektive,3
+ängstlich,adj,,anxious,adjektive,3
+anfangen,verb,,to start,verben,1
+ankommen,verb,,to arrive,verben,1
+anschauen,verb,,to look at,verben,1
+antworten,verb,,to answer,verben,1
+arbeiten,verb,,to work,verben,1
+aufhören,verb,,to stop,verben,1
+aufräumen,verb,,to tidy up,verben,1
+bauen,verb,,to build,verben,1
+bedeuten,verb,,to mean,verben,1
+bekommen,verb,,to get,verben,1
+benutzen,verb,,to use,verben,1
+besuchen,verb,,to visit,verben,1
+bezahlen,verb,,to pay,verben,1
+bleiben,verb,,to stay,verben,1
+brauchen,verb,,to need,verben,1
+bringen,verb,,to bring,verben,1
+danken,verb,,to thank,verben,1
+dauern,verb,,to last,verben,1
+denken,verb,,to think,verben,1
+diskutieren,verb,,to discuss,verben,1
+dürfen,verb,,to be allowed to,verben,1
+einladen,verb,,to invite,verben,1
+entscheiden,verb,,to decide,verben,1
+entschuldigen,verb,,to apologize,verben,1
+erhalten,verb,,to receive,verben,1
+erkennen,verb,,to recognize,verben,1
+erklären,verb,,to explain,verben,1
+erreichen,verb,,to reach,verben,1
+erzählen,verb,,to tell,verben,1
+essen,verb,,to eat,verben,1
+fahren,verb,,to drive / to go (by vehicle),verben,1
+fallen,verb,,to fall,verben,1
+finden,verb,,to find,verben,1
+folgen,verb,,to follow,verben,1
+fragen,verb,,to ask,verben,1
+freuen,verb,,to be glad,verben,1
+führen,verb,,to lead,verben,1
+geben,verb,,to give,verben,1
+gefallen,verb,,to please,verben,1
+gehen,verb,,to go,verben,1
+gehören,verb,,to belong,verben,1
+gewinnen,verb,,to win,verben,1
+glauben,verb,,to believe,verben,1
+haben,verb,,to have,verben,1
+halten,verb,,to hold,verben,1
+heißen,verb,,to be called,verben,1
+helfen,verb,,to help,verben,1
+hoffen,verb,,to hope,verben,1
+holen,verb,,to fetch,verben,1
+hören,verb,,to hear / to listen,verben,1
+interessieren,verb,,to interest,verben,1
+kaufen,verb,,to buy,verben,1
+kennen,verb,,to know (be acquainted with),verben,1
+kochen,verb,,to cook,verben,1
+kommen,verb,,to come,verben,1
+kosten,verb,,to cost,verben,1
+können,verb,,can / to be able to,verben,1
+lachen,verb,,to laugh,verben,1
+lassen,verb,,to let,verben,1
+laufen,verb,,to run / to walk,verben,1
+leben,verb,,to live (be alive),verben,1
+legen,verb,,to lay,verben,1
+lernen,verb,,to learn,verben,1
+lesen,verb,,to read,verben,1
+lieben,verb,,to love,verben,1
+liegen,verb,,to lie,verben,1
+machen,verb,,to do / to make,verben,1
+meinen,verb,,to think / mean,verben,1
+mögen,verb,,to like,verben,1
+müssen,verb,,must / to have to,verben,1
+nehmen,verb,,to take,verben,1
+passieren,verb,,to happen,verben,1
+putzen,verb,,to clean,verben,1
+reden,verb,,to talk,verben,1
+reisen,verb,,to travel,verben,1
+reparieren,verb,,to repair,verben,1
+sagen,verb,,to say,verben,1
+schaffen,verb,,to create / manage,verben,1
+scheinen,verb,,to seem / shine,verben,1
+schlafen,verb,,to sleep,verben,1
+schließen,verb,,to close,verben,1
+schneiden,verb,,to cut,verben,1
+schreiben,verb,,to write,verben,1
+schwimmen,verb,,to swim,verben,1
+sehen,verb,,to see,verben,1
+sein,verb,,to be,verben,1
+setzen,verb,,to set,verben,1
+singen,verb,,to sing,verben,1
+sitzen,verb,,to sit,verben,1
+sollen,verb,,should,verben,1
+sparen,verb,,to save,verben,1
+spielen,verb,,to play,verben,1
+sprechen,verb,,to speak,verben,1
+springen,verb,,to jump,verben,1
+stehen,verb,,to stand,verben,1
+stellen,verb,,to place,verben,1
+sterben,verb,,to die,verben,1
+stimmen,verb,,to be correct,verben,1
+suchen,verb,,to look for,verben,1
+tanzen,verb,,to dance,verben,1
+teilen,verb,,to share,verben,1
+tragen,verb,,to carry / wear,verben,1
+treffen,verb,,to meet,verben,1
+trinken,verb,,to drink,verben,1
+verdienen,verb,,to earn,verben,1
+vergessen,verb,,to forget,verben,1
+vergleichen,verb,,to compare,verben,1
+verlassen,verb,,to leave,verben,1
+verlieren,verb,,to lose,verben,1
+verstehen,verb,,to understand,verben,1
+versuchen,verb,,to try,verben,1
+vorstellen,verb,,to introduce / imagine,verben,1
+wachsen,verb,,to grow,verben,1
+wandern,verb,,to hike,verben,1
+warten,verb,,to wait,verben,1
+waschen,verb,,to wash,verben,1
+werden,verb,,to become,verben,1
+wissen,verb,,to know (a fact),verben,1
+wohnen,verb,,to live (reside),verben,1
+wollen,verb,,to want,verben,1
+wählen,verb,,to choose / vote,verben,1
+wünschen,verb,,to wish,verben,1
+zeigen,verb,,to show,verben,1
+ziehen,verb,,to pull,verben,1
+zuhören,verb,,to listen,verben,1
+zurückkommen,verb,,to come back,verben,1
+ändern,verb,,to change,verben,1
+öffnen,verb,,to open,verben,1
+abfahren,verb,,to depart,verben,2
+ausgeben,verb,,to spend,verben,2
+backen,verb,,to bake,verben,2
+beenden,verb,,to finish,verben,2
+beginnen,verb,,to begin,verben,2
+begleiten,verb,,to accompany,verben,2
+begrüßen,verb,,to greet,verben,2
+behalten,verb,,to keep,verben,2
+bemerken,verb,,to notice,verben,2
+beobachten,verb,,to observe,verben,2
+berichten,verb,,to report,verben,2
+beschreiben,verb,,to describe,verben,2
+bestehen,verb,,to consist / pass,verben,2
+enthalten,verb,,to contain,verben,2
+entwickeln,verb,,to develop,verben,2
+erlauben,verb,,to allow,verben,2
+fliegen,verb,,to fly,verben,2
+fotografieren,verb,,to photograph,verben,2
+füllen,verb,,to fill,verben,2
+fürchten,verb,,to fear,verben,2
+geboren werden,verb,,to be born,verben,2
+gratulieren,verb,,to congratulate,verben,2
+klettern,verb,,to climb,verben,2
+kritisieren,verb,,to criticize,verben,2
+leiden,verb,,to suffer,verben,2
+leihen,verb,,to lend / borrow,verben,2
+loben,verb,,to praise,verben,2
+lächeln,verb,,to smile,verben,2
+lügen,verb,,to lie,verben,2
+malen,verb,,to paint,verben,2
+parken,verb,,to park,verben,2
+pflegen,verb,,to care for,verben,2
+retten,verb,,to rescue,verben,2
+sammeln,verb,,to collect,verben,2
+schenken,verb,,to give as a gift,verben,2
+schreien,verb,,to shout,verben,2
+schützen,verb,,to protect,verben,2
+steigen,verb,,to climb / rise,verben,2
+streiten,verb,,to argue,verben,2
+trennen,verb,,to separate,verben,2
+töten,verb,,to kill,verben,2
+unterscheiden,verb,,to distinguish,verben,2
+verbessern,verb,,to improve,verben,2
+verbieten,verb,,to forbid,verben,2
+verbinden,verb,,to connect,verben,2
+verkaufen,verb,,to sell,verben,2
+verletzen,verb,,to injure,verben,2
+versprechen,verb,,to promise,verben,2
+verwenden,verb,,to use,verben,2
+wechseln,verb,,to switch,verben,2
+weinen,verb,,to cry,verben,2
+werfen,verb,,to throw,verben,2
+zeichnen,verb,,to draw,verben,2
+zerstören,verb,,to destroy,verben,2
+ärgern,verb,,to annoy,verben,2
+überlegen,verb,,to consider,verben,2
+entstehen,verb,,to arise,verben,3
+gebrauchen,verb,,to use,verben,3
+leeren,verb,,to empty,verben,3
+mischen,verb,,to mix,verben,3
+schulden,verb,,to owe,verben,3
+sortieren,verb,,to sort,verben,3
+verabschieden,verb,,to say goodbye,verben,3
+zweifeln,verb,,to doubt,verben,3
+das Blatt,noun,n,leaf,natur,1
+das Eis,noun,n,ice,natur,1
+das Feld,noun,n,field,natur,1
+das Feuer,noun,n,fire,natur,1
+das Meer,noun,n,sea,natur,1
+das Wetter,noun,n,weather,natur,1
+der Baum,noun,m,tree,natur,1
+der Berg,noun,m,mountain,natur,1
+der Boden,noun,m,ground,natur,1
+der Fluss,noun,m,river,natur,1
+der Garten,noun,m,garden,natur,1
+der Himmel,noun,m,sky,natur,1
+der Mond,noun,m,moon,natur,1
+der Regen,noun,m,rain,natur,1
+der Schnee,noun,m,snow,natur,1
+der See,noun,m,lake,natur,1
+der Stern,noun,m,star,natur,1
+der Strand,noun,m,beach,natur,1
+der Wald,noun,m,forest,natur,1
+der Wind,noun,m,wind,natur,1
+die Blume,noun,f,flower,natur,1
+die Erde,noun,f,earth / soil,natur,1
+die Hitze,noun,f,heat,natur,1
+die Jahreszeit,noun,f,season,natur,1
+die Kälte,noun,f,cold,natur,1
+die Sonne,noun,f,sun,natur,1
+die Wolke,noun,f,cloud,natur,1
+das Gewitter,noun,n,thunderstorm,natur,2
+das Gras,noun,n,grass,natur,2
+das Tal,noun,n,valley,natur,2
+der Ast,noun,m,branch,natur,2
+der Blitz,noun,m,lightning,natur,2
+der Fels,noun,m,rock,natur,2
+der Gipfel,noun,m,summit,natur,2
+der Hügel,noun,m,hill,natur,2
+der Nebel,noun,m,fog,natur,2
+der Planet,noun,m,planet,natur,2
+der Regenbogen,noun,m,rainbow,natur,2
+der Sand,noun,m,sand,natur,2
+der Stein,noun,m,stone,natur,2
+der Sturm,noun,m,storm,natur,2
+die Blüte,noun,f,blossom,natur,2
+die Insel,noun,f,island,natur,2
+die Küste,noun,f,coast,natur,2
+die Luft,noun,f,air,natur,2
+die Natur,noun,f,nature,natur,2
+die Welle,noun,f,wave,natur,2
+die Wiese,noun,f,meadow,natur,2
+die Wurzel,noun,f,root,natur,2
+das Weltall,noun,n,outer space,natur,3
+der Bach,noun,m,stream,natur,3
+der Donner,noun,m,thunder,natur,3
+der Dschungel,noun,m,jungle,natur,3
+der Frost,noun,m,frost,natur,3
+der Sauerstoff,noun,m,oxygen,natur,3
+der Teich,noun,m,pond,natur,3
+der Wasserfall,noun,m,waterfall,natur,3
+die Höhle,noun,f,cave,natur,3
+die Landschaft,noun,f,landscape,natur,3
+die Pflanzenwelt,noun,f,flora,natur,3
+die Quelle,noun,f,spring,natur,3
+die Wüste,noun,f,desert,natur,3
+das Haustier,noun,n,pet,tiere,1
+das Huhn,noun,n,hen,tiere,1
+das Pferd,noun,n,horse,tiere,1
+das Schwein,noun,n,pig,tiere,1
+der Affe,noun,m,monkey,tiere,1
+der Bär,noun,m,bear,tiere,1
+der Elefant,noun,m,elephant,tiere,1
+der Hund,noun,m,dog,tiere,1
+der Löwe,noun,m,lion,tiere,1
+der Vogel,noun,m,bird,tiere,1
+der Zoo,noun,m,zoo,tiere,1
+die Katze,noun,f,cat,tiere,1
+die Kuh,noun,f,cow,tiere,1
+die Maus,noun,f,mouse,tiere,1
+das Fell,noun,n,fur,tiere,2
+das Insekt,noun,n,insect,tiere,2
+das Kaninchen,noun,n,rabbit,tiere,2
+das Krokodil,noun,n,crocodile,tiere,2
+das Lamm,noun,n,lamb,tiere,2
+das Nest,noun,n,nest,tiere,2
+das Schaf,noun,n,sheep,tiere,2
+das Zebra,noun,n,zebra,tiere,2
+der Adler,noun,m,eagle,tiere,2
+der Delfin,noun,m,dolphin,tiere,2
+der Flügel,noun,m,wing,tiere,2
+der Frosch,noun,m,frog,tiere,2
+der Fuchs,noun,m,fox,tiere,2
+der Hahn,noun,m,rooster,tiere,2
+der Hai,noun,m,shark,tiere,2
+der Hase,noun,m,hare,tiere,2
+der Pinguin,noun,m,penguin,tiere,2
+der Schmetterling,noun,m,butterfly,tiere,2
+der Schwanz,noun,m,tail,tiere,2
+der Tiger,noun,m,tiger,tiere,2
+der Wal,noun,m,whale,tiere,2
+der Wolf,noun,m,wolf,tiere,2
+die Ameise,noun,f,ant,tiere,2
+die Biene,noun,f,bee,tiere,2
+die Ente,noun,f,duck,tiere,2
+die Eule,noun,f,owl,tiere,2
+die Gans,noun,f,goose,tiere,2
+die Giraffe,noun,f,giraffe,tiere,2
+die Mücke,noun,f,mosquito,tiere,2
+die Schildkröte,noun,f,turtle,tiere,2
+die Schlange,noun,f,snake,tiere,2
+die Spinne,noun,f,spider,tiere,2
+die Taube,noun,f,pigeon,tiere,2
+das Fohlen,noun,n,foal,tiere,3
+das Kalb,noun,n,calf,tiere,3
+das Kamel,noun,n,camel,tiere,3
+das Kätzchen,noun,n,kitten,tiere,3
+das Nilpferd,noun,n,hippo,tiere,3
+das Reh,noun,n,deer,tiere,3
+der Esel,noun,m,donkey,tiere,3
+der Hirsch,noun,m,stag,tiere,3
+der Käfer,noun,m,beetle,tiere,3
+der Seehund,noun,m,seal,tiere,3
+der Welpe,noun,m,puppy,tiere,3
+der Wurm,noun,m,worm,tiere,3
+die Eidechse,noun,f,lizard,tiere,3
+die Feder,noun,f,feather,tiere,3
+die Fliege,noun,f,fly,tiere,3
+die Möwe,noun,f,seagull,tiere,3
+die Pfote,noun,f,paw,tiere,3
+die Schnecke,noun,f,snail,tiere,3
+die Ziege,noun,f,goat,tiere,3
+der Arzt,noun,m,doctor,berufe,1
+der Bäcker,noun,m,baker,berufe,1
+der Kellner,noun,m,waiter,berufe,1
+der Koch,noun,m,cook / chef,berufe,1
+der Polizist,noun,m,police officer,berufe,1
+der Rechtsanwalt,noun,m,lawyer,berufe,1
+der Sportler,noun,m,athlete,berufe,1
+der Sänger,noun,m,singer,berufe,1
+der Verkäufer,noun,m,salesperson,berufe,1
+die Krankenschwester,noun,f,nurse,berufe,1
+der Anwalt,noun,m,lawyer,berufe,2
+der Apotheker,noun,m,pharmacist,berufe,2
+der Architekt,noun,m,architect,berufe,2
+der Bauer,noun,m,farmer,berufe,2
+der Berater,noun,m,consultant,berufe,2
+der Designer,noun,m,designer,berufe,2
+der Erzieher,noun,m,childcare worker,berufe,2
+der Feuerwehrmann,noun,m,firefighter,berufe,2
+der Forscher,noun,m,researcher,berufe,2
+der Fotograf,noun,m,photographer,berufe,2
+der Friseur,noun,m,hairdresser,berufe,2
+der Gärtner,noun,m,gardener,berufe,2
+der Ingenieur,noun,m,engineer,berufe,2
+der Journalist,noun,m,journalist,berufe,2
+der Künstler,noun,m,artist,berufe,2
+der Landwirt,noun,m,farmer,berufe,2
+der Maler,noun,m,painter,berufe,2
+der Manager,noun,m,manager,berufe,2
+der Mechaniker,noun,m,mechanic,berufe,2
+der Metzger,noun,m,butcher,berufe,2
+der Musiker,noun,m,musician,berufe,2
+der Pilot,noun,m,pilot,berufe,2
+der Programmierer,noun,m,programmer,berufe,2
+der Psychologe,noun,m,psychologist,berufe,2
+der Schauspieler,noun,m,actor,berufe,2
+der Schriftsteller,noun,m,writer,berufe,2
+der Soldat,noun,m,soldier,berufe,2
+der Techniker,noun,m,technician,berufe,2
+der Therapeut,noun,m,therapist,berufe,2
+der Tänzer,noun,m,dancer,berufe,2
+der Wissenschaftler,noun,m,scientist,berufe,2
+der Zahnarzt,noun,m,dentist,berufe,2
+der Übersetzer,noun,m,translator,berufe,2
+der Buchhalter,noun,m,accountant,berufe,3
+der Dolmetscher,noun,m,interpreter,berufe,3
+der Elektriker,noun,m,electrician,berufe,3
+der Fahrlehrer,noun,m,driving instructor,berufe,3
+der Klempner,noun,m,plumber,berufe,3
+der Postbote,noun,m,mail carrier,berufe,3
+der Richter,noun,m,judge,berufe,3
+der Schreiner,noun,m,carpenter,berufe,3
+der Sozialarbeiter,noun,m,social worker,berufe,3
+der Steuerberater,noun,m,tax adviser,berufe,3
+das Café,noun,n,cafe,orte,1
+das Fitnessstudio,noun,n,gym,orte,1
+das Hotel,noun,n,hotel,orte,1
+das Krankenhaus,noun,n,hospital,orte,1
+das Land,noun,n,country / land,orte,1
+das Rathaus,noun,n,town hall,orte,1
+das Schwimmbad,noun,n,swimming pool,orte,1
+das Stadion,noun,n,stadium,orte,1
+das Zentrum,noun,n,centre,orte,1
+der Bahnhof,noun,m,train station,orte,1
+der Bauernhof,noun,m,farm,orte,1
+der Hafen,noun,m,port,orte,1
+der Markt,noun,m,market,orte,1
+der Park,noun,m,park,orte,1
+der Platz,noun,m,square / place,orte,1
+der Spielplatz,noun,m,playground,orte,1
+der Supermarkt,noun,m,supermarket,orte,1
+die Apotheke,noun,f,pharmacy,orte,1
+die Bank,noun,f,bank,orte,1
+die Bar,noun,f,bar,orte,1
+die Gegend,noun,f,area,orte,1
+die Haltestelle,noun,f,stop,orte,1
+die Kirche,noun,f,church,orte,1
+die Kneipe,noun,f,pub,orte,1
+die Post,noun,f,post office,orte,1
+die Stadt,noun,f,city,orte,1
+die Tankstelle,noun,f,petrol station,orte,1
+das Denkmal,noun,n,monument,orte,2
+das Dorf,noun,n,village,orte,2
+das Gasthaus,noun,n,inn,orte,2
+das Gefängnis,noun,n,prison,orte,2
+das Gericht,noun,n,court,orte,2
+das Kaufhaus,noun,n,department store,orte,2
+das Museum,noun,n,museum,orte,2
+das Schloss,noun,n,castle,orte,2
+der Campingplatz,noun,m,campsite,orte,2
+der Friedhof,noun,m,cemetery,orte,2
+der Friseursalon,noun,m,hair salon,orte,2
+der Kiosk,noun,m,kiosk,orte,2
+der Marktplatz,noun,m,market square,orte,2
+der Palast,noun,m,palace,orte,2
+der Tunnel,noun,m,tunnel,orte,2
+der Turm,noun,m,tower,orte,2
+die Botschaft,noun,f,embassy,orte,2
+die Brücke,noun,f,bridge,orte,2
+die Buchhandlung,noun,f,bookshop,orte,2
+die Burg,noun,f,castle,orte,2
+die Bäckerei,noun,f,bakery,orte,2
+die Drogerie,noun,f,drugstore,orte,2
+die Fußgängerzone,noun,f,pedestrian zone,orte,2
+die Halle,noun,f,hall,orte,2
+die Hauptstadt,noun,f,capital city,orte,2
+die Jugendherberge,noun,f,youth hostel,orte,2
+die Metzgerei,noun,f,butcher shop,orte,2
+die Moschee,noun,f,mosque,orte,2
+die Pension,noun,f,guest house,orte,2
+die Polizeiwache,noun,f,police station,orte,2
+die Umgebung,noun,f,surroundings,orte,2
+der Aussichtspunkt,noun,m,viewpoint,orte,3
+der Tempel,noun,m,temple,orte,3
+der Wohnort,noun,m,place of residence,orte,3
+die Grenze,noun,f,border,orte,3
+die Hütte,noun,f,hut,orte,3
+die Reinigung,noun,f,dry cleaner,orte,3
+das Auto,noun,n,car,verkehr,1
+das Benzin,noun,n,petrol,verkehr,1
+das Fahrrad,noun,n,bicycle,verkehr,1
+das Flugzeug,noun,n,airplane,verkehr,1
+das Gleis,noun,n,platform track,verkehr,1
+das Motorrad,noun,n,motorbike,verkehr,1
+das Schiff,noun,n,ship,verkehr,1
+das Taxi,noun,n,taxi,verkehr,1
+der Bus,noun,m,bus,verkehr,1
+der Fahrer,noun,m,driver,verkehr,1
+der Flug,noun,m,flight,verkehr,1
+der Flughafen,noun,m,airport,verkehr,1
+der Koffer,noun,m,suitcase,verkehr,1
+der Zug,noun,m,train,verkehr,1
+die Abfahrt,noun,f,departure,verkehr,1
+die Ankunft,noun,f,arrival,verkehr,1
+die Bahn,noun,f,railway,verkehr,1
+die Fahrkarte,noun,f,ticket,verkehr,1
+die Fahrt,noun,f,journey,verkehr,1
+die Reise,noun,f,trip,verkehr,1
+die U-Bahn,noun,f,subway,verkehr,1
+das Boot,noun,n,boat,verkehr,2
+das Gepäck,noun,n,luggage,verkehr,2
+das Lenkrad,noun,n,steering wheel,verkehr,2
+der Anschluss,noun,m,connection,verkehr,2
+der Bahnsteig,noun,m,platform,verkehr,2
+der Fahrgast,noun,m,passenger,verkehr,2
+der Führerschein,noun,m,driver's license,verkehr,2
+der Lastwagen,noun,m,lorry,verkehr,2
+der Motor,noun,m,engine,verkehr,2
+der Parkplatz,noun,m,parking lot,verkehr,2
+der Reifen,noun,m,tyre,verkehr,2
+der Roller,noun,m,scooter,verkehr,2
+der Sicherheitsgurt,noun,m,seat belt,verkehr,2
+der Stau,noun,m,traffic jam,verkehr,2
+der Verkehr,noun,m,traffic,verkehr,2
+die Ampel,noun,f,traffic light,verkehr,2
+die Autobahn,noun,f,highway,verkehr,2
+die Bremse,noun,f,brake,verkehr,2
+die Fähre,noun,f,ferry,verkehr,2
+die Haltestelle,noun,f,bus / tram stop,verkehr,2
+die Rückfahrt,noun,f,return journey,verkehr,2
+die Straßenbahn,noun,f,tram,verkehr,2
+die Tankstelle,noun,f,gas station,verkehr,2
+das Abteil,noun,n,compartment,verkehr,3
+das Kennzeichen,noun,n,licence plate,verkehr,3
+der Fahrplan,noun,m,timetable,verkehr,3
+der Helm,noun,m,helmet,verkehr,3
+der Lieferwagen,noun,m,van,verkehr,3
+der Schaffner,noun,m,conductor,verkehr,3
+die Hinfahrt,noun,f,outward journey,verkehr,3
+die Mitfahrgelegenheit,noun,f,carpool,verkehr,3
+das Buch,noun,n,book,schule,1
+das Heft,noun,n,notebook,schule,1
+das Wort,noun,n,word,schule,1
+der Bleistift,noun,m,pencil,schule,1
+der Lehrer,noun,m,teacher,schule,1
+der Rucksack,noun,m,backpack,schule,1
+der Satz,noun,m,sentence,schule,1
+der Schüler,noun,m,pupil,schule,1
+der Stift,noun,m,pen,schule,1
+der Student,noun,m,student,schule,1
+der Stundenplan,noun,m,timetable,schule,1
+der Test,noun,m,test,schule,1
+der Text,noun,m,text,schule,1
+der Unterricht,noun,m,lessons,schule,1
+die Antwort,noun,f,answer,schule,1
+die Bibliothek,noun,f,library,schule,1
+die Biologie,noun,f,biology,schule,1
+die Chemie,noun,f,chemistry,schule,1
+die Frage,noun,f,question,schule,1
+die Geschichte,noun,f,history / story,schule,1
+die Hausaufgabe,noun,f,homework,schule,1
+die Informatik,noun,f,computer science,schule,1
+die Klasse,noun,f,class,schule,1
+die Kunst,noun,f,art,schule,1
+die Mathematik,noun,f,math,schule,1
+die Pause,noun,f,break,schule,1
+die Physik,noun,f,physics,schule,1
+die Prüfung,noun,f,exam,schule,1
+die Regel,noun,f,rule,schule,1
+die Schule,noun,f,school,schule,1
+die Seite,noun,f,page,schule,1
+die Stunde,noun,f,lesson,schule,1
+die Universität,noun,f,university,schule,1
+die Übung,noun,f,exercise,schule,1
+das Abitur,noun,n,school leaving exam,schule,2
+das Fach,noun,n,subject,schule,2
+das Kapitel,noun,n,chapter,schule,2
+das Klassenzimmer,noun,n,classroom,schule,2
+das Lineal,noun,n,ruler,schule,2
+das Referat,noun,n,presentation,schule,2
+das Studium,noun,n,studies (university),schule,2
+der Abschluss,noun,m,degree,schule,2
+der Aufsatz,noun,m,essay,schule,2
+der Direktor,noun,m,headmaster,schule,2
+der Kleber,noun,m,glue,schule,2
+der Mitschüler,noun,m,classmate,schule,2
+der Professor,noun,m,professor,schule,2
+der Radiergummi,noun,m,eraser,schule,2
+die Erdkunde,noun,f,geography,schule,2
+die Fremdsprache,noun,f,foreign language,schule,2
+die Kenntnis,noun,f,knowledge,schule,2
+die Klausur,noun,f,written exam,schule,2
+die Literatur,noun,f,literature,schule,2
+die Note,noun,f,grade,schule,2
+die Philosophie,noun,f,philosophy,schule,2
+die Schere,noun,f,scissors,schule,2
+die Tafel,noun,f,blackboard,schule,2
+die Vorlesung,noun,f,lecture,schule,2
+die Zusammenfassung,noun,f,summary,schule,2
+das Seminar,noun,n,seminar,schule,3
+das Stipendium,noun,n,scholarship,schule,3
+das Zeugnis,noun,n,report card,schule,3
+der Block,noun,m,notepad,schule,3
+das Büro,noun,n,office,arbeit,1
+das Ergebnis,noun,n,result,arbeit,1
+das Projekt,noun,n,project,arbeit,1
+der Arbeitsplatz,noun,m,workplace,arbeit,1
+der Beruf,noun,m,profession,arbeit,1
+der Chef,noun,m,boss,arbeit,1
+der Job,noun,m,job,arbeit,1
+der Kollege,noun,m,colleague,arbeit,1
+der Kunde,noun,m,customer,arbeit,1
+der Mitarbeiter,noun,m,employee,arbeit,1
+der Termin,noun,m,appointment,arbeit,1
+der Urlaub,noun,m,vacation,arbeit,1
+die Arbeit,noun,f,work,arbeit,1
+die Aufgabe,noun,f,task,arbeit,1
+die Ausbildung,noun,f,training,arbeit,1
+die Firma,noun,f,company,arbeit,1
+die Stelle,noun,f,position,arbeit,1
+organisieren,verb,,to organize,arbeit,1
+planen,verb,,to plan,arbeit,1
+bewerben,verb,,to apply,arbeit,2
+das Gehalt,noun,n,salary,arbeit,2
+das Praktikum,noun,n,internship,arbeit,2
+das Unternehmen,noun,n,enterprise,arbeit,2
+das Vorstellungsgespräch,noun,n,job interview,arbeit,2
+der Arbeitgeber,noun,m,employer,arbeit,2
+der Arbeitnehmer,noun,m,employee,arbeit,2
+der Auftrag,noun,m,order / assignment,arbeit,2
+der Druck,noun,m,pressure,arbeit,2
+der Feierabend,noun,m,end of the working day,arbeit,2
+der Gewinn,noun,m,profit,arbeit,2
+der Konflikt,noun,m,conflict,arbeit,2
+der Lebenslauf,noun,m,CV,arbeit,2
+der Lohn,noun,m,wage,arbeit,2
+der Verlust,noun,m,loss,arbeit,2
+der Vertrag,noun,m,contract,arbeit,2
+die Abteilung,noun,f,department,arbeit,2
+die Arbeitslosigkeit,noun,f,unemployment,arbeit,2
+die Besprechung,noun,f,meeting,arbeit,2
+die Bewerbung,noun,f,application,arbeit,2
+die Fabrik,noun,f,factory,arbeit,2
+die Frist,noun,f,deadline,arbeit,2
+die Gewerkschaft,noun,f,trade union,arbeit,2
+die Karriere,noun,f,career,arbeit,2
+die Konkurrenz,noun,f,competition,arbeit,2
+die Kündigung,noun,f,notice / dismissal,arbeit,2
+die Präsentation,noun,f,presentation,arbeit,2
+die Schicht,noun,f,shift,arbeit,2
+die Sicherheit,noun,f,safety at work,arbeit,2
+die Teilzeit,noun,f,part-time,arbeit,2
+die Unterschrift,noun,f,signature,arbeit,2
+die Vollzeit,noun,f,full-time,arbeit,2
+die Werkstatt,noun,f,workshop,arbeit,2
+die Zusammenarbeit,noun,f,cooperation,arbeit,2
+einstellen,verb,,to hire,arbeit,2
+kündigen,verb,,to resign / dismiss,arbeit,2
+leiten,verb,,to lead,arbeit,2
+verhandeln,verb,,to negotiate,arbeit,2
+der Antrag,noun,m,application form,arbeit,3
+der Praktikant,noun,m,intern,arbeit,3
+der Zeitdruck,noun,m,time pressure,arbeit,3
+die Absage,noun,f,rejection,arbeit,3
+die Beförderung,noun,f,promotion,arbeit,3
+die Besprechungsnotiz,noun,f,meeting note,arbeit,3
+die Branche,noun,f,industry sector,arbeit,3
+die Fortbildung,noun,f,further training,arbeit,3
+die Leitung,noun,f,management,arbeit,3
+die Sitzung,noun,f,session,arbeit,3
+die Verwaltung,noun,f,administration,arbeit,3
+die Zusage,noun,f,acceptance,arbeit,3
+die Zuständigkeit,noun,f,responsibility area,arbeit,3
+die Überstunde,noun,f,overtime hour,arbeit,3
+anrufen,verb,,to call,medien,1
+das Fernsehen,noun,n,television,medien,1
+das Handy,noun,n,mobile phone,medien,1
+das Internet,noun,n,internet,medien,1
+das Interview,noun,n,interview,medien,1
+das Radio,noun,n,radio,medien,1
+der Anruf,noun,m,phone call,medien,1
+der Artikel,noun,m,article,medien,1
+der Computer,noun,m,computer,medien,1
+der Kommentar,noun,m,comment,medien,1
+der Leser,noun,m,reader,medien,1
+der Zuschauer,noun,m,viewer,medien,1
+die App,noun,f,app,medien,1
+die E-Mail,noun,f,email,medien,1
+die Nachricht,noun,f,message / news,medien,1
+die Serie,noun,f,series,medien,1
+die Webseite,noun,f,website,medien,1
+die Werbung,noun,f,advertising,medien,1
+die Zeitung,noun,f,newspaper,medien,1
+senden,verb,,to send,medien,1
+das Kabel,noun,n,cable,medien,2
+das Passwort,noun,n,password,medien,2
+das Programm,noun,n,program,medien,2
+das Publikum,noun,n,audience,medien,2
+der Akku,noun,m,battery,medien,2
+der Bericht,noun,m,report,medien,2
+der Bildschirm,noun,m,screen,medien,2
+der Blog,noun,m,blog,medien,2
+der Drucker,noun,m,printer,medien,2
+der Hörer,noun,m,listener,medien,2
+der Podcast,noun,m,podcast,medien,2
+der Sender,noun,m,channel,medien,2
+die Datei,noun,f,file,medien,2
+die Daten,noun,,data,medien,2
+die Dokumentation,noun,f,documentary,medien,2
+die Folge,noun,f,episode,medien,2
+die Maus,noun,f,mouse (computer),medien,2
+die Presse,noun,f,the press,medien,2
+die Quelle,noun,f,source,medien,2
+die Sendung,noun,f,broadcast,medien,2
+die Software,noun,f,software,medien,2
+die Tastatur,noun,f,keyboard,medien,2
+die Umfrage,noun,f,survey,medien,2
+die Zeitschrift,noun,f,magazine,medien,2
+empfangen,verb,,to receive,medien,2
+herunterladen,verb,,to download,medien,2
+löschen,verb,,to delete,medien,2
+speichern,verb,,to save,medien,2
+das Abonnement,noun,n,subscription,medien,3
+das Gerücht,noun,n,rumour,medien,3
+das Ladegerät,noun,n,charger,medien,3
+das Netzwerk,noun,n,network,medien,3
+der Lautsprecher,noun,m,speaker,medien,3
+die Mitteilung,noun,f,notification,medien,3
+die Reportage,noun,f,feature report,medien,3
+die Schlagzeile,noun,f,headline,medien,3
+die Zensur,noun,f,censorship,medien,3
+veröffentlichen,verb,,to publish,medien,3
+der Charakter,noun,m,character,gefuehle,1
+der Wunsch,noun,m,wish,gefuehle,1
+die Angst,noun,f,fear,gefuehle,1
+die Freude,noun,f,joy,gefuehle,1
+die Freundschaft,noun,f,friendship,gefuehle,1
+die Liebe,noun,f,love,gefuehle,1
+die Sorge,noun,f,worry,gefuehle,1
+aufgeregt,adj,,excited,gefuehle,2
+das Vertrauen,noun,n,trust,gefuehle,2
+der Hass,noun,m,hatred,gefuehle,2
+der Humor,noun,m,humour,gefuehle,2
+der Mut,noun,m,courage,gefuehle,2
+der Stolz,noun,m,pride,gefuehle,2
+der Ärger,noun,m,annoyance,gefuehle,2
+die Aufregung,noun,f,excitement,gefuehle,2
+die Begeisterung,noun,f,enthusiasm,gefuehle,2
+die Enttäuschung,noun,f,disappointment,gefuehle,2
+die Geduld,noun,f,patience,gefuehle,2
+die Hoffnung,noun,f,hope,gefuehle,2
+die Langeweile,noun,f,boredom,gefuehle,2
+die Laune,noun,f,mood,gefuehle,2
+die Leidenschaft,noun,f,passion,gefuehle,2
+die Neugier,noun,f,curiosity,gefuehle,2
+die Panik,noun,f,panic,gefuehle,2
+die Persönlichkeit,noun,f,personality,gefuehle,2
+die Schuld,noun,f,guilt,gefuehle,2
+die Stimmung,noun,f,atmosphere / mood,gefuehle,2
+die Trauer,noun,f,mourning,gefuehle,2
+die Traurigkeit,noun,f,sadness,gefuehle,2
+die Wut,noun,f,anger,gefuehle,2
+die Zufriedenheit,noun,f,contentment,gefuehle,2
+die Überraschung,noun,f,surprise,gefuehle,2
+geduldig,adj,,patient,gefuehle,2
+gelangweilt,adj,,bored,gefuehle,2
+neugierig,adj,,curious,gefuehle,2
+schüchtern,adj,,shy,gefuehle,2
+stolz,adj,,proud,gefuehle,2
+verliebt,adj,,in love,gefuehle,2
+das Misstrauen,noun,n,distrust,gefuehle,3
+das Mitleid,noun,n,compassion,gefuehle,3
+das Selbstvertrauen,noun,n,self-confidence,gefuehle,3
+der Kummer,noun,m,sorrow,gefuehle,3
+der Neid,noun,m,envy,gefuehle,3
+der Optimismus,noun,m,optimism,gefuehle,3
+der Pessimismus,noun,m,pessimism,gefuehle,3
+der Schreck,noun,m,fright,gefuehle,3
+die Bescheidenheit,noun,f,modesty,gefuehle,3
+die Ehrlichkeit,noun,f,honesty,gefuehle,3
+die Eifersucht,noun,f,jealousy,gefuehle,3
+die Einsamkeit,noun,f,loneliness,gefuehle,3
+die Erleichterung,noun,f,relief,gefuehle,3
+die Großzügigkeit,noun,f,generosity,gefuehle,3
+die Höflichkeit,noun,f,politeness,gefuehle,3
+die Reue,noun,f,remorse,gefuehle,3
+die Rücksicht,noun,f,consideration,gefuehle,3
+die Scham,noun,f,shame,gefuehle,3
+die Sehnsucht,noun,f,longing,gefuehle,3
+die Treue,noun,f,loyalty,gefuehle,3
+die Unsicherheit,noun,f,insecurity,gefuehle,3
+die Verzweiflung,noun,f,despair,gefuehle,3
+die Zuneigung,noun,f,affection,gefuehle,3
+egoistisch,adj,,selfish,gefuehle,3
+eifersüchtig,adj,,jealous,gefuehle,3
+optimistisch,adj,,optimistic,gefuehle,3
+selbstbewusst,adj,,confident,gefuehle,3
+aber,other,,but,funktion,1
+alle,other,,all,funktion,1
+allein,other,,alone,funktion,1
+als,other,,when / than,funktion,1
+also,other,,so / therefore,funktion,1
+an,other,,at / on,funktion,1
+andere,other,,other,funktion,1
+auch,other,,also,funktion,1
+auf,other,,on,funktion,1
+bei,other,,at / with,funktion,1
+beide,other,,both,funktion,1
+besonders,other,,especially,funktion,1
+bis,other,,until,funktion,1
+dann,other,,then,funktion,1
+dass,other,,that,funktion,1
+dein,other,,your,funktion,1
+denn,other,,because,funktion,1
+dieser,other,,this,funktion,1
+doch,other,,yet / after all,funktion,1
+dort,other,,there,funktion,1
+du,other,,you,funktion,1
+durch,other,,through,funktion,1
+eigentlich,other,,actually,funktion,1
+einige,other,,some,funktion,1
+endlich,other,,finally,funktion,1
+er,other,,he,funktion,1
+erst,other,,not until,funktion,1
+es,other,,it,funktion,1
+etwas,other,,something,funktion,1
+fast,other,,almost,funktion,1
+für,other,,for,funktion,1
+gegen,other,,against,funktion,1
+genau,other,,exactly,funktion,1
+genug,other,,enough,funktion,1
+gern,other,,gladly,funktion,1
+heute,other,,today,funktion,1
+hier,other,,here,funktion,1
+ich,other,,I,funktion,1
+ihr,other,,you (plural),funktion,1
+immer,other,,always,funktion,1
+in,other,,in,funktion,1
+ja,other,,yes,funktion,1
+jeder,other,,everyone / each,funktion,1
+jemand,other,,someone,funktion,1
+kein,other,,no / none,funktion,1
+leider,other,,unfortunately,funktion,1
+lieber,other,,preferably,funktion,1
+mal,other,,once / just,funktion,1
+man,other,,one / you,funktion,1
+manchmal,other,,sometimes,funktion,1
+mein,other,,my,funktion,1
+mit,other,,with,funktion,1
+nach,other,,after / to,funktion,1
+natürlich,other,,of course,funktion,1
+neben,other,,next to,funktion,1
+nein,other,,no,funktion,1
+nicht,other,,not,funktion,1
+nichts,other,,nothing,funktion,1
+nie,other,,never,funktion,1
+niemand,other,,nobody,funktion,1
+noch,other,,still / yet,funktion,1
+nur,other,,only,funktion,1
+ob,other,,whether,funktion,1
+oder,other,,or,funktion,1
+oft,other,,often,funktion,1
+ohne,other,,without,funktion,1
+plötzlich,other,,suddenly,funktion,1
+schon,other,,already,funktion,1
+sehr,other,,very,funktion,1
+sein,other,,his,funktion,1
+seit,other,,since,funktion,1
+selbst,other,,oneself,funktion,1
+sicher,other,,certainly,funktion,1
+sie,other,,she / they,funktion,1
+sofort,other,,immediately,funktion,1
+sogar,other,,even,funktion,1
+sondern,other,,but rather,funktion,1
+und,other,,and,funktion,1
+ungefähr,other,,approximately,funktion,1
+unser,other,,our,funktion,1
+unter,other,,under,funktion,1
+viele,other,,many,funktion,1
+vielleicht,other,,maybe,funktion,1
+von,other,,from / of,funktion,1
+vor,other,,in front of / before,funktion,1
+wahrscheinlich,other,,probably,funktion,1
+wann,other,,when,funktion,1
+warum,other,,why,funktion,1
+was,other,,what,funktion,1
+weil,other,,because,funktion,1
+welcher,other,,which,funktion,1
+wenn,other,,if / when,funktion,1
+wer,other,,who,funktion,1
+wie,other,,how,funktion,1
+wieder,other,,again,funktion,1
+wir,other,,we,funktion,1
+wirklich,other,,really,funktion,1
+wo,other,,where,funktion,1
+ziemlich,other,,fairly,funktion,1
+zu,other,,to,funktion,1
+zuerst,other,,first,funktion,1
+zum Beispiel,other,,for example,funktion,1
+zusammen,other,,together,funktion,1
+zwischen,other,,between,funktion,1
+über,other,,over / about,funktion,1
+überall,other,,everywhere,funktion,1
+außerdem,other,,besides,funktion,2
+bevor,other,,before,funktion,2
+da,other,,there / then,funktion,2
+damals,other,,back then,funktion,2
+damit,other,,so that,funktion,2
+deshalb,other,,therefore,funktion,2
+eben,other,,just / precisely,funktion,2
+falls,other,,in case,funktion,2
+gegenüber,other,,opposite,funktion,2
+irgendwo,other,,somewhere,funktion,2
+jedoch,other,,however,funktion,2
+kaum,other,,hardly,funktion,2
+manche,other,,some,funktion,2
+mehrere,other,,several,funktion,2
+meistens,other,,mostly,funktion,2
+mindestens,other,,at least,funktion,2
+nachdem,other,,after,funktion,2
+nirgendwo,other,,nowhere,funktion,2
+nämlich,other,,namely,funktion,2
+obwohl,other,,although,funktion,2
+selten,other,,rarely,funktion,2
+sobald,other,,as soon as,funktion,2
+sowieso,other,,anyway,funktion,2
+trotzdem,other,,nevertheless,funktion,2
+wenige,other,,few,funktion,2
+woher,other,,where from,funktion,2
+wohin,other,,where to,funktion,2
+während,other,,while / during,funktion,2
+überhaupt,other,,at all,funktion,2
+halt,other,,just,funktion,3
+höchstens,other,,at most,funktion,3
+jener,other,,that,funktion,3
+solange,other,,as long as,funktion,3
+wessen,other,,whose,funktion,3
+das Beispiel,noun,n,example,abstrakt,1
+das Detail,noun,n,detail,abstrakt,1
+das Ende,noun,n,end,abstrakt,1
+das Glück,noun,n,luck / happiness,abstrakt,1
+das Interesse,noun,n,interest,abstrakt,1
+das Problem,noun,n,problem,abstrakt,1
+das Recht,noun,n,right / law,abstrakt,1
+das Thema,noun,n,topic,abstrakt,1
+das Wissen,noun,n,knowledge,abstrakt,1
+das Ziel,noun,n,goal,abstrakt,1
+der Anfang,noun,m,beginning,abstrakt,1
+der Erfolg,noun,m,success,abstrakt,1
+der Fall,noun,m,case,abstrakt,1
+der Fehler,noun,m,mistake,abstrakt,1
+der Gedanke,noun,m,thought,abstrakt,1
+der Grund,noun,m,reason,abstrakt,1
+der Plan,noun,m,plan,abstrakt,1
+der Rat,noun,m,advice,abstrakt,1
+der Raum,noun,m,space / room,abstrakt,1
+der Schritt,noun,m,step,abstrakt,1
+der Sinn,noun,m,sense,abstrakt,1
+der Spaß,noun,m,fun,abstrakt,1
+der Teil,noun,m,part,abstrakt,1
+der Traum,noun,m,dream,abstrakt,1
+der Unterschied,noun,m,difference,abstrakt,1
+der Versuch,noun,m,attempt,abstrakt,1
+der Vorschlag,noun,m,suggestion,abstrakt,1
+der Vorteil,noun,m,advantage,abstrakt,1
+der Wert,noun,m,value,abstrakt,1
+die Art,noun,f,kind / manner,abstrakt,1
+die Beziehung,noun,f,relationship,abstrakt,1
+die Chance,noun,f,chance / opportunity,abstrakt,1
+die Diskussion,noun,f,discussion,abstrakt,1
+die Entscheidung,noun,f,decision,abstrakt,1
+die Erfahrung,noun,f,experience,abstrakt,1
+die Form,noun,f,form,abstrakt,1
+die Gefahr,noun,f,danger,abstrakt,1
+die Grenze,noun,f,limit / border,abstrakt,1
+die Hilfe,noun,f,help,abstrakt,1
+die Idee,noun,f,idea,abstrakt,1
+die Lösung,noun,f,solution,abstrakt,1
+die Meinung,noun,f,opinion,abstrakt,1
+die Mitte,noun,f,middle,abstrakt,1
+die Möglichkeit,noun,f,possibility,abstrakt,1
+die Ordnung,noun,f,order,abstrakt,1
+die Qualität,noun,f,quality,abstrakt,1
+die Rolle,noun,f,role,abstrakt,1
+die Ruhe,noun,f,calm,abstrakt,1
+die Sicherheit,noun,f,certainty / safety,abstrakt,1
+die Situation,noun,f,situation,abstrakt,1
+die Verantwortung,noun,f,responsibility,abstrakt,1
+die Wahl,noun,f,choice,abstrakt,1
+die Zukunft,noun,f,future,abstrakt,1
+das Argument,noun,n,argument,abstrakt,2
+das Gegenteil,noun,n,opposite,abstrakt,2
+das Risiko,noun,n,risk,abstrakt,2
+das System,noun,n,system,abstrakt,2
+das Verhalten,noun,n,behaviour,abstrakt,2
+das Verständnis,noun,n,understanding,abstrakt,2
+der Beitrag,noun,m,contribution,abstrakt,2
+der Beweis,noun,m,proof,abstrakt,2
+der Einfluss,noun,m,influence,abstrakt,2
+der Inhalt,noun,m,content,abstrakt,2
+der Lärm,noun,m,noise,abstrakt,2
+der Nachteil,noun,m,disadvantage,abstrakt,2
+der Prozess,noun,m,process,abstrakt,2
+der Schutz,noun,m,protection,abstrakt,2
+der Vergleich,noun,m,comparison,abstrakt,2
+der Zufall,noun,m,coincidence,abstrakt,2
+der Zustand,noun,m,state,abstrakt,2
+der Zweck,noun,m,purpose,abstrakt,2
+der Zweifel,noun,m,doubt,abstrakt,2
+die Absicht,noun,f,intention,abstrakt,2
+die Ansicht,noun,f,view,abstrakt,2
+die Aufmerksamkeit,noun,f,attention,abstrakt,2
+die Ausnahme,noun,f,exception,abstrakt,2
+die Bedeutung,noun,f,meaning,abstrakt,2
+die Bedingung,noun,f,condition,abstrakt,2
+die Erinnerung,noun,f,memory,abstrakt,2
+die Erwartung,noun,f,expectation,abstrakt,2
+die Folge,noun,f,consequence,abstrakt,2
+die Freiheit,noun,f,freedom,abstrakt,2
+die Fähigkeit,noun,f,ability,abstrakt,2
+die Gegenwart,noun,f,present,abstrakt,2
+die Gelegenheit,noun,f,opportunity,abstrakt,2
+die Gewohnheit,noun,f,habit,abstrakt,2
+die Lage,noun,f,situation / position,abstrakt,2
+die Leistung,noun,f,performance,abstrakt,2
+die Lüge,noun,f,lie,abstrakt,2
+die Macht,noun,f,power,abstrakt,2
+die Methode,noun,f,method,abstrakt,2
+die Pflicht,noun,f,duty,abstrakt,2
+die Schwierigkeit,noun,f,difficulty,abstrakt,2
+die Stufe,noun,f,level / stage,abstrakt,2
+die Tatsache,noun,f,fact,abstrakt,2
+die Ursache,noun,f,cause,abstrakt,2
+die Verbindung,noun,f,connection,abstrakt,2
+die Vergangenheit,noun,f,past,abstrakt,2
+die Veränderung,noun,f,change,abstrakt,2
+die Vorstellung,noun,f,idea / notion,abstrakt,2
+die Wahrheit,noun,f,truth,abstrakt,2
+die Weise,noun,f,way,abstrakt,2
+die Wiederholung,noun,f,repetition,abstrakt,2
+die Wirklichkeit,noun,f,reality,abstrakt,2
+die Wirkung,noun,f,effect,abstrakt,2
+das Ganze,noun,n,whole,abstrakt,3
+das Pech,noun,n,bad luck,abstrakt,3
+der Misserfolg,noun,m,failure,abstrakt,3
+der Schwerpunkt,noun,m,focus,abstrakt,3
+der Vorgang,noun,m,procedure,abstrakt,3
+der Zusammenhang,noun,m,context / link,abstrakt,3
+der Zusammenschluss,noun,m,merger,abstrakt,3
+der Überblick,noun,m,overview,abstrakt,3
+die Anstrengung,noun,f,effort,abstrakt,3
+die Entfernungsangabe,noun,f,distance given,abstrakt,3
+die Lösungsidee,noun,f,approach,abstrakt,3
+die Notwendigkeit,noun,f,necessity,abstrakt,3
+die Regelung,noun,f,arrangement,abstrakt,3
+die Wichtigkeit,noun,f,importance,abstrakt,3
+die Ähnlichkeit,noun,f,similarity,abstrakt,3
+das Bargeld,noun,n,cash,geld,1
+das Einkommen,noun,n,income,geld,1
+das Geld,noun,n,money,geld,1
+das Geschäft,noun,n,shop / business,geld,1
+das Paket,noun,n,parcel,geld,1
+das Produkt,noun,n,product,geld,1
+der Einkauf,noun,m,purchase,geld,1
+der Euro,noun,m,euro,geld,1
+der Geldautomat,noun,m,cash machine,geld,1
+der Laden,noun,m,store,geld,1
+der Preis,noun,m,price,geld,1
+der Verkäufer,noun,m,sales assistant,geld,1
+die Bestellung,noun,f,order,geld,1
+die Kasse,noun,f,checkout,geld,1
+die Kosten,noun,,costs,geld,1
+die Kreditkarte,noun,f,credit card,geld,1
+die Lieferung,noun,f,delivery,geld,1
+die Marke,noun,f,brand,geld,1
+die Miete,noun,f,rent,geld,1
+die Rechnung,noun,f,bill,geld,1
+die Versicherung,noun,f,insurance,geld,1
+ausgeben,verb,,to spend (money),geld,2
+das Angebot,noun,n,offer,geld,2
+das Einkaufszentrum,noun,n,shopping mall,geld,2
+das Konto,noun,n,account,geld,2
+das Regal,noun,n,shelf,geld,2
+der Einkaufswagen,noun,m,shopping trolley,geld,2
+der Korb,noun,m,basket,geld,2
+der Kredit,noun,m,loan,geld,2
+der Rabatt,noun,m,discount,geld,2
+der Schein,noun,m,banknote,geld,2
+die Ausgabe,noun,f,expense,geld,2
+die Garantie,noun,f,warranty,geld,2
+die Münze,noun,f,coin,geld,2
+die Schulden,noun,,debt,geld,2
+die Währung,noun,f,currency,geld,2
+die Zinsen,noun,,interest,geld,2
+die Überweisung,noun,f,bank transfer,geld,2
+kostenlos,adj,,free of charge,geld,2
+sparen,verb,,to save (money),geld,2
+das Budget,noun,n,budget,geld,3
+der Betrag,noun,m,amount,geld,3
+der Kassenbon,noun,m,till receipt,geld,3
+der Schlussverkauf,noun,m,clearance sale,geld,3
+der Umtausch,noun,m,exchange,geld,3
+der Verbraucher,noun,m,consumer,geld,3
+die Einnahme,noun,f,income,geld,3
+die Ersparnis,noun,f,savings,geld,3
+die Quittung,noun,f,receipt,geld,3
+die Ware,noun,f,goods,geld,3
+das Fieber,noun,n,fever,gesundheit,1
+das Medikament,noun,n,medicine,gesundheit,1
+das Rauchen,noun,n,smoking,gesundheit,1
+der Alkohol,noun,m,alcohol,gesundheit,1
+der Krankenwagen,noun,m,ambulance,gesundheit,1
+der Patient,noun,m,patient,gesundheit,1
+der Schlaf,noun,m,sleep,gesundheit,1
+der Schmerz,noun,m,pain,gesundheit,1
+der Schnupfen,noun,m,runny nose,gesundheit,1
+der Stress,noun,m,stress,gesundheit,1
+der Unfall,noun,m,accident,gesundheit,1
+der Virus,noun,m,virus,gesundheit,1
+die Bewegung,noun,f,exercise,gesundheit,1
+die Erkältung,noun,f,cold (illness),gesundheit,1
+die Gesundheit,noun,f,health,gesundheit,1
+die Grippe,noun,f,flu,gesundheit,1
+die Kopfschmerzen,noun,,headache,gesundheit,1
+die Medizin,noun,f,medicine,gesundheit,1
+die Praxis,noun,f,doctor's practice,gesundheit,1
+krank,adj,,sick,gesundheit,1
+das Asthma,noun,n,asthma,gesundheit,2
+das Pflaster,noun,n,plaster,gesundheit,2
+das Rezept,noun,n,prescription,gesundheit,2
+das Symptom,noun,n,symptom,gesundheit,2
+das Vitamin,noun,n,vitamin,gesundheit,2
+der Husten,noun,m,cough,gesundheit,2
+die Allergie,noun,f,allergy,gesundheit,2
+die Behandlung,noun,f,treatment,gesundheit,2
+die Diagnose,noun,f,diagnosis,gesundheit,2
+die Diät,noun,f,diet,gesundheit,2
+die Erholung,noun,f,recovery,gesundheit,2
+die Ernährung,noun,f,nutrition,gesundheit,2
+die Impfung,noun,f,vaccination,gesundheit,2
+die Infektion,noun,f,infection,gesundheit,2
+die Klinik,noun,f,clinic,gesundheit,2
+die Krankenkasse,noun,f,health insurer,gesundheit,2
+die Notaufnahme,noun,f,emergency room,gesundheit,2
+die Operation,noun,f,operation,gesundheit,2
+die Spritze,noun,f,injection,gesundheit,2
+die Tablette,noun,f,pill,gesundheit,2
+die Untersuchung,noun,f,examination,gesundheit,2
+die Verletzung,noun,f,injury,gesundheit,2
+die Wunde,noun,f,wound,gesundheit,2
+das Wohlbefinden,noun,n,wellbeing,gesundheit,3
+der Bruch,noun,m,fracture,gesundheit,3
+der Durchfall,noun,m,diarrhoea,gesundheit,3
+der Verband,noun,m,bandage,gesundheit,3
+die Salbe,noun,f,ointment,gesundheit,3
+die Sucht,noun,f,addiction,gesundheit,3
+die Verbrennung,noun,f,burn,gesundheit,3
+die Vorsorge,noun,f,prevention,gesundheit,3
+die Übelkeit,noun,f,nausea,gesundheit,3
+das Fest,noun,n,festival,freizeit,1
+das Foto,noun,n,photo,freizeit,1
+das Hobby,noun,n,hobby,freizeit,1
+das Instrument,noun,n,instrument,freizeit,1
+das Kino,noun,n,cinema,freizeit,1
+das Klavier,noun,n,piano,freizeit,1
+das Konzert,noun,n,concert,freizeit,1
+das Lied,noun,n,song,freizeit,1
+das Radfahren,noun,n,cycling,freizeit,1
+das Schwimmen,noun,n,swimming,freizeit,1
+das Skifahren,noun,n,skiing,freizeit,1
+das Spiel,noun,n,game,freizeit,1
+das Spielzeug,noun,n,toy,freizeit,1
+das Tor,noun,n,goal,freizeit,1
+das Training,noun,n,training,freizeit,1
+der Ball,noun,m,ball,freizeit,1
+der Basketball,noun,m,basketball,freizeit,1
+der Film,noun,m,movie,freizeit,1
+der Fußball,noun,m,soccer,freizeit,1
+der Sport,noun,m,sport,freizeit,1
+der Trainer,noun,m,coach,freizeit,1
+die Gitarre,noun,f,guitar,freizeit,1
+die Mannschaft,noun,f,team,freizeit,1
+die Musik,noun,f,music,freizeit,1
+die Party,noun,f,party,freizeit,1
+das Brettspiel,noun,n,board game,freizeit,2
+das Kartenspiel,noun,n,card game,freizeit,2
+das Laufen,noun,n,running,freizeit,2
+das Orchester,noun,n,orchestra,freizeit,2
+das Puzzle,noun,n,jigsaw,freizeit,2
+das Reiten,noun,n,horse riding,freizeit,2
+das Schlagzeug,noun,n,drums,freizeit,2
+das Segeln,noun,n,sailing,freizeit,2
+das Tauchen,noun,n,diving,freizeit,2
+das Tennis,noun,n,tennis,freizeit,2
+das Theater,noun,n,theater,freizeit,2
+das Turnen,noun,n,gymnastics,freizeit,2
+das Turnier,noun,n,tournament,freizeit,2
+das Videospiel,noun,n,video game,freizeit,2
+das Volleyball,noun,n,volleyball,freizeit,2
+der Gegner,noun,m,opponent,freizeit,2
+der Handball,noun,m,handball,freizeit,2
+der Schiedsrichter,noun,m,referee,freizeit,2
+der Schläger,noun,m,racket / bat,freizeit,2
+der Tanz,noun,m,dance,freizeit,2
+der Wettkampf,noun,m,competition,freizeit,2
+die Ausstellung,noun,f,exhibition,freizeit,2
+die Flöte,noun,f,flute,freizeit,2
+die Gartenarbeit,noun,f,gardening,freizeit,2
+die Geige,noun,f,violin,freizeit,2
+die Medaille,noun,f,medal,freizeit,2
+die Meisterschaft,noun,f,championship,freizeit,2
+angeln,verb,,to fish,freizeit,3
+das Basteln,noun,n,crafting,freizeit,3
+der Chor,noun,m,choir,freizeit,3
+der Pokal,noun,m,trophy,freizeit,3
+der Zuschauerrang,noun,m,stands,freizeit,3
+die Leichtathletik,noun,f,athletics,freizeit,3
+das Gebäude,noun,n,building,stadt,1
+das Schild,noun,n,sign,stadt,1
+der Bürgersteig,noun,m,pavement,stadt,1
+der Fußgänger,noun,m,pedestrian,stadt,1
+der Norden,noun,m,north,stadt,1
+der Osten,noun,m,east,stadt,1
+der Parkplatz,noun,m,car park,stadt,1
+der Platz,noun,m,square,stadt,1
+der Stadtplan,noun,m,city map,stadt,1
+der Süden,noun,m,south,stadt,1
+der Weg,noun,m,way / path,stadt,1
+der Westen,noun,m,west,stadt,1
+die Altstadt,noun,f,old town,stadt,1
+die Bank,noun,f,bench,stadt,1
+die Ecke,noun,f,corner,stadt,1
+die Information,noun,f,information,stadt,1
+die Innenstadt,noun,f,city center,stadt,1
+die Karte,noun,f,map,stadt,1
+die Richtung,noun,f,direction,stadt,1
+die Straße,noun,f,street,stadt,1
+geradeaus,adv,,straight ahead,stadt,1
+hinten,other,,at the back,stadt,1
+links,adv,,left,stadt,1
+nah,adj,,near,stadt,1
+oben,other,,above,stadt,1
+rechts,adv,,right,stadt,1
+unten,other,,below,stadt,1
+vorne,other,,at the front,stadt,1
+weit,adj,,far,stadt,1
+das Hochhaus,noun,n,high-rise,stadt,2
+das Parkhaus,noun,n,multi-storey car park,stadt,2
+das Viertel,noun,n,neighborhood / district,stadt,2
+der Brunnen,noun,m,fountain,stadt,2
+der Einwohner,noun,m,inhabitant,stadt,2
+der Kreisverkehr,noun,m,roundabout,stadt,2
+der Radweg,noun,m,cycle path,stadt,2
+der Vorort,noun,m,suburb,stadt,2
+der Zebrastreifen,noun,m,crosswalk,stadt,2
+die Architektur,noun,f,architecture,stadt,2
+die Baustelle,noun,f,building site,stadt,2
+die Bushaltestelle,noun,f,bus stop,stadt,2
+die Kreuzung,noun,f,intersection,stadt,2
+die Sehenswürdigkeit,noun,f,tourist attraction,stadt,2
+in der Nähe,other,,nearby,stadt,2
+verloren,adj,,lost,stadt,2
+der Wegweiser,noun,m,signpost,stadt,3
+die Allee,noun,f,avenue,stadt,3
+die Gasse,noun,f,alley,stadt,3
+die Laterne,noun,f,streetlight,stadt,3
+die Sauberkeit,noun,f,cleanliness,stadt,3
+das Gesetz,noun,n,law,gesellschaft,1
+das Klima,noun,n,climate,gesellschaft,1
+der Frieden,noun,m,peace,gesellschaft,1
+der Krieg,noun,m,war,gesellschaft,1
+der Müll,noun,m,rubbish,gesellschaft,1
+der Präsident,noun,m,president,gesellschaft,1
+der Staat,noun,m,state,gesellschaft,1
+die Energie,noun,f,energy,gesellschaft,1
+die Gesellschaft,noun,f,society,gesellschaft,1
+die Krise,noun,f,crisis,gesellschaft,1
+die Kultur,noun,f,culture,gesellschaft,1
+die Politik,noun,f,politics,gesellschaft,1
+die Regierung,noun,f,government,gesellschaft,1
+die Religion,noun,f,religion,gesellschaft,1
+die Stimme,noun,f,vote / voice,gesellschaft,1
+die Tradition,noun,f,tradition,gesellschaft,1
+die Umwelt,noun,f,environment,gesellschaft,1
+die Wahl,noun,f,election,gesellschaft,1
+das Recycling,noun,n,recycling,gesellschaft,2
+das Verbrechen,noun,n,crime,gesellschaft,2
+das Volk,noun,n,people / nation,gesellschaft,2
+der Bürger,noun,m,citizen,gesellschaft,2
+der Bürgermeister,noun,m,mayor,gesellschaft,2
+der Flüchtling,noun,m,refugee,gesellschaft,2
+der Fortschritt,noun,m,progress,gesellschaft,2
+der Kanzler,noun,m,chancellor,gesellschaft,2
+der Klimawandel,noun,m,climate change,gesellschaft,2
+der Minister,noun,m,minister,gesellschaft,2
+der Rassismus,noun,m,racism,gesellschaft,2
+der Reichtum,noun,m,wealth,gesellschaft,2
+der Skandal,noun,m,scandal,gesellschaft,2
+der Streik,noun,m,strike,gesellschaft,2
+der Verein,noun,m,club / association,gesellschaft,2
+die Armee,noun,f,army,gesellschaft,2
+die Armut,noun,f,poverty,gesellschaft,2
+die Bevölkerung,noun,f,population,gesellschaft,2
+die Demokratie,noun,f,democracy,gesellschaft,2
+die Demonstration,noun,f,demonstration,gesellschaft,2
+die Diskriminierung,noun,f,discrimination,gesellschaft,2
+die Einwanderung,noun,f,immigration,gesellschaft,2
+die Entwicklung,noun,f,development,gesellschaft,2
+die Freiheit,noun,f,liberty,gesellschaft,2
+die Gemeinschaft,noun,f,community,gesellschaft,2
+die Generation,noun,f,generation,gesellschaft,2
+die Gerechtigkeit,noun,f,justice,gesellschaft,2
+die Gewalt,noun,f,violence,gesellschaft,2
+die Integration,noun,f,integration,gesellschaft,2
+die Partei,noun,f,political party,gesellschaft,2
+die Rente,noun,f,pension,gesellschaft,2
+die Steuer,noun,f,tax,gesellschaft,2
+die Toleranz,noun,f,tolerance,gesellschaft,2
+die Verschmutzung,noun,f,pollution,gesellschaft,2
+das Ehrenamt,noun,n,voluntary work,gesellschaft,3
+das Wachstum,noun,n,growth,gesellschaft,3
+die Art,noun,f,species,gesellschaft,3
+die Diktatur,noun,f,dictatorship,gesellschaft,3
+die Erderwärmung,noun,f,global warming,gesellschaft,3
+die Gleichheit,noun,f,equality,gesellschaft,3
+die Korruption,noun,f,corruption,gesellschaft,3
+die Reform,noun,f,reform,gesellschaft,3
+die Ressource,noun,f,resource,gesellschaft,3
+die Ungleichheit,noun,f,inequality,gesellschaft,3
+die Vielfalt,noun,f,diversity,gesellschaft,3
+nachhaltig,adj,,sustainable,gesellschaft,3

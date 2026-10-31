@@ -11,10 +11,11 @@
 // them.
 package grammar
 
-// Person identifies one of the six grammatical persons common to French and
-// Spanish conjugation: 1st/2nd/3rd singular, 1st/2nd/3rd plural. Display
-// labels (e.g. French "il / elle / on" vs Spanish "él / ella / usted") are
-// language-specific and live in each language package.
+// Person identifies one of the six grammatical persons common to French,
+// Spanish, and German conjugation: 1st/2nd/3rd singular, 1st/2nd/3rd
+// plural. Display labels (e.g. French "il / elle / on" vs Spanish "él /
+// ella / usted" vs German "er / sie / es") are language-specific and live
+// in each language package.
 type Person string
 
 const (
@@ -101,7 +102,7 @@ type VocabWord struct {
 	ID            string // stable identifier: "{lemma}|{category}", used as the SRS deck key
 	Lemma         string
 	POS           string // "noun" | "verb" | "adj" | "adv" | "other"
-	Gender        string // "m" | "f" | "" (non-nouns, or invariant-gender items)
+	Gender        string // "m" | "f" | "n" | "" (non-nouns, invariant-gender items, or German plural-only nouns)
 	TranslationEn string
 	Category      string // language-scoped category ID, e.g. "famille" (fr) / "familia" (es)
 	Tier          int    // rough frequency tier: 1 = most essential, 2, 3 = less common

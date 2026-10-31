@@ -4,6 +4,7 @@ import (
 	"math/rand/v2"
 
 	"github.com/bogdanbojan/sermokey/backend/internal/grammar"
+	"github.com/bogdanbojan/sermokey/backend/internal/grammar/de"
 	"github.com/bogdanbojan/sermokey/backend/internal/grammar/es"
 	"github.com/bogdanbojan/sermokey/backend/internal/grammar/fr"
 )
@@ -72,10 +73,33 @@ func (esProvider) GenerateExercises(tense, exerciseType string, count int, rng *
 func (esProvider) VocabCategories() []grammar.VocabCategoryInfo { return es.VocabCategories }
 func (esProvider) VocabWords() []grammar.VocabWord              { return es.Vocabulary }
 
+type deProvider struct{}
+
+func (deProvider) Code() string                                      { return "de" }
+func (deProvider) Name() string                                      { return "Deutsch" }
+func (deProvider) AllTenses() []grammar.TenseID                      { return de.AllTenses }
+func (deProvider) TenseCategory(id grammar.TenseID) grammar.Category { return de.TenseCategory[id] }
+func (deProvider) Theory(id grammar.TenseID) (grammar.TenseTheory, bool) {
+	th, ok := de.Theories[id]
+	return th, ok
+}
+func (deProvider) Verbs() []VerbSummaryDTO {
+	out := make([]VerbSummaryDTO, 0, len(de.Verbs))
+	for _, v := range de.Verbs {
+		out = append(out, VerbSummaryDTO{Infinitive: v.Infinitive, Group: string(v.Group), TranslationEn: v.TranslationEn})
+	}
+	return out
+}
+func (deProvider) GenerateExercises(tense, exerciseType string, count int, rng *rand.Rand) ([]grammar.Exercise, error) {
+	return de.GenerateExercises(tense, exerciseType, count, rng)
+}
+func (deProvider) VocabCategories() []grammar.VocabCategoryInfo { return de.VocabCategories }
+func (deProvider) VocabWords() []grammar.VocabWord              { return de.Vocabulary }
+
 // languages is the registry of every supported language, in the order shown
 // by the GET /api/languages endpoint and used as the frontend's toggle
 // order.
-var languages = []languageProvider{frProvider{}, esProvider{}}
+var languages = []languageProvider{frProvider{}, esProvider{}, deProvider{}}
 
 const defaultLanguageCode = "fr"
 

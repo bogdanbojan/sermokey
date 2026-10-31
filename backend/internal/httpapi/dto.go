@@ -63,8 +63,8 @@ type ExerciseDTO struct {
 
 // LanguageDTO is one entry in the language switcher.
 type LanguageDTO struct {
-	Code string `json:"code"` // "fr" | "es"
-	Name string `json:"name"` // native endonym, e.g. "Français" / "Español"
+	Code string `json:"code"` // "fr" | "es" | "de"
+	Name string `json:"name"` // native endonym, e.g. "Français" / "Español" / "Deutsch"
 }
 
 // VocabCategoryDTO is one vocabulary theme, used for the flashcard browse UI.

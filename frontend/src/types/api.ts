@@ -2,7 +2,7 @@
 // Keep this in sync by hand — the dataset is small and static enough that a
 // generated client would be more ceremony than value here.
 
-export type LanguageCode = 'fr' | 'es'
+export type LanguageCode = 'fr' | 'es' | 'de'
 
 export interface Language {
   code: LanguageCode

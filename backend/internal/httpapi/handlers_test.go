@@ -24,11 +24,11 @@ func TestHandleLanguages(t *testing.T) {
 	if err := json.Unmarshal(rec.Body.Bytes(), &out); err != nil {
 		t.Fatalf("invalid JSON: %v", err)
 	}
-	if len(out) != 2 {
-		t.Fatalf("got %d languages, want 2", len(out))
+	if len(out) != 3 {
+		t.Fatalf("got %d languages, want 3", len(out))
 	}
-	if out[0].Code != "fr" || out[1].Code != "es" {
-		t.Errorf("got codes %q, %q; want fr, es", out[0].Code, out[1].Code)
+	if out[0].Code != "fr" || out[1].Code != "es" || out[2].Code != "de" {
+		t.Errorf("got codes %q, %q, %q; want fr, es, de", out[0].Code, out[1].Code, out[2].Code)
 	}
 }
 
@@ -69,8 +69,25 @@ func TestHandleTensesSpanish(t *testing.T) {
 	}
 }
 
-func TestHandleTensesUnknownLanguage(t *testing.T) {
+func TestHandleTensesGerman(t *testing.T) {
 	rec := doRequest(t, NewRouter(), http.MethodGet, "/api/tenses?lang=de")
+	if rec.Code != http.StatusOK {
+		t.Fatalf("got status %d, want 200", rec.Code)
+	}
+	var out []TenseSummaryDTO
+	if err := json.Unmarshal(rec.Body.Bytes(), &out); err != nil {
+		t.Fatalf("invalid JSON: %v", err)
+	}
+	if len(out) != 13 {
+		t.Fatalf("got %d tenses, want 13", len(out))
+	}
+	if out[0].NameNative != "Präsens" {
+		t.Errorf("got NameNative %q, want Präsens", out[0].NameNative)
+	}
+}
+
+func TestHandleTensesUnknownLanguage(t *testing.T) {
+	rec := doRequest(t, NewRouter(), http.MethodGet, "/api/tenses?lang=it")
 	if rec.Code != http.StatusBadRequest {
 		t.Fatalf("got status %d, want 400", rec.Code)
 	}
@@ -150,6 +167,20 @@ func TestHandleVerbsSpanish(t *testing.T) {
 	}
 }
 
+func TestHandleVerbsGerman(t *testing.T) {
+	rec := doRequest(t, NewRouter(), http.MethodGet, "/api/verbs?lang=de")
+	if rec.Code != http.StatusOK {
+		t.Fatalf("got status %d, want 200", rec.Code)
+	}
+	var out []VerbSummaryDTO
+	if err := json.Unmarshal(rec.Body.Bytes(), &out); err != nil {
+		t.Fatalf("invalid JSON: %v", err)
+	}
+	if len(out) != 21 {
+		t.Fatalf("got %d verbs, want 21", len(out))
+	}
+}
+
 func TestHandleExercisesDefaults(t *testing.T) {
 	rec := doRequest(t, NewRouter(), http.MethodGet, "/api/exercises")
 	if rec.Code != http.StatusOK {
@@ -211,6 +242,28 @@ func TestHandleExercisesSpanish(t *testing.T) {
 	}
 }
 
+func TestHandleExercisesGerman(t *testing.T) {
+	rec := doRequest(t, NewRouter(), http.MethodGet, "/api/exercises?lang=de&tense=imperativ&type=mcq&count=5")
+	if rec.Code != http.StatusOK {
+		t.Fatalf("got status %d, want 200", rec.Code)
+	}
+	var out []ExerciseDTO
+	if err := json.Unmarshal(rec.Body.Bytes(), &out); err != nil {
+		t.Fatalf("invalid JSON: %v", err)
+	}
+	if len(out) != 5 {
+		t.Fatalf("got %d exercises, want 5", len(out))
+	}
+	for _, ex := range out {
+		if ex.Tense != "imperativ" {
+			t.Errorf("got tense %q, want imperativ", ex.Tense)
+		}
+		if len(ex.Choices) != 4 {
+			t.Errorf("got %d choices, want 4", len(ex.Choices))
+		}
+	}
+}
+
 func TestHandleExercisesInvalidTense(t *testing.T) {
 	rec := doRequest(t, NewRouter(), http.MethodGet, "/api/exercises?tense=nope")
 	if rec.Code != http.StatusBadRequest {
@@ -226,7 +279,7 @@ func TestHandleExercisesInvalidCount(t *testing.T) {
 }
 
 func TestHandleExercisesInvalidLanguage(t *testing.T) {
-	rec := doRequest(t, NewRouter(), http.MethodGet, "/api/exercises?lang=de")
+	rec := doRequest(t, NewRouter(), http.MethodGet, "/api/exercises?lang=it")
 	if rec.Code != http.StatusBadRequest {
 		t.Fatalf("got status %d, want 400", rec.Code)
 	}
