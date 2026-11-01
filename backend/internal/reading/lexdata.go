@@ -127,16 +127,21 @@ func newTable(data string) table {
 }
 
 // line returns row i without its trailing newline.
+//
+// The end is found by scanning rather than inferred from the next offset.
+// Inferring it assumed exactly one newline between consecutive rows, which
+// silently failed in two ways: the final row kept its trailing "\n"
+// (leaking into the last Note of every forms table, which is not trimmed
+// downstream), and any blank line would have folded two rows together.
 func (t table) line(i int) string {
 	start := int(t.offsets[i])
-	end := len(t.data)
-	if i+1 < len(t.offsets) {
-		end = int(t.offsets[i+1]) - 1
+	if start >= len(t.data) {
+		return ""
 	}
-	if end > len(t.data) {
-		end = len(t.data)
+	if nl := strings.IndexByte(t.data[start:], '\n'); nl >= 0 {
+		return t.data[start : start+nl]
 	}
-	return t.data[start:end]
+	return t.data[start:]
 }
 
 // lookup returns the split fields of every row whose first column equals

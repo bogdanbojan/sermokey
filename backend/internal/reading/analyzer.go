@@ -168,9 +168,9 @@ type candidate struct {
 	// explanation — this is the word itself, not an inflection of
 	// something else — is the better default.
 	direct bool
-	// common records that the headword is spelled in lower case, i.e. an
-	// ordinary word rather than a proper noun or an acronym.
-	common bool
+	// ordinary records that the headword is a normal vocabulary item
+	// rather than an acronym or a name.
+	ordinary bool
 	// priority marks an auxiliary or copula; see PriorityLemmas.
 	priority bool
 }
@@ -287,12 +287,19 @@ func (a *StandardAnalyzer) analyze(surface string, knownProperNoun bool) []Analy
 			return x.rank < y.rank
 		}
 		// Wiktionary indexes acronyms and surnames alongside ordinary
-		// words, so French "le" collides with the abbreviation "LE". A
-		// capitalised headword sorts before a lower-case one byte-wise,
-		// which without this rule would make an acronym the primary
-		// reading of the commonest article in the language.
-		if x.common != y.common {
-			return x.common
+		// words, so French "le" collides with the abbreviation "LE" and
+		// German "die" with "CIA". An ordinary word beats both.
+		//
+		// This used to test lower-case spelling, which works for French
+		// and Spanish but inverts in German: every German noun headword is
+		// capitalised, so the rule demoted the entire noun class — "Arm"
+		// lost to the adjective "arm" ("poor"), "Essen" to the verb
+		// "essen". Curated nouns fared worse still, since the vocabulary
+		// stores them with their article ("der Hund"). Testing for what
+		// the rule is actually trying to exclude — acronyms and names —
+		// is both narrower and language-neutral.
+		if x.ordinary != y.ordinary {
+			return x.ordinary
 		}
 		if x.priority != y.priority {
 			return x.priority
@@ -336,7 +343,7 @@ func (a *StandardAnalyzer) collect(cands *[]candidate, seen map[string]bool, lem
 			},
 			rank:     w.Tier,
 			direct:   direct,
-			common:   isCommonSpelling(w.Lemma),
+			ordinary: isOrdinaryHeadword(w.Lemma, w.POS),
 			priority: a.cfg.PriorityLemmas[lemma],
 		})
 	}
@@ -361,7 +368,7 @@ func (a *StandardAnalyzer) collect(cands *[]candidate, seen map[string]bool, lem
 			},
 			rank:     rankUncurated,
 			direct:   direct,
-			common:   isCommonSpelling(e.Lemma),
+			ordinary: isOrdinaryHeadword(e.Lemma, e.POS),
 			priority: a.cfg.PriorityLemmas[lemma],
 		})
 	}
@@ -524,9 +531,30 @@ func isParticiple(note string) bool {
 	return strings.Contains(strings.ToLower(note), "participle")
 }
 
-// isCommonSpelling reports whether a headword is written as an ordinary
-// lower-case word, as opposed to a proper noun or an acronym.
-func isCommonSpelling(lemma string) bool { return lemma == strings.ToLower(lemma) }
+// isOrdinaryHeadword reports whether a headword is a normal vocabulary item
+// rather than an acronym or a name.
+//
+// Deliberately not "is it lower-case": that conflates two different things
+// and only holds for languages that capitalise nothing but names. German
+// capitalises every noun.
+func isOrdinaryHeadword(lemma, pos string) bool {
+	return !isAcronym(lemma) && pos != ProperNounPOS
+}
+
+// isAcronym reports whether a headword is written entirely in capitals —
+// "LE", "CIA". A single letter is not enough to tell, so it does not count.
+func isAcronym(lemma string) bool {
+	letters := 0
+	for _, r := range lemma {
+		if unicode.IsLower(r) {
+			return false
+		}
+		if unicode.IsLetter(r) {
+			letters++
+		}
+	}
+	return letters > 1
+}
 
 func isCapitalised(surface string) bool {
 	for _, r := range strings.TrimSpace(surface) {
