@@ -6,13 +6,8 @@ import { navigate } from '../router/router'
 import { useLanguage, t, format } from '../i18n/language'
 import { useWordStatus, type WordStatus } from '../reading/status'
 import { useSavedWords, type WordContext } from '../reading/saved'
-import {
-  readingPrefs,
-  savePosition,
-  useLookupCounts,
-  MIN_FONT_SIZE,
-  MAX_FONT_SIZE,
-} from '../reading/prefs'
+import { readingPrefs, savePosition, useLookupCounts } from '../reading/prefs'
+import { read as readStored, write as writeStored } from '../storage'
 import {
   renderTokens,
   selectionToRange,
@@ -26,6 +21,7 @@ import ReaderParagraph from '../components/ReaderParagraph.vue'
 import WordPopover from '../components/WordPopover.vue'
 import WordPanel from '../components/WordPanel.vue'
 import SelectionToolbar from '../components/SelectionToolbar.vue'
+import ReaderDisplayMenu from '../components/ReaderDisplayMenu.vue'
 
 const props = defineProps<{ textId: string; section: number }>()
 
@@ -61,17 +57,34 @@ const error = ref('')
 const section = ref<ReadingSection | null>(null)
 const bodyEl = ref<HTMLElement | null>(null)
 
+// Arrowing quickly through sections starts several fetches. Whichever
+// resolved last used to win, so section 2's body could render while the
+// URL said section 5 — and the position saved afterwards was read from the
+// *current* props, recording a section the learner was not looking at.
+let loadToken = 0
+
 async function load() {
+  const token = ++loadToken
+  // Captured before the await, so a late response cannot attribute itself
+  // to whatever the props happen to say by the time it lands.
+  const requested = { lang: lang.value, textId: props.textId, section: props.section }
+
   phase.value = 'loading'
   error.value = ''
   closePeek()
   closePinned()
   try {
-    section.value = await api.getTextSection(lang.value, props.textId, props.section)
+    const fetched = await api.getTextSection(requested.lang, requested.textId, requested.section)
+    if (token !== loadToken) return
+    section.value = fetched
     phase.value = 'ready'
-    savePosition(lang.value, props.textId, { section: props.section, paragraph: 0 })
+    savePosition(requested.lang, requested.textId, {
+      section: requested.section,
+      paragraph: 0,
+    })
     window.scrollTo({ top: 0 })
   } catch (e) {
+    if (token !== loadToken) return
     error.value = e instanceof ApiError ? e.message : t.value.reading.error
     phase.value = 'error'
   }
@@ -171,6 +184,24 @@ function contextFor(token: number, paragraph: number): WordContext | undefined {
   }
 }
 
+/**
+ * Keyboard activation of a focused token.
+ *
+ * Bound on the article rather than per token so the handler count does not
+ * scale with the length of the chapter.
+ */
+function onTokenKeydown(e: KeyboardEvent) {
+  if (e.key !== 'Enter' && e.key !== ' ') return
+  const el = e.target instanceof Element ? e.target : null
+  if (!el?.classList.contains('tok')) return
+  const at = locate(el)
+  if (!at) return
+  const entry = entryAt(at.token, at.paragraph)
+  if (!entry) return
+  e.preventDefault()
+  pin(entry, at.token, at.paragraph)
+}
+
 function onClick(e: MouseEvent) {
   const el = e.target instanceof Element ? e.target : null
   if (!el?.classList.contains('tok')) return
@@ -187,7 +218,19 @@ function onClick(e: MouseEvent) {
 const selection = ref<{ text: string; x: number; y: number; tooLong: boolean } | null>(null)
 let selectionRange: TokenRange | null = null
 
+// `selectionchange` fires on every character of a drag, and the handler
+// re-tokenises the paragraph and forces a layout flush. Coalescing to one
+// run per frame keeps a drag across a long paragraph smooth.
+let selectionFrame = 0
 function onSelectionChange() {
+  if (selectionFrame) return
+  selectionFrame = window.requestAnimationFrame(() => {
+    selectionFrame = 0
+    measureSelection()
+  })
+}
+
+function measureSelection() {
   const range = selectionToRange(bodyEl.value)
   if (!range) {
     selection.value = null
@@ -240,12 +283,18 @@ async function lookupSelection() {
         range.paragraph,
       )
     }
-  } catch {
-    /* lookup failure leaves the selection in place; nothing is lost */
+    window.getSelection()?.removeAllRanges()
+    selection.value = null
+  } catch (e) {
+    // The cleanup above used to sit *outside* the catch, so a network
+    // failure wiped the selection and the toolbar with it and showed
+    // nothing — leaving the learner unable to tell a missing dictionary
+    // entry from a dead backend.
+    lookupError.value = e instanceof ApiError ? e.message : t.value.reading.error
   }
-  window.getSelection()?.removeAllRanges()
-  selection.value = null
 }
+
+const lookupError = ref('')
 
 // --- Navigation ----------------------------------------------------------
 const hasPrev = computed(() => props.section > 0)
@@ -256,6 +305,11 @@ function goSection(delta: number) {
   navigate({ name: 'read', textId: props.textId, section: props.section + delta })
 }
 
+function goToSection(index: number) {
+  if (index === props.section) return
+  navigate({ name: 'read', textId: props.textId, section: index })
+}
+
 const savedFromText = computed(() => saved.value.fromText(props.textId).length)
 
 // --- Keyboard ------------------------------------------------------------
@@ -264,14 +318,27 @@ const savedFromText = computed(() => saved.value.fromText(props.textId).length)
 // rather than a mouse-only toy.
 function onKeydown(e: KeyboardEvent) {
   if (e.metaKey || e.ctrlKey || e.altKey) return
-  const typing = (e.target as HTMLElement)?.tagName === 'INPUT'
-  if (typing) return
+
+  // Escape is handled before the typing guard. The pinned panel's sense
+  // selector is made of radio inputs, so focusing one used to make Escape
+  // unreachable — a dialog you could not dismiss from the keyboard.
+  if (e.key === 'Escape') {
+    closePinned()
+    closePeek()
+    selection.value = null
+    lookupError.value = ''
+    return
+  }
+
+  const el = e.target as HTMLElement | null
+  if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable)) return
+
+  // Shift+Arrow is how a keyboard user extends a native selection, which
+  // is the whole basis of phrase capture. Swallowing it for page
+  // navigation removed the one keyboard route into the feature.
+  if (e.shiftKey) return
 
   switch (e.key) {
-    case 'Escape':
-      closePinned()
-      closePeek()
-      break
     case 'h':
       readingPrefs.value.highlighting = !readingPrefs.value.highlighting
       break
@@ -292,29 +359,37 @@ onBeforeUnmount(() => {
   document.removeEventListener('selectionchange', onSelectionChange)
   window.removeEventListener('keydown', onKeydown)
   window.clearTimeout(hoverTimer)
+  if (selectionFrame) window.cancelAnimationFrame(selectionFrame)
 })
 
 // --- Display controls ----------------------------------------------------
-function nudgeFontSize(delta: number) {
-  const next = Math.round((readingPrefs.value.fontSize + delta) * 1000) / 1000
-  readingPrefs.value.fontSize = Math.min(MAX_FONT_SIZE, Math.max(MIN_FONT_SIZE, next))
-}
-
 const bodyStyle = computed(() => ({
   fontSize: `${readingPrefs.value.fontSize}rem`,
+  // Leading was hardcoded at 1.75. After font size it is the single most
+  // effective accommodation for dyslexic and low-vision readers, so it is
+  // a preference rather than a constant.
+  lineHeight: String(readingPrefs.value.lineHeight),
   fontFamily: readingPrefs.value.serif
     ? 'Georgia, "Iowan Old Style", "Times New Roman", serif'
     : 'var(--font-sans)',
 }))
 
+/**
+ * Whether the device can actually hover.
+ *
+ * The coachmark's first instruction is "hover a word", which no touch user
+ * can follow; it was shown unconditionally.
+ */
+const canHover = typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches
+
 // --- First-run coachmark -------------------------------------------------
 // Hover and drag-select are invisible affordances; a reader who does not
 // discover them sees a plain wall of French.
 const COACH_KEY = 'sermokey:reading-coach-seen'
-const showCoach = ref(localStorage.getItem(COACH_KEY) !== '1')
+const showCoach = ref(readStored(COACH_KEY, (u) => (u === true ? true : null), false) !== true)
 function dismissCoach() {
   showCoach.value = false
-  localStorage.setItem(COACH_KEY, '1')
+  writeStored(COACH_KEY, true)
 }
 </script>
 
@@ -323,25 +398,14 @@ function dismissCoach() {
     <div class="toolbar-row">
       <button class="btn back" @click="navigate({ name: 'home' })">{{ t.reading.back }}</button>
 
-      <div v-if="phase === 'ready'" class="display-controls" :aria-label="t.reading.displayLabel" role="group">
-        <button class="ctl" :title="t.reading.smaller" @click="nudgeFontSize(-0.125)">A−</button>
-        <button class="ctl" :title="t.reading.larger" @click="nudgeFontSize(0.125)">A+</button>
-        <button class="ctl" @click="readingPrefs.serif = !readingPrefs.serif">
-          {{ readingPrefs.serif ? t.reading.serif : t.reading.sans }}
-        </button>
-        <button
-          class="ctl"
-          :class="{ on: readingPrefs.highlighting }"
-          :title="readingPrefs.highlighting ? t.reading.highlightOn : t.reading.highlightOff"
-          @click="readingPrefs.highlighting = !readingPrefs.highlighting"
-        >
-          <kbd>H</kbd>
-        </button>
-      </div>
+      <ReaderDisplayMenu v-if="phase === 'ready'" />
     </div>
 
-    <p v-if="phase === 'loading'" class="muted">{{ t.reading.loading }}</p>
-    <p v-else-if="phase === 'error'" class="error-text">{{ error }}</p>
+    <p v-if="phase === 'loading'" class="muted" role="status">{{ t.reading.loading }}</p>
+    <div v-else-if="phase === 'error'" class="error-block" role="alert">
+      <p class="error-text">{{ error }}</p>
+      <button class="btn" @click="load()">{{ t.common.retry }}</button>
+    </div>
 
     <template v-else-if="section">
       <header class="head measure">
@@ -355,11 +419,23 @@ function dismissCoach() {
       <div v-if="showCoach" class="coach measure">
         <strong>{{ t.reading.coachTitle }}</strong>
         <ul>
-          <li>{{ t.reading.coachHover }}</li>
+          <!-- "Hover a word" is not an instruction a touch user can
+               follow; it was shown to every phone on first run. -->
+          <li v-if="canHover">{{ t.reading.coachHover }}</li>
           <li>{{ t.reading.coachClick }}</li>
           <li>{{ t.reading.coachSelect }}</li>
         </ul>
         <button class="btn" @click="dismissCoach">{{ t.reading.coachDismiss }}</button>
+      </div>
+
+      <!-- The three underline styles meant nothing without a key. The
+           strings for this have existed, translated, since the feature
+           shipped; nothing rendered them. -->
+      <div v-if="readingPrefs.highlighting" class="legend measure">
+        <span class="legend-label">{{ t.reading.statusLegendTitle }}</span>
+        <span class="legend-item"><span class="tok-sample unknown" aria-hidden="true" />{{ t.reading.statusUnknown }}</span>
+        <span class="legend-item"><span class="tok-sample learning" aria-hidden="true" />{{ t.reading.statusLearning }}</span>
+        <span class="legend-item"><span class="tok-sample known" aria-hidden="true" />{{ t.reading.statusKnown }}</span>
       </div>
 
       <h2 v-if="section.sectionTitle" class="section-title measure">{{ section.sectionTitle }}</h2>
@@ -373,6 +449,7 @@ function dismissCoach() {
         @pointerover="onPointerOver"
         @pointerout="onPointerOut"
         @click="onClick"
+        @keydown="onTokenKeydown"
       >
         <ReaderParagraph
           v-for="(p, i) in section.paragraphs"
@@ -387,6 +464,21 @@ function dismissCoach() {
 
       <nav class="section-nav">
         <button class="btn" :disabled="!hasPrev" @click="goSection(-1)">{{ t.reading.prevSection }}</button>
+
+        <!-- Prev/next alone meant 46 clicks and 46 round trips to reach
+             the end of an imported novel. -->
+        <label v-if="section.sectionCount > 2" class="section-jump">
+          <span class="visually-hidden">{{ t.reading.sectionJump }}</span>
+          <select
+            :value="section.index"
+            @change="goToSection(Number(($event.target as HTMLSelectElement).value))"
+          >
+            <option v-for="n in section.sectionCount" :key="n - 1" :value="n - 1">
+              {{ format(t.reading.sectionProgress, { index: n, total: section.sectionCount }) }}
+            </option>
+          </select>
+        </label>
+
         <button class="btn" :disabled="!hasNext" @click="goSection(1)">{{ t.reading.nextSection }}</button>
       </nav>
 
@@ -424,9 +516,19 @@ function dismissCoach() {
       @dismiss="selection = null"
     />
 
+    <p v-if="lookupError" class="lookup-error" role="alert">
+      {{ lookupError }}
+      <button class="link" @click="lookupError = ''">{{ t.common.dismiss }}</button>
+    </p>
+
+    <!-- Keyed on the position, not on the surface. "est" at token 7 of
+         paragraph 3 and "est" at token 7 of paragraph 9 produced the same
+         key *and* the same surface, so the panel was neither remounted nor
+         reset by its own surface watcher — leaving a stale sense index
+         that made the Save button a silent no-op. -->
     <WordPanel
       v-if="pinned"
-      :key="pinned.entry.surface + pinned.token"
+      :key="`${pinned.paragraph}:${pinned.token}:${pinned.entry.wordId}`"
       :entry="pinned.entry"
       :context="pinnedContext"
       @close="closePinned"
@@ -445,35 +547,6 @@ function dismissCoach() {
 }
 .error-text {
   color: var(--color-danger);
-}
-
-.display-controls {
-  display: inline-flex;
-  gap: 2px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: 2px;
-  background: var(--color-surface);
-}
-.ctl {
-  border: none;
-  background: none;
-  padding: 0.3rem 0.6rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--color-text-muted);
-  border-radius: calc(var(--radius-sm) - 2px);
-  cursor: pointer;
-}
-.ctl:hover {
-  color: var(--color-text);
-}
-.ctl.on {
-  background: var(--color-primary);
-  color: var(--color-primary-contrast);
-}
-.ctl kbd {
-  font: inherit;
 }
 
 .head h1 {
@@ -520,12 +593,89 @@ function dismissCoach() {
   margin-right: auto;
 }
 
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+.legend-label {
+  font-weight: 600;
+}
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.tok-sample {
+  display: inline-block;
+  width: 1.4rem;
+  height: 0.85rem;
+  border-bottom: 2px solid transparent;
+}
+.tok-sample.unknown {
+  border-bottom-color: var(--color-accent-400);
+  background: var(--color-accent-50);
+}
+.tok-sample.learning {
+  border-bottom-style: dotted;
+  border-bottom-color: var(--color-ink-400);
+}
+.tok-sample.known {
+  border-bottom-color: transparent;
+  background: var(--color-bg);
+}
+
+.section-jump select {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.5rem;
+  min-height: 2.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.error-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.lookup-error {
+  position: fixed;
+  left: 50%;
+  bottom: var(--space-5);
+  transform: translateX(-50%);
+  z-index: 66;
+  background: var(--color-danger);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.85rem;
+  margin: 0;
+}
+.lookup-error .link {
+  background: none;
+  border: none;
+  font: inherit;
+  font-weight: 600;
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: var(--space-2);
+}
+
 .body {
   /* ~62 characters per line at the default size. Bringhurst puts the
      comfortable range at 45-75; L2 reading sits at the lower end because
      the eye returns to the start of the line more often. */
   max-width: 34em;
-  line-height: 1.75;
+  /* line-height comes from readingPrefs via :style, so it is adjustable. */
   margin: 0 auto;
   /* Lets the browser hyphenate French prose at this narrow measure rather
      than leaving ragged gaps. */

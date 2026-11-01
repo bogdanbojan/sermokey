@@ -5,12 +5,14 @@
 // popover anchored to a word on a phone covers the word and the line it
 // sits in, which is exactly the context the reader needs to judge the
 // sense. A sheet docks out of the way and leaves the sentence visible.
-import { computed, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import type { ReadingEntry, ReadingAlt } from '../types/api'
 import { t, useLanguage, format } from '../i18n/language'
 import { useSavedWords, toSavedWord, type WordContext } from '../reading/saved'
 import { useWordStatuses } from '../reading/known'
 import { useLookupCounts } from '../reading/prefs'
+import { useDecks } from '../reading/decks'
+import DeckPicker from './DeckPicker.vue'
 
 const props = defineProps<{
   entry: ReadingEntry
@@ -22,6 +24,17 @@ const { lang } = useLanguage()
 const saved = computed(() => useSavedWords(lang.value))
 const statuses = computed(() => useWordStatuses(lang.value))
 const lookups = computed(() => useLookupCounts(lang.value))
+const decks = computed(() => useDecks(lang.value))
+
+/**
+ * The text being read, derived from the context the reader passes down.
+ *
+ * This is what makes "a deck named after the text" automatic rather than
+ * something the reader has to set up first.
+ */
+const currentText = computed(() =>
+  props.context ? { id: props.context.textId, title: props.context.textTitle } : undefined,
+)
 
 // A reading is the primary entry or one of its alternatives; the panel
 // treats them uniformly so correcting a mis-ranked homograph ("est" read as
@@ -49,6 +62,47 @@ watch(
 )
 watch(activeReading, () => (chosenSense.value = 0))
 
+// --- Focus management ----------------------------------------------------
+// The element carried role="dialog" and tabindex="-1" but nothing ever
+// focused it, so opening the panel announced nothing, there was no focus
+// trap, and closing it dropped focus to the top of the document instead of
+// returning it to the word that was clicked.
+const panelEl = ref<HTMLElement | null>(null)
+let previouslyFocused: HTMLElement | null = null
+
+onMounted(async () => {
+  previouslyFocused = document.activeElement as HTMLElement | null
+  await nextTick()
+  panelEl.value?.focus()
+})
+
+onBeforeUnmount(() => {
+  previouslyFocused?.focus?.()
+})
+
+/** Keeps Tab inside the panel while it is open. */
+function onPanelKeydown(e: KeyboardEvent) {
+  if (e.key === 'Escape') {
+    e.stopPropagation()
+    emit('close')
+    return
+  }
+  if (e.key !== 'Tab' || !panelEl.value) return
+  const focusable = panelEl.value.querySelectorAll<HTMLElement>(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+  )
+  if (focusable.length === 0) return
+  const first = focusable[0]!
+  const last = focusable[focusable.length - 1]!
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault()
+    last.focus()
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault()
+    first.focus()
+  }
+}
+
 const isSaved = computed(() => saved.value.has(current.value.wordId))
 const isKnown = computed(() => statuses.value.isKnown(current.value.wordId))
 const isIgnored = computed(() => statuses.value.isIgnored(current.value.wordId))
@@ -63,15 +117,32 @@ const showNudge = computed(
 function save() {
   const gloss = current.value.senses[chosenSense.value]?.gloss ?? ''
   if (!gloss) return
+
+  // Resolve the destination at save time, and create the text's deck only
+  // now — opening a book should not litter the library with empty decks.
+  const target = decks.value.resolveTarget(currentText.value)
+  let deckIds: string[] = []
+  if (target) {
+    const deck =
+      target.textId !== undefined
+        ? decks.value.ensureTextDeck(target.textId, target.name)
+        : target
+    deckIds = [deck.id]
+  }
+
   saved.value.add(
-    toSavedWord(
-      { ...current.value, surface: props.entry.surface },
-      gloss,
-      props.context,
-    ),
+    toSavedWord({ ...current.value, surface: props.entry.surface }, gloss, props.context, deckIds),
   )
   statuses.value.clear(current.value.wordId)
 }
+
+/** Names of the decks the saved word is actually in, for confirmation. */
+const savedDeckNames = computed(() =>
+  saved.value
+    .decksOf(current.value.wordId)
+    .map((id) => decks.value.get(id)?.name)
+    .filter((n): n is string => !!n),
+)
 
 function unsave() {
   saved.value.remove(current.value.wordId)
@@ -99,7 +170,15 @@ function altLabel(a: Reading | ReadingAlt): string {
 <template>
   <!-- A real dialog, unlike the peek: focusable, labelled, dismissible, so
        the whole feature is usable without a pointer. -->
-  <aside class="panel" role="dialog" :aria-label="entry.lemma" tabindex="-1">
+  <aside
+      ref="panelEl"
+      class="panel"
+      role="dialog"
+      aria-modal="true"
+      :aria-label="entry.lemma"
+      tabindex="-1"
+      @keydown="onPanelKeydown"
+    >
     <header class="panel-head">
       <div class="title">
         <span class="lemma">{{ current.lemma }}</span>
@@ -159,6 +238,11 @@ function altLabel(a: Reading | ReadingAlt): string {
       {{ t.reading.ignoredNote }} · <button class="link" @click="undo">{{ t.reading.undo }}</button>
     </p>
 
+    <!-- Where the word will go. Shown before the save, so a word is never
+         filed somewhere the reader cannot see, and changeable without
+         blocking the save itself. -->
+    <DeckPicker v-if="!isSaved && !isKnown && !isIgnored" :lang="lang" :current-text="currentText" />
+
     <div class="actions">
       <button v-if="!isSaved" class="btn btn-primary" :disabled="!current.senses.length" @click="save">
         {{ t.reading.save }}
@@ -169,6 +253,13 @@ function altLabel(a: Reading | ReadingAlt): string {
       <button v-if="!isKnown" class="btn" @click="markKnown">{{ t.reading.markKnown }}</button>
       <button v-if="!isIgnored" class="btn subtle" @click="ignore">{{ t.reading.ignore }}</button>
     </div>
+
+    <!-- Confirms where the word actually went. A save that reports only
+         "Saved" leaves the reader to guess, and guessing is what makes
+         people stop trusting a filing system. -->
+    <p v-if="isSaved && savedDeckNames.length" class="saved-decks">
+      {{ format(t.reading.deckAddedTo, { name: savedDeckNames.join(', ') }) }}
+    </p>
 
     <!-- CC BY-SA requires attribution; the lexicon is Wiktionary-derived. -->
     <p class="attribution muted">{{ t.reading.attribution }}</p>
@@ -181,7 +272,7 @@ function altLabel(a: Reading | ReadingAlt): string {
   right: var(--space-5);
   bottom: var(--space-5);
   width: min(26rem, calc(100vw - 2 * var(--space-5)));
-  max-height: 70vh;
+  max-height: 70dvh;
   overflow-y: auto;
   z-index: 70;
   background: var(--color-surface);
@@ -189,17 +280,24 @@ function altLabel(a: Reading | ReadingAlt): string {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
   padding: var(--space-4);
-  outline: none;
+}
+/* The focus ring is kept: this element now receives focus when the dialog
+   opens, so suppressing its indicator hid exactly the state that matters. */
+.panel:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 /* On a phone, dock to the bottom edge so the panel never covers the
    sentence the reader is judging the sense against. */
 @media (max-width: 640px) {
   .panel {
+    /* The action row sat directly under the iOS home indicator. */
+    padding-bottom: calc(var(--space-4) + env(safe-area-inset-bottom));
     right: 0;
     left: 0;
     bottom: 0;
     width: 100%;
-    max-height: 60vh;
+    max-height: 60dvh;
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     border-bottom: none;
   }
@@ -372,6 +470,11 @@ function altLabel(a: Reading | ReadingAlt): string {
 }
 .subtle {
   color: var(--color-text-muted);
+}
+.saved-decks {
+  margin: var(--space-2) 0 0;
+  font-size: 0.75rem;
+  color: var(--color-success);
 }
 .attribution {
   font-size: 0.68rem;
