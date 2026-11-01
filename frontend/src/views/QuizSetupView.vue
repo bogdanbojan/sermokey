@@ -44,8 +44,11 @@ function start() {
   <section>
     <button class="btn back" @click="navigate({ name: 'home' })">{{ t.quizSetup.back }}</button>
 
-    <p v-if="loading" class="muted">{{ t.quizSetup.loading }}</p>
-    <p v-else-if="error" class="error-text">{{ error }}</p>
+    <p v-if="loading" class="muted" role="status">{{ t.quizSetup.loading }}</p>
+    <div v-else-if="error" class="error-block" role="alert">
+      <p class="error-text">{{ error }}</p>
+      <button class="btn" @click="load()">{{ t.common.retry }}</button>
+    </div>
 
     <template v-else>
       <h1>{{ t.quizSetup.practiceTitlePrefix }} {{ tenseLabel }}</h1>
@@ -89,6 +92,13 @@ function start() {
 </template>
 
 <style scoped>
+.error-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
 .back {
   margin-bottom: var(--space-4);
 }

@@ -23,7 +23,10 @@ function start() {
 
 <template>
   <div class="card vocab-card" :class="{ mixed: isMixed }">
-    <p class="pill">{{ isMixed ? t.vocab.mixedTitle : nameEn }}</p>
+    <!-- The mixed card used t.vocab.mixedTitle here *and* as its name, so
+         the pill and the heading were the same words. Every other card
+         pairs a classifier with a different name. -->
+    <p class="pill">{{ nameEn }}</p>
     <h3>{{ nameNative }}</h3>
     <p class="muted usage">{{ props.wordCount }} {{ t.vocab.wordsLabel }}</p>
     <p v-if="dueCount || newCount" class="progress-hint">

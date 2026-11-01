@@ -31,24 +31,41 @@ const props = defineProps<{
 
 const tokens = computed(() => renderTokens(props.paragraph))
 
-function classesFor(entryIndex: number, tokenIndex: number): string[] {
-  const out: string[] = []
-  if (props.highlighting) {
-    out.push(props.entryStatus[entryIndex] ?? 'no-entry')
-  }
-  if (tokenIndex === props.pinned) out.push('pinned')
-  return out
+// Returns a string rather than an array: there are only six possible
+// values, and the array version allocated two objects per token per render
+// before Vue's normalizeClass joined them back into a string anyway.
+function classesFor(entryIndex: number, tokenIndex: number): string {
+  const status = props.highlighting ? (props.entryStatus[entryIndex] ?? 'no-entry') : ''
+  return tokenIndex === props.pinned ? `${status} pinned` : status
+}
+
+/**
+ * Whether a token has anything to show.
+ *
+ * Proper nouns and numerals have no lexicon entry, so clicking them did
+ * nothing — while `cursor: pointer` on every token advertised otherwise.
+ * Only tokens that will actually respond are focusable and get the hand.
+ */
+function isActionable(entryIndex: number): boolean {
+  return entryIndex >= 0
 }
 </script>
 
 <template>
   <p class="para" :data-paragraph="index">
     <template v-for="tk in tokens" :key="tk.index">
+      <!-- Focusable and activatable by keyboard. These were inert spans,
+           so word lookup — the central interaction of the reader — was
+           reachable only with a pointer, despite the hover popup being
+           aria-hidden on the grounds that the pinned panel was the
+           accessible route to the same information. -->
       <span
         v-if="tk.word"
         class="tok"
         :class="classesFor(tk.entry, tk.index)"
         :data-token="tk.index"
+        :tabindex="isActionable(tk.entry) ? 0 : undefined"
+        :role="isActionable(tk.entry) ? 'button' : undefined"
         >{{ tk.text }}</span
       >
       <!-- Inter-word material carries data-token too, so a selection that
@@ -69,11 +86,24 @@ function classesFor(entryIndex: number, tokenIndex: number): string[] {
      decorating one does not shift the line. */
   border-bottom: 2px solid transparent;
   border-radius: 2px;
-  cursor: pointer;
   transition: background-color 0.1s ease;
 }
-.tok:hover {
+/* Only tokens that will actually open a panel claim to be clickable. */
+.tok[role='button'] {
+  cursor: pointer;
+}
+.tok[role='button']:hover {
   background: var(--color-accent-50);
+}
+.tok:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tok {
+    transition: none;
+  }
 }
 
 /* Status decoration.

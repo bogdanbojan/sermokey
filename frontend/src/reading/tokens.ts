@@ -22,18 +22,28 @@ export interface RenderToken {
 
 /** Expands a paragraph's flat span triples into render tokens. */
 export function renderTokens(p: ReadingParagraph): RenderToken[] {
+  const cached = tokenCache.get(p)
+  if (cached) return cached
+
+  const bytes = bytesOf(p)
   const out: RenderToken[] = []
   for (let i = 0, n = 0; i < p.spans.length; i += SPAN_STRIDE, n++) {
     const start = p.spans[i]!
     const end = p.spans[i + 1]!
     const entry = p.spans[i + 2]!
+    // Decoded once. `word` used to call sliceBytes a second time, and
+    // because `||` only short-circuits when the token has a lexicon entry,
+    // every space and punctuation mark — the majority of the span array —
+    // was decoded twice.
+    const text = decoder.decode(bytes.subarray(start, end))
     out.push({
       index: n,
-      text: sliceBytes(p.text, start, end),
+      text,
       entry,
-      word: entry !== NO_ENTRY || isWordish(sliceBytes(p.text, start, end)),
+      word: entry !== NO_ENTRY || isWordish(text),
     })
   }
+  tokenCache.set(p, out)
   return out
 }
 
@@ -44,28 +54,26 @@ export function renderTokens(p: ReadingParagraph): RenderToken[] {
 // natural for Go without making the client guess.
 const encoder = new TextEncoder()
 const decoder = new TextDecoder()
-const byteCache = new WeakMap<object, Uint8Array>()
-const keyFor = new Map<string, object>()
 
-function bytesOf(text: string): Uint8Array {
-  let key = keyFor.get(text)
-  if (!key) {
-    key = {}
-    // Bounded so a long session cannot grow this without limit; paragraphs
-    // are re-rendered constantly but there are only ever a few on screen.
-    if (keyFor.size > 256) keyFor.clear()
-    keyFor.set(text, key)
-  }
-  let bytes = byteCache.get(key)
+// Keyed on the paragraph object, which is already a stable identity for
+// the lifetime of a loaded section.
+//
+// The previous version keyed a WeakMap through a `Map<string, object>` of
+// paragraph *text*, which held both the string and the key strongly and so
+// defeated the WeakMap entirely — then cleared the whole cache whenever it
+// passed 256 entries. Any EPUB chapter longer than 256 paragraphs
+// therefore thrashed: each new paragraph wiped all the others, and the
+// next access re-encoded from scratch.
+const byteCache = new WeakMap<ReadingParagraph, Uint8Array>()
+const tokenCache = new WeakMap<ReadingParagraph, RenderToken[]>()
+
+function bytesOf(p: ReadingParagraph): Uint8Array {
+  let bytes = byteCache.get(p)
   if (!bytes) {
-    bytes = encoder.encode(text)
-    byteCache.set(key, bytes)
+    bytes = encoder.encode(p.text)
+    byteCache.set(p, bytes)
   }
   return bytes
-}
-
-function sliceBytes(text: string, start: number, end: number): string {
-  return decoder.decode(bytesOf(text).subarray(start, end))
 }
 
 /** Whether a span with no dictionary entry should still be selectable —

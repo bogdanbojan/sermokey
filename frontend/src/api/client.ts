@@ -16,37 +16,69 @@ const BASE_URL = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? 'h
 
 class ApiError extends Error {}
 
+/**
+ * Describes why a fetch rejected.
+ *
+ * `fetch` rejects identically for DNS failure, connection refused, TLS
+ * problems and a CORS rejection, and the original message asserted the
+ * first of those: it told you the backend was probably not running. The
+ * most common cause in development is in fact the last one — a dev server
+ * on a port the backend's FRONTEND_ORIGIN does not allow — so the advice
+ * sent people to restart a server that was already up. The cause is also
+ * preserved now instead of being discarded by a bare `catch {}`.
+ */
+function networkError(cause: unknown): ApiError {
+  const err = new ApiError(
+    `Could not reach the backend at ${BASE_URL}. It may not be running, ` +
+      `or it may be refusing this origin (${window.location.origin}) via CORS — ` +
+      `set FRONTEND_ORIGIN on the backend to match.`,
+  )
+  err.cause = cause
+  return err
+}
+
+/** Reads an error body, tolerating a non-JSON one (a proxy's HTML page). */
+async function errorFrom(res: Response, path: string): Promise<ApiError> {
+  const body = (await res.json().catch(() => null)) as { error?: string } | null
+  return new ApiError(body?.error ?? `Request to ${path} failed with status ${res.status}`)
+}
+
+/**
+ * Parses a success body.
+ *
+ * The error path already tolerated a non-JSON body; the success path did
+ * not, so a 200 with an empty body or an HTML error page from a proxy
+ * threw a bare SyntaxError that every caller then misreported, because
+ * `e instanceof ApiError` was false.
+ */
+async function parseBody<T>(res: Response, path: string): Promise<T> {
+  if (res.status === 204) return undefined as T
+  const text = await res.text()
+  if (text === '') return undefined as T
+  try {
+    return JSON.parse(text) as T
+  } catch (e) {
+    const err = new ApiError(`The backend returned a malformed response for ${path}.`)
+    err.cause = e
+    throw err
+  }
+}
+
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   let res: Response
   try {
     res = await fetch(`${BASE_URL}${path}`, init)
-  } catch {
-    throw new ApiError(
-      `Could not reach the backend at ${BASE_URL}. Is it running? (cd backend && go run ./cmd/server)`,
-    )
+  } catch (e) {
+    throw networkError(e)
   }
-  if (!res.ok) {
-    const body = (await res.json().catch(() => null)) as { error?: string } | null
-    throw new ApiError(body?.error ?? `Request to ${path} failed with status ${res.status}`)
-  }
-  if (res.status === 204) return undefined as T
-  return (await res.json()) as T
+  if (!res.ok) throw await errorFrom(res, path)
+  return parseBody<T>(res, path)
 }
 
-async function getJSON<T>(path: string): Promise<T> {
-  let res: Response
-  try {
-    res = await fetch(`${BASE_URL}${path}`)
-  } catch {
-    throw new ApiError(
-      `Could not reach the backend at ${BASE_URL}. Is it running? (cd backend && go run ./cmd/server)`,
-    )
-  }
-  if (!res.ok) {
-    const body = (await res.json().catch(() => null)) as { error?: string } | null
-    throw new ApiError(body?.error ?? `Request to ${path} failed with status ${res.status}`)
-  }
-  return (await res.json()) as T
+// getJSON was a near-duplicate of request that had already drifted — it
+// never grew the 204 handling — so it is now the same code path.
+function getJSON<T>(path: string): Promise<T> {
+  return request<T>(path)
 }
 
 export const api = {

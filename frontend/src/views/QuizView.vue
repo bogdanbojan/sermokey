@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watch, nextTick } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
 import { api, ApiError } from '../api/client'
 import type { Exercise } from '../types/api'
 import { gradeTextAnswer } from '../utils/text'
@@ -113,7 +113,35 @@ function onInputEnter() {
   }
 }
 
-onMounted(load)
+// `onInputEnter`'s "already answered, so advance" branch was unreachable:
+// the input is rendered under `v-if="!answered"`, so the moment an answer
+// is submitted the element unmounts, focus falls to <body>, and Enter
+// stopped reaching any handler. Advancing has to be bound to the window.
+function onQuizKeydown(e: KeyboardEvent) {
+  if (e.metaKey || e.ctrlKey || e.altKey) return
+  if (phase.value !== 'question') return
+
+  if (e.key === 'Enter' && answered.value) {
+    e.preventDefault()
+    next()
+    return
+  }
+  // Multiple-choice had no keyboard support at all, while the flashcards
+  // screen has used 1-4 since it shipped.
+  if (!answered.value && current.value?.type === 'mcq' && current.value.choices) {
+    const n = Number(e.key)
+    if (Number.isInteger(n) && n >= 1 && n <= current.value.choices.length) {
+      e.preventDefault()
+      submitChoice(current.value.choices[n - 1]!)
+    }
+  }
+}
+
+onMounted(() => {
+  load()
+  window.addEventListener('keydown', onQuizKeydown)
+})
+onBeforeUnmount(() => window.removeEventListener('keydown', onQuizKeydown))
 watch([() => props.tense, () => props.type, () => props.count, lang], load)
 </script>
 
@@ -121,8 +149,11 @@ watch([() => props.tense, () => props.type, () => props.count, lang], load)
   <section>
     <button class="btn back" @click="navigate({ name: 'home' })">{{ t.quiz.back }}</button>
 
-    <p v-if="phase === 'loading'" class="muted">{{ t.quiz.loadingExercises }}</p>
-    <p v-else-if="phase === 'error'" class="error-text">{{ error }}</p>
+    <p v-if="phase === 'loading'" class="muted" role="status">{{ t.quiz.loadingExercises }}</p>
+    <div v-else-if="phase === 'error'" class="error-block" role="alert">
+      <p class="error-text">{{ error }}</p>
+      <button class="btn" @click="load()">{{ t.common.retry }}</button>
+    </div>
 
     <template v-else-if="phase === 'question' && current">
       <div class="progress-row">
@@ -130,7 +161,7 @@ watch([() => props.tense, () => props.type, () => props.count, lang], load)
         <span class="muted">{{ t.quiz.scoreLabel }} {{ score }}</span>
       </div>
       <div class="progress-bar">
-        <div class="progress-fill" :style="{ width: `${(index / exercises.length) * 100}%` }" />
+        <div class="progress-fill" :style="{ width: `${((index + 1) / exercises.length) * 100}%` }" />
       </div>
 
       <div class="card question-card">
@@ -226,6 +257,13 @@ watch([() => props.tense, () => props.type, () => props.count, lang], load)
 </template>
 
 <style scoped>
+.error-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
 .back {
   margin-bottom: var(--space-4);
 }
@@ -277,8 +315,9 @@ watch([() => props.tense, () => props.type, () => props.count, lang], load)
   width: 10ch;
   text-align: center;
 }
-.blank-input:focus {
-  outline: none;
+.blank-input:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
   border-bottom-color: var(--color-accent);
 }
 

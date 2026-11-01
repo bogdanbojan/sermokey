@@ -33,8 +33,11 @@ watch([() => props.tense, lang], load)
   <section>
     <button class="btn back" @click="navigate({ name: 'home' })">{{ t.theory.back }}</button>
 
-    <p v-if="loading" class="muted">{{ t.theory.loading }}</p>
-    <p v-else-if="error" class="error-text">{{ error }}</p>
+    <p v-if="loading" class="muted" role="status">{{ t.theory.loading }}</p>
+    <div v-else-if="error" class="error-block" role="alert">
+      <p class="error-text">{{ error }}</p>
+      <button class="btn" @click="load()">{{ t.common.retry }}</button>
+    </div>
 
     <template v-else-if="theory">
       <h1>{{ theory.nameNative }} <span class="muted name-en">({{ theory.nameEn }})</span></h1>
@@ -48,10 +51,14 @@ watch([() => props.tense, lang], load)
       <div v-for="group in theory.groups" :key="group.groupName + group.exampleVerb" class="card section-card">
         <h3>{{ group.groupName }}</h3>
         <p class="muted">{{ group.explanation }}</p>
+        <!-- Six columns of person labels ("ellos / ellas / ustedes") do not
+             fit a 375px viewport. Without a scroll container the table
+             widened the whole document instead of itself. -->
+        <div class="table-scroll">
         <table>
           <thead>
             <tr>
-              <th v-for="p in t.theory.personLabels" :key="p">{{ p }}</th>
+              <th v-for="p in t.theory.personLabels" :key="p" scope="col">{{ p }}</th>
             </tr>
           </thead>
           <tbody>
@@ -63,6 +70,7 @@ watch([() => props.tense, lang], load)
             </tr>
           </tbody>
         </table>
+        </div>
         <p class="muted example-label">{{ t.theory.example }} : {{ group.exampleVerb }}</p>
       </div>
 
@@ -79,6 +87,20 @@ watch([() => props.tense, lang], load)
 </template>
 
 <style scoped>
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.table-scroll table {
+  min-width: 34rem;
+}
+.error-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
 .back {
   margin-bottom: var(--space-4);
 }

@@ -71,7 +71,12 @@
      long-form reading. */
   --color-heading: var(--color-ink-950);
 
-  --color-success: #2f8f5b;
+  /* Darkened from #2f8f5b, which measured 4.04:1 on white and 3.60:1 on
+     its own tinted background — below the 4.5:1 text floor. It is used as
+     *text* for the "Correct!" quiz feedback, the Easy grade button, the
+     comfortable difficulty band and the neuter gender badge, so all four
+     were failing. */
+  --color-success: #1f7049;
   --color-success-bg: #e8f5ee;
   --color-danger: #b23b3b;
   --color-danger-bg: #fbeaea;
@@ -119,7 +124,9 @@ body {
 }
 
 #app {
-  min-height: 100vh;
+  /* dvh, not vh: on mobile Safari `vh` is the *largest* viewport, so a
+     100vh page sits partly under the collapsing URL bar. */
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
 }
@@ -265,4 +272,59 @@ td {
 th {
   background: var(--color-bg);
   font-weight: 600;
+}
+
+
+/* --- Focus -------------------------------------------------------------
+   There was no focus-visible rule anywhere in the app, and the only two
+   :focus rules that existed removed the indicator and replaced it with a
+   border-colour change — a colour-only cue, which fails WCAG 2.4.7. This
+   gives every interactive element one consistent, high-contrast ring,
+   including the many bare <button>s used as tabs, chips and controls. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* --- Motion ------------------------------------------------------------
+   Honoured in exactly one component before this (the hover popover's
+   entrance). The accordion's grid-template-rows transition is the largest
+   moving element in the app and was unguarded, as were the progress bars,
+   the coverage bars, every button press transform and the per-token
+   background fade in the reader. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- Utilities --------------------------------------------------------- */
+
+/* Visible to screen readers, not to sighted users. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Wide data tables — the conjugation tables in particular — are six
+   columns of person labels like "ellos / ellas / ustedes". At 375px that
+   left roughly 34px of text per column, so the table forced the whole
+   document into a horizontal scroll. Scrolling the table alone keeps the
+   page itself still. */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
