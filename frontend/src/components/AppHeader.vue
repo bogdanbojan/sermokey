@@ -1,9 +1,22 @@
 <script setup lang="ts">
 import { navigate } from '../router/router'
-import { useLanguage, setLanguage } from '../i18n/language'
+import { useLanguage, setLanguage, setUiLangPreference, t } from '../i18n/language'
 import logo from '../assets/sermokey-logo.png'
 
-const { lang, languages } = useLanguage()
+const { lang, languages, uiLangPreference } = useLanguage()
+
+/**
+ * Interface language, chosen separately from the study language.
+ *
+ * 'auto' is the default and reproduces the original immersive behaviour
+ * exactly. The English option is the escape hatch: a day-one learner
+ * cannot read the grade buttons they are being asked to press, or the
+ * confirmation in front of a destructive action, in a language they have
+ * not started learning yet.
+ */
+function toggleUiLang() {
+  setUiLangPreference(uiLangPreference.value === 'en' ? 'auto' : 'en')
+}
 </script>
 
 <template>
@@ -13,17 +26,30 @@ const { lang, languages } = useLanguage()
         <img class="brand-mark" :src="logo" alt="Sermokey" />
       </button>
 
-      <div class="lang-switch" role="group" aria-label="Choix de la langue / Selección de idioma">
+      <div class="switches">
+        <div class="lang-switch" role="group" :aria-label="t.settings.interfaceLanguage">
+          <button
+            v-for="l in languages"
+            :key="l.code"
+            type="button"
+            class="lang-btn"
+            :class="{ active: lang === l.code }"
+            :aria-pressed="lang === l.code"
+            @click="setLanguage(l.code)"
+          >
+            {{ l.name }}
+          </button>
+        </div>
+
         <button
-          v-for="l in languages"
-          :key="l.code"
           type="button"
-          class="lang-btn"
-          :class="{ active: lang === l.code }"
-          :aria-pressed="lang === l.code"
-          @click="setLanguage(l.code)"
+          class="ui-lang-btn"
+          :class="{ active: uiLangPreference === 'en' }"
+          :aria-pressed="uiLangPreference === 'en'"
+          :title="t.settings.interfaceLanguage"
+          @click="toggleUiLang"
         >
-          {{ l.name }}
+          EN
         </button>
       </div>
     </div>
@@ -71,6 +97,33 @@ const { lang, languages } = useLanguage()
    flags represent countries, not languages, and several countries speak
    either language), both options always visible so the current choice and
    the alternative are equally discoverable, persisted via localStorage. */
+.switches {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+.ui-lang-btn {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.6rem;
+  min-height: 2.25rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+.ui-lang-btn:hover {
+  color: var(--color-text);
+}
+.ui-lang-btn.active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
 .lang-switch {
   display: inline-flex;
   border: 1px solid var(--color-border);
@@ -82,7 +135,8 @@ const { lang, languages } = useLanguage()
 .lang-btn {
   border: none;
   background: none;
-  padding: 0.4rem 0.8rem;
+  padding: 0.5rem 0.8rem;
+  min-height: 2.25rem;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--color-text-muted);
@@ -110,8 +164,13 @@ const { lang, languages } = useLanguage()
     height: 2.5rem;
   }
   .lang-btn {
-    padding: 0.35rem 0.5rem;
+    /* Narrowed horizontally but not vertically: shrinking a touch target
+       on the screen where it is hardest to hit is the wrong trade. */
+    padding: 0.5rem 0.45rem;
     font-size: 0.78rem;
+  }
+  .ui-lang-btn {
+    padding: 0.5rem 0.45rem;
   }
 }
 </style>

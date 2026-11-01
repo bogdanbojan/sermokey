@@ -6,8 +6,49 @@
 // interpolate use {placeholders}; see format() in language.ts.
 import type { LanguageCode } from '../types/api'
 
+/**
+ * A count-bearing string in its grammatical forms.
+ *
+ * The rest of this file hardcodes plurals ("{count} mots"), which renders
+ * "1 mots". Fixing that everywhere means reshaping a dozen keys across
+ * four languages; new strings at least start correct.
+ */
+export interface PluralForms {
+  one: string
+  other: string
+}
+
 export interface UiStrings {
   brand: { title: string; tagline: string }
+  /** Shared across screens; previously these were retyped per view or
+   *  simply absent, which is why no error state had a retry control. */
+  common: {
+    retry: string
+    dismiss: string
+    cancel: string
+    close: string
+  }
+  /** Persistence is the one failure the learner must never be left to
+   *  discover on their own: everything they have done lives in the browser
+   *  and nowhere else. */
+  storage: {
+    quotaTitle: string
+    quotaDetail: string
+    unavailableTitle: string
+    unavailableDetail: string
+    backup: string
+    restore: string
+    restoreConfirm: string
+    crashTitle: string
+    crashDetail: string
+    reload: string
+    reset: string
+    resetConfirm: string
+  }
+  settings: {
+    interfaceLanguage: string
+    followStudyLanguage: string
+  }
   home: {
     title: string
     intro: string
@@ -80,6 +121,11 @@ export interface UiStrings {
     sectionTitle: string
     sectionIntro: string
     mixedTitle: string
+    /** Classifier above the mixed-review title. Distinct from mixedTitle:
+     *  the two were the same string, so the card read "RÉVISION MIXTE /
+     *  Révision mixte" while every other card pairs a classifier with a
+     *  different name. */
+    mixedPill: string
     mixedUsage: string
     wordsLabel: string // "{count} mots" fragment prefix
     back: string
@@ -109,6 +155,15 @@ export interface UiStrings {
     directionProductionHint: string
     directionMixed: string
     directionMixedHint: string
+    undo: string
+    undone: string
+    saveFailed: string
+    leechLabel: string
+    leechHint: string
+    unsuspend: string
+    intervalToday: string
+    intervalDays: string
+    intervalMonths: string
   }
   reading: {
     tab: string
@@ -163,6 +218,38 @@ export interface UiStrings {
     statusUnknown: string
     statusLearning: string
     statusKnown: string
+    statusLegendTitle: string
+    lineHeightLabel: string
+    tighter: string
+    looser: string
+    sectionJump: string
+    textSizeLabel: string
+    typefaceLabel: string
+    highlightLabel: string
+    resetDisplay: string
+    displayMenu: string
+    // Decks
+    deckDestination: string
+    deckChange: string
+    deckMyWords: string
+    deckNew: string
+    deckNewPlaceholder: string
+    deckCreate: string
+    deckAddedTo: string
+    deckManage: string
+    /** Kind shown on the all-saved-words card. */
+    deckAll: string
+    deckForget: string
+    deckForgetConfirm: string
+    /** Kind shown on a deck whose source text has been deleted. It is also
+     *  the only text deck that can be forgotten, so the pill explains why
+     *  this card has a remove control when its siblings do not. */
+    deckOrphaned: string
+    /** Reassurance in the delete-a-text confirmation. */
+    removeKeepsWords: PluralForms
+    deckEmpty: string
+    /** Plural forms, selected by Intl.PluralRules. See plural(). */
+    deckCountLabel: PluralForms
     // Selection
     selectionLookup: string
     selectionSave: string
@@ -191,9 +278,32 @@ export interface UiStrings {
 }
 
 
-export const strings: Record<LanguageCode, UiStrings> = {
+/**
+ * Languages the *interface* can be rendered in: every study language, plus
+ * English. Keeping this wider than LanguageCode is what lets the interface
+ * language be chosen independently of the content language.
+ */
+export type UiLanguageCode = LanguageCode | 'en'
+
+export const strings: Record<UiLanguageCode, UiStrings> = {
   fr: {
     brand: { title: 'Grammaire', tagline: 'conjugaison française' },
+    common: { retry: 'Réessayer', dismiss: 'Fermer', cancel: 'Annuler', close: 'Fermer' },
+    storage: {
+      quotaTitle: 'Stockage saturé',
+      quotaDetail: 'Vos dernières réponses n’ont pas pu être enregistrées. Exportez une sauvegarde, puis libérez de l’espace.',
+      unavailableTitle: 'Stockage indisponible',
+      unavailableDetail: 'Votre navigateur bloque le stockage local. Vos progrès ne seront pas conservés.',
+      backup: 'Exporter une sauvegarde',
+      restore: 'Restaurer',
+      restoreConfirm: 'Remplacer toutes vos données actuelles par cette sauvegarde ?',
+      crashTitle: 'Quelque chose s’est mal passé',
+      crashDetail: 'Exportez d’abord une sauvegarde — elle fonctionne même si l’application ne s’affiche plus.',
+      reload: 'Recharger',
+      reset: 'Effacer les données locales',
+      resetConfirm: 'Effacer définitivement toutes vos données ? Exportez une sauvegarde d’abord.',
+    },
+    settings: { interfaceLanguage: 'Langue de l’interface', followStudyLanguage: 'Suivre la langue étudiée' },
     home: {
       title: 'Grammaire française',
       intro: 'Choisissez un temps à étudier et à pratiquer, ou lancez une révision mixte de tous les temps.',
@@ -267,6 +377,7 @@ export const strings: Record<LanguageCode, UiStrings> = {
       sectionTitle: 'Vocabulaire',
       sectionIntro: 'Apprenez du vocabulaire essentiel avec des fiches à répétition espacée.',
       mixedTitle: 'Révision mixte',
+      mixedPill: 'Tout le vocabulaire',
       mixedUsage: 'Un mélange de tout le vocabulaire pour une révision complète.',
       wordsLabel: 'mots',
       back: '← Retour',
@@ -296,6 +407,15 @@ export const strings: Record<LanguageCode, UiStrings> = {
       directionProductionHint: 'Voir le sens, deviner le mot',
       directionMixed: 'Mélange',
       directionMixedHint: 'Les deux sens, mélangés',
+      undo: 'Annuler',
+      undone: 'Réponse annulée.',
+      saveFailed: 'Réponse non enregistrée — vérifiez le stockage.',
+      leechLabel: 'Carte difficile',
+      leechHint: 'Oubliée {count} fois. Reformulez-la plutôt que de la répéter.',
+      unsuspend: 'Remettre en révision',
+      intervalToday: 'aujourd’hui',
+      intervalDays: '{count} j',
+      intervalMonths: '{count} mois',
     },
     reading: {
       tab: 'Textes',
@@ -348,6 +468,31 @@ export const strings: Record<LanguageCode, UiStrings> = {
       statusUnknown: 'nouveau',
       statusLearning: 'en cours',
       statusKnown: 'connu',
+      statusLegendTitle: 'Légende',
+      lineHeightLabel: 'Interligne',
+      tighter: 'Resserrer l’interligne',
+      looser: 'Élargir l’interligne',
+      sectionJump: 'Aller à la partie',
+      textSizeLabel: 'Taille du texte',
+      typefaceLabel: 'Police',
+      highlightLabel: 'Surligner les mots',
+      resetDisplay: 'Rétablir les réglages',
+      displayMenu: 'Réglages de lecture',
+      deckDestination: 'Ajouter à',
+      deckChange: 'Changer',
+      deckMyWords: 'Mes mots',
+      deckNew: 'Nouveau paquet',
+      deckNewPlaceholder: 'Nom du paquet',
+      deckCreate: 'Créer',
+      deckAddedTo: 'Ajouté à « {name} »',
+      deckManage: 'Mes paquets',
+      deckAll: 'Tous mes mots',
+      deckForget: 'Oublier ce paquet',
+      deckForgetConfirm: 'Oublier « {name} » ? Les mots sont conservés dans Mes mots.',
+      deckOrphaned: 'Texte supprimé',
+      removeKeepsWords: { one: 'Le mot enregistré et son paquet sont conservés.', other: 'Vos {count} mots enregistrés et leur paquet sont conservés.' },
+      deckEmpty: 'Aucun paquet pour l’instant.',
+      deckCountLabel: { one: '{count} mot', other: '{count} mots' },
       selectionLookup: 'Chercher',
       selectionSave: 'Ajouter l’expression',
       selectionTooLong: 'Sélection trop longue ({max} mots maximum).',
@@ -372,6 +517,22 @@ export const strings: Record<LanguageCode, UiStrings> = {
   },
   es: {
     brand: { title: 'Gramática', tagline: 'conjugación española' },
+    common: { retry: 'Reintentar', dismiss: 'Cerrar', cancel: 'Cancelar', close: 'Cerrar' },
+    storage: {
+      quotaTitle: 'Almacenamiento lleno',
+      quotaDetail: 'No se pudieron guardar tus últimas respuestas. Exporta una copia y libera espacio.',
+      unavailableTitle: 'Almacenamiento no disponible',
+      unavailableDetail: 'Tu navegador bloquea el almacenamiento local. Tu progreso no se guardará.',
+      backup: 'Exportar una copia',
+      restore: 'Restaurar',
+      restoreConfirm: '¿Reemplazar todos tus datos actuales por esta copia?',
+      crashTitle: 'Algo ha salido mal',
+      crashDetail: 'Exporta primero una copia — funciona aunque la aplicación no se muestre.',
+      reload: 'Recargar',
+      reset: 'Borrar los datos locales',
+      resetConfirm: '¿Borrar definitivamente todos tus datos? Exporta una copia antes.',
+    },
+    settings: { interfaceLanguage: 'Idioma de la interfaz', followStudyLanguage: 'Seguir el idioma estudiado' },
     home: {
       title: 'Gramática española',
       intro: 'Elige un tiempo para estudiar y practicar, o inicia un repaso mixto de todos los tiempos.',
@@ -445,6 +606,7 @@ export const strings: Record<LanguageCode, UiStrings> = {
       sectionTitle: 'Vocabulario',
       sectionIntro: 'Aprende vocabulario esencial con tarjetas de repetición espaciada.',
       mixedTitle: 'Repaso mixto',
+      mixedPill: 'Todo el vocabulario',
       mixedUsage: 'Una mezcla de todo el vocabulario para un repaso completo.',
       wordsLabel: 'palabras',
       back: '← Volver',
@@ -474,6 +636,15 @@ export const strings: Record<LanguageCode, UiStrings> = {
       directionProductionHint: 'Ver el significado, adivinar la palabra',
       directionMixed: 'Mezcla',
       directionMixedHint: 'Ambos sentidos, mezclados',
+      undo: 'Deshacer',
+      undone: 'Respuesta deshecha.',
+      saveFailed: 'Respuesta no guardada — revisa el almacenamiento.',
+      leechLabel: 'Tarjeta difícil',
+      leechHint: 'Olvidada {count} veces. Reescríbela en vez de repetirla.',
+      unsuspend: 'Volver a repasar',
+      intervalToday: 'hoy',
+      intervalDays: '{count} d',
+      intervalMonths: '{count} m',
     },
     reading: {
       tab: 'Textos',
@@ -526,6 +697,31 @@ export const strings: Record<LanguageCode, UiStrings> = {
       statusUnknown: 'nueva',
       statusLearning: 'en curso',
       statusKnown: 'conocida',
+      statusLegendTitle: 'Leyenda',
+      lineHeightLabel: 'Interlineado',
+      tighter: 'Reducir el interlineado',
+      looser: 'Aumentar el interlineado',
+      sectionJump: 'Ir a la parte',
+      textSizeLabel: 'Tamaño del texto',
+      typefaceLabel: 'Tipografía',
+      highlightLabel: 'Resaltar palabras',
+      resetDisplay: 'Restablecer los ajustes',
+      displayMenu: 'Ajustes de lectura',
+      deckDestination: 'Añadir a',
+      deckChange: 'Cambiar',
+      deckMyWords: 'Mis palabras',
+      deckNew: 'Nuevo mazo',
+      deckNewPlaceholder: 'Nombre del mazo',
+      deckCreate: 'Crear',
+      deckAddedTo: 'Añadido a «{name}»',
+      deckManage: 'Mis mazos',
+      deckAll: 'Todas mis palabras',
+      deckForget: 'Olvidar este mazo',
+      deckForgetConfirm: '¿Olvidar «{name}»? Las palabras se conservan en Mis palabras.',
+      deckOrphaned: 'Texto eliminado',
+      removeKeepsWords: { one: 'La palabra guardada y su mazo se conservan.', other: 'Tus {count} palabras guardadas y su mazo se conservan.' },
+      deckEmpty: 'Aún no hay mazos.',
+      deckCountLabel: { one: '{count} palabra', other: '{count} palabras' },
       selectionLookup: 'Buscar',
       selectionSave: 'Añadir la expresión',
       selectionTooLong: 'Selección demasiado larga ({max} palabras como máximo).',
@@ -550,6 +746,22 @@ export const strings: Record<LanguageCode, UiStrings> = {
   },
   de: {
     brand: { title: 'Grammatik', tagline: 'deutsche Konjugation' },
+    common: { retry: 'Erneut versuchen', dismiss: 'Schließen', cancel: 'Abbrechen', close: 'Schließen' },
+    storage: {
+      quotaTitle: 'Speicher voll',
+      quotaDetail: 'Deine letzten Antworten konnten nicht gespeichert werden. Exportiere eine Sicherung und schaffe Platz.',
+      unavailableTitle: 'Speicher nicht verfügbar',
+      unavailableDetail: 'Dein Browser blockiert den lokalen Speicher. Dein Fortschritt wird nicht gesichert.',
+      backup: 'Sicherung exportieren',
+      restore: 'Wiederherstellen',
+      restoreConfirm: 'Alle aktuellen Daten durch diese Sicherung ersetzen?',
+      crashTitle: 'Etwas ist schiefgelaufen',
+      crashDetail: 'Exportiere zuerst eine Sicherung — das funktioniert auch, wenn die App nicht mehr lädt.',
+      reload: 'Neu laden',
+      reset: 'Lokale Daten löschen',
+      resetConfirm: 'Alle Daten endgültig löschen? Exportiere vorher eine Sicherung.',
+    },
+    settings: { interfaceLanguage: 'Sprache der Oberfläche', followStudyLanguage: 'Der Lernsprache folgen' },
     home: {
       title: 'Deutsche Grammatik',
       intro: 'Wähle eine Zeitform zum Lernen und Üben, oder starte eine gemischte Wiederholung aller Zeitformen.',
@@ -623,6 +835,7 @@ export const strings: Record<LanguageCode, UiStrings> = {
       sectionTitle: 'Wortschatz',
       sectionIntro: 'Lerne wichtigen Wortschatz mit Karteikarten nach dem Prinzip der verteilten Wiederholung.',
       mixedTitle: 'Gemischte Wiederholung',
+      mixedPill: 'Gesamter Wortschatz',
       mixedUsage: 'Eine Mischung aus dem gesamten Wortschatz für eine vollständige Wiederholung.',
       wordsLabel: 'Wörter',
       back: '← Zurück',
@@ -652,6 +865,15 @@ export const strings: Record<LanguageCode, UiStrings> = {
       directionProductionHint: 'Bedeutung sehen, Wort erraten',
       directionMixed: 'Gemischt',
       directionMixedHint: 'Beide Richtungen gemischt',
+      undo: 'Rückgängig',
+      undone: 'Antwort zurückgenommen.',
+      saveFailed: 'Antwort nicht gespeichert — Speicher prüfen.',
+      leechLabel: 'Schwierige Karte',
+      leechHint: '{count}-mal vergessen. Schreibe sie neu, statt sie zu wiederholen.',
+      unsuspend: 'Wieder wiederholen',
+      intervalToday: 'heute',
+      intervalDays: '{count} T',
+      intervalMonths: '{count} Mon.',
     },
     reading: {
       tab: 'Texte',
@@ -704,6 +926,31 @@ export const strings: Record<LanguageCode, UiStrings> = {
       statusUnknown: 'neu',
       statusLearning: 'im Lernen',
       statusKnown: 'bekannt',
+      statusLegendTitle: 'Legende',
+      lineHeightLabel: 'Zeilenabstand',
+      tighter: 'Zeilenabstand verringern',
+      looser: 'Zeilenabstand vergrößern',
+      sectionJump: 'Zu Teil springen',
+      textSizeLabel: 'Schriftgröße',
+      typefaceLabel: 'Schriftart',
+      highlightLabel: 'Wörter hervorheben',
+      resetDisplay: 'Einstellungen zurücksetzen',
+      displayMenu: 'Leseeinstellungen',
+      deckDestination: 'Hinzufügen zu',
+      deckChange: 'Ändern',
+      deckMyWords: 'Meine Wörter',
+      deckNew: 'Neuer Stapel',
+      deckNewPlaceholder: 'Name des Stapels',
+      deckCreate: 'Erstellen',
+      deckAddedTo: 'Zu „{name}“ hinzugefügt',
+      deckManage: 'Meine Stapel',
+      deckAll: 'Alle meine Wörter',
+      deckForget: 'Diesen Stapel vergessen',
+      deckForgetConfirm: '„{name}“ vergessen? Die Wörter bleiben in Meine Wörter.',
+      deckOrphaned: 'Text gelöscht',
+      removeKeepsWords: { one: 'Das gespeicherte Wort und sein Stapel bleiben erhalten.', other: 'Deine {count} gespeicherten Wörter und ihr Stapel bleiben erhalten.' },
+      deckEmpty: 'Noch keine Stapel.',
+      deckCountLabel: { one: '{count} Wort', other: '{count} Wörter' },
       selectionLookup: 'Nachschlagen',
       selectionSave: 'Wendung hinzufügen',
       selectionTooLong: 'Auswahl zu lang (höchstens {max} Wörter).',
@@ -726,6 +973,256 @@ export const strings: Record<LanguageCode, UiStrings> = {
       removeConfirm: '„{title}“ aus deiner Bibliothek entfernen?',
     },
   },
+  // English is the one interface language that is never a study language.
+  // It exists as an escape hatch: the immersive convention above is right
+  // for an intermediate learner and wrong for a day-one beginner, who
+  // cannot read the grade buttons they are being asked to press, or the
+  // confirmation dialog in front of a destructive action. Content — glosses
+  // and translations — was already English, so this only makes the chrome
+  // agree with it for learners who need that.
+  en: {
+    brand: { title: 'Grammar', tagline: 'conjugation practice' },
+    common: { retry: 'Try again', dismiss: 'Dismiss', cancel: 'Cancel', close: 'Close' },
+    storage: {
+      quotaTitle: 'Storage is full',
+      quotaDetail: 'Your last answers could not be saved. Export a backup, then free up some space.',
+      unavailableTitle: 'Storage unavailable',
+      unavailableDetail: 'Your browser is blocking local storage. Your progress will not be kept.',
+      backup: 'Export a backup',
+      restore: 'Restore',
+      restoreConfirm: 'Replace all of your current data with this backup?',
+      crashTitle: 'Something went wrong',
+      crashDetail: 'Export a backup first — it works even when the app will not load.',
+      reload: 'Reload',
+      reset: 'Clear local data',
+      resetConfirm: 'Permanently erase all of your data? Export a backup first.',
+    },
+    settings: { interfaceLanguage: 'Interface language', followStudyLanguage: 'Follow the study language' },
+    home: {
+      title: 'Grammar',
+      intro: 'Pick a tense to study and practise, or start a mixed review of every tense.',
+      loading: 'Loading…',
+      error: 'Something went wrong.',
+      mixedTitle: 'Mixed review',
+      mixedUsage: 'A mix of every tense, for all-round practice.',
+      grammarTab: 'Grammar',
+      vocabTab: 'Vocabulary',
+      searchPlaceholder: 'Search…',
+      noResults: 'No results.',
+      continueTitle: 'Pick up where you left off',
+      clusters: {
+        basics: 'The basics',
+        people: 'People',
+        daily: 'Everyday life',
+        world: 'The world',
+        schoolWork: 'School, work & media',
+        wordsConcepts: 'Words & concepts',
+      },
+    },
+    tenseCard: { theory: 'Theory', practice: 'Practise', mixedPill: 'Review' },
+    theory: {
+      back: '← Back',
+      loading: 'Loading…',
+      error: 'Could not load this page.',
+      formation: 'Formation',
+      toRemember: 'Worth remembering',
+      example: 'Example',
+      practiceThisTense: 'Practise this tense →',
+      personLabels: ['I', 'you', 'he / she / one', 'we', 'you (pl.)', 'they'],
+    },
+    quizSetup: {
+      back: '← Back',
+      loading: 'Loading…',
+      error: 'Could not load this tense.',
+      practiceTitlePrefix: 'Practise:',
+      exerciseType: 'Exercise type',
+      mixed: 'Mixed (multiple choice + typing)',
+      mcqOnly: 'Multiple choice only',
+      textOnly: 'Typing only',
+      questionCount: 'Number of questions',
+      start: 'Start →',
+    },
+    quiz: {
+      back: '← Back',
+      loadingExercises: 'Loading exercises…',
+      error: 'Could not load the exercises.',
+      noExercises: 'No exercises could be generated.',
+      questionLabel: 'Question',
+      scoreLabel: 'Score:',
+      subjectLabel: 'subject:',
+      check: 'Check',
+      next: 'Next →',
+      seeResults: 'See results →',
+      correct: '✓ Correct!',
+      correctWithAccentWarning:
+        '✓ Correct! Watch the accents though: the written form is “{answer}”.',
+      incorrect: '✗ Not quite — the answer was “{answer}”.',
+      youWrote: 'You wrote: “{text}”',
+      results: 'Results',
+      toReview: 'Worth reviewing',
+      missedItem:
+        '{infinitive} ({tense}, {person}) — correct answer: {answer} · you wrote: {userAnswer}',
+      correctLabel: 'correct answer',
+      wroteLabel: 'you wrote',
+      noMistakes: 'No mistakes — nicely done!',
+      backHome: 'Back to home',
+      tryAgain: 'Start again ↻',
+    },
+    vocab: {
+      sectionTitle: 'Vocabulary',
+      sectionIntro: 'Learn core vocabulary with spaced-repetition flashcards.',
+      mixedTitle: 'Mixed review',
+      mixedPill: 'All vocabulary',
+      mixedUsage: 'A mix of all the vocabulary, for a full review.',
+      wordsLabel: 'words',
+      back: '← Back',
+      loading: 'Loading…',
+      error: 'Could not load the vocabulary.',
+      newLabel: 'New',
+      learningLabel: 'Learning',
+      reviewLabel: 'To review',
+      masteredLabel: 'Mastered',
+      dueLabel: 'due today',
+      startSession: 'Start →',
+      reveal: 'Reveal',
+      again: 'Again',
+      hard: 'Hard',
+      good: 'Good',
+      easy: 'Easy',
+      sessionDone: 'Session complete!',
+      sessionDoneDetail: 'You reviewed {count} cards.',
+      nothingDue: 'Nothing due today',
+      nothingDueDetail: 'Come back later, or study a few cards ahead of schedule.',
+      studyAnyway: 'Study anyway',
+      cardProgress: '{index} / {total}',
+      directionLabel: 'Review direction',
+      directionRecognition: 'Recognition',
+      directionRecognitionHint: 'See the word, recall the meaning',
+      directionProduction: 'Production',
+      directionProductionHint: 'See the meaning, recall the word',
+      directionMixed: 'Mixed',
+      directionMixedHint: 'Both directions, shuffled',
+      undo: 'Undo',
+      undone: 'Answer undone.',
+      saveFailed: 'Answer not saved — check your storage.',
+      leechLabel: 'Difficult card',
+      leechHint: 'Forgotten {count} times. Rewrite it rather than drilling it again.',
+      unsuspend: 'Put back into review',
+      intervalToday: 'today',
+      intervalDays: '{count}d',
+      intervalMonths: '{count}mo',
+    },
+    reading: {
+      tab: 'Texts',
+      sectionIntro: 'Read, hover a word for its meaning, and add it to your cards.',
+      loading: 'Loading…',
+      error: 'Could not load the text.',
+      unavailable: 'Reading is not available in this language yet.',
+      levelLabel: 'Level',
+      tokensLabel: '{count} words',
+      sectionsLabel: '{count} parts',
+      newWordsLabel: '{count} new words',
+      coverageLabel: '{percent}% known',
+      bandComfortable: 'Comfortable',
+      bandChallenging: 'Challenging',
+      bandHard: 'Hard',
+      bandHint: 'Based on your cards: above 98% known words, reading is effortless.',
+      read: 'Read',
+      continueReading: 'Continue',
+      back: '← Library',
+      prevSection: '← Previous',
+      nextSection: 'Next →',
+      sectionProgress: 'Part {index} / {total}',
+      savedCount: '{count} saved',
+      finishTitle: 'Text finished',
+      finishDetail: 'You saved {count} words from this text.',
+      reviewSaved: 'Review these words',
+      noneSaved: 'No words saved yet.',
+      noDefinition: 'No definition found.',
+      uncertainNote: 'Guessed form — worth checking.',
+      otherReadings: 'Other readings',
+      chooseSense: 'Choose the meaning to learn',
+      save: 'Add to cards',
+      saved: 'Saved',
+      unsave: 'Remove',
+      markKnown: 'I already know this',
+      knownNote: 'Marked as known',
+      ignore: 'Ignore',
+      ignoredNote: 'Ignored (name, numeral…)',
+      undo: 'Undo',
+      nudge: 'You have looked this word up {count} times. Add it?',
+      lookupHint: 'Click to pin',
+      attribution: 'Definitions: Wiktionary (CC BY-SA)',
+      displayLabel: 'Display',
+      smaller: 'Smaller text',
+      larger: 'Larger text',
+      serif: 'Serif',
+      sans: 'Sans',
+      highlightOn: 'Highlighting on',
+      highlightOff: 'Highlighting off',
+      statusUnknown: 'new',
+      statusLearning: 'learning',
+      statusKnown: 'known',
+      statusLegendTitle: 'Key',
+      lineHeightLabel: 'Line spacing',
+      tighter: 'Tighter line spacing',
+      looser: 'Looser line spacing',
+      sectionJump: 'Jump to part',
+      textSizeLabel: 'Text size',
+      typefaceLabel: 'Typeface',
+      highlightLabel: 'Highlight words',
+      resetDisplay: 'Reset to defaults',
+      displayMenu: 'Reading settings',
+      deckDestination: 'Add to',
+      deckChange: 'Change',
+      deckMyWords: 'My words',
+      deckNew: 'New deck',
+      deckNewPlaceholder: 'Deck name',
+      deckCreate: 'Create',
+      deckAddedTo: 'Added to “{name}”',
+      deckManage: 'My decks',
+      deckAll: 'All my words',
+      deckForget: 'Forget this deck',
+      deckForgetConfirm: 'Forget “{name}”? The words stay in My words.',
+      deckOrphaned: 'Deleted text',
+      removeKeepsWords: { one: 'The saved word and its deck are kept.', other: 'Your {count} saved words and their deck are kept.' },
+      deckEmpty: 'No decks yet.',
+      deckCountLabel: { one: '{count} word', other: '{count} words' },
+      selectionLookup: 'Look up',
+      selectionSave: 'Add the phrase',
+      selectionTooLong: 'Selection too long ({max} words maximum).',
+      coachTitle: 'How to read here',
+      coachHover: 'Hover a word for a quick preview.',
+      coachClick: 'Click to pin it and add it to your cards.',
+      coachSelect: 'Drag across several words for a phrase.',
+      coachDismiss: 'Got it',
+      savedDeckTitle: 'My words',
+      savedDeckBlurb: 'Words saved while reading',
+      textDeckTitle: 'Words from “{title}”',
+      contextLabel: 'Met in',
+      import: 'Import an EPUB',
+      importing: 'Reading {name}…',
+      importHint: 'or drop a .epub file here',
+      importFailed: 'Could not import this file.',
+      importWrongType: 'Please choose a .epub file.',
+      importedPill: 'Imported',
+      remove: 'Remove',
+      removeConfirm: 'Remove “{title}” from your library?',
+    },
+  },
+}
+
+/**
+ * Picks the right plural form for a count, then interpolates it.
+ *
+ * Intl.PluralRules rather than `count === 1`, so a language with more than
+ * two categories only needs its forms added to PluralForms, not a new
+ * branch at every call site.
+ */
+export function plural(forms: PluralForms, count: number, locale: string): string {
+  const category = new Intl.PluralRules(locale).select(count)
+  const template = category === 'one' ? forms.one : forms.other
+  return format(template, { count: new Intl.NumberFormat(locale).format(count) })
 }
 
 /** Interpolates {placeholders} in a template string, e.g. format(t.quiz.incorrect, { answer: 'parle' }). */
