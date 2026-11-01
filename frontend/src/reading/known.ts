@@ -13,6 +13,7 @@
 // would corrupt the deck statistics that the same history feeds.
 import { ref, watch, type Ref } from 'vue'
 import type { LanguageCode } from '../types/api'
+import { read, subscribe, write } from '../storage'
 
 const KNOWN_PREFIX = 'sermokey:known:'
 const IGNORED_PREFIX = 'sermokey:ignored:'
@@ -22,21 +23,16 @@ interface Sets {
   ignored: Set<string>
 }
 
+function parseIds(u: unknown): string[] | null {
+  return Array.isArray(u) ? u.filter((x): x is string => typeof x === 'string') : null
+}
+
 function loadSet(key: string): Set<string> {
-  try {
-    const raw = localStorage.getItem(key)
-    return new Set(raw ? (JSON.parse(raw) as string[]) : [])
-  } catch {
-    return new Set()
-  }
+  return new Set(read(key, parseIds, []))
 }
 
 function saveSet(key: string, value: Set<string>) {
-  try {
-    localStorage.setItem(key, JSON.stringify([...value]))
-  } catch (e) {
-    console.warn('Could not persist word statuses to localStorage:', e)
-  }
+  return write(key, [...value])
 }
 
 const stores = new Map<LanguageCode, Ref<Sets>>()
@@ -53,6 +49,14 @@ function storeRef(lang: LanguageCode): Ref<Sets> {
       saveSet(KNOWN_PREFIX + lang, v.known)
       saveSet(IGNORED_PREFIX + lang, v.ignored)
     })
+    const reload = () => {
+      existing!.value = {
+        known: loadSet(KNOWN_PREFIX + lang),
+        ignored: loadSet(IGNORED_PREFIX + lang),
+      }
+    }
+    subscribe(KNOWN_PREFIX + lang, reload)
+    subscribe(IGNORED_PREFIX + lang, reload)
   }
   return existing
 }

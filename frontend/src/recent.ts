@@ -6,6 +6,7 @@
 // one) is a classic product-design miss.
 import { ref, type Ref } from 'vue'
 import type { LanguageCode } from './types/api'
+import { isRecord, read, write } from './storage'
 
 export type RecentKind = 'theory' | 'quiz' | 'vocab'
 
@@ -23,21 +24,22 @@ function storageKey(lang: LanguageCode): string {
   return STORAGE_PREFIX + lang
 }
 
+/** A stored object rather than an array used to survive the old cast and
+ *  then throw inside `record`'s `.filter`, outside any try/catch. */
+function parseRecents(u: unknown): RecentItem[] | null {
+  if (!Array.isArray(u)) return null
+  return u.filter(
+    (it): it is RecentItem =>
+      isRecord(it) && typeof it['id'] === 'string' && typeof it['label'] === 'string',
+  )
+}
+
 function load(lang: LanguageCode): RecentItem[] {
-  try {
-    const raw = localStorage.getItem(storageKey(lang))
-    return raw ? (JSON.parse(raw) as RecentItem[]) : []
-  } catch {
-    return []
-  }
+  return read(storageKey(lang), parseRecents, [])
 }
 
 function persist(lang: LanguageCode, items: RecentItem[]) {
-  try {
-    localStorage.setItem(storageKey(lang), JSON.stringify(items))
-  } catch {
-    // best-effort; losing "recent" history silently is fine
-  }
+  return write(storageKey(lang), items)
 }
 
 const caches = new Map<LanguageCode, Ref<RecentItem[]>>()
@@ -61,5 +63,20 @@ export function useRecents(lang: LanguageCode) {
     persist(lang, items.value)
   }
 
-  return { items, record }
+  /**
+   * Drops any entry pointing at `id`.
+   *
+   * Called when the thing itself is deleted. Without it a removed text
+   * kept its "continue" chip, which no longer matched any text and so fell
+   * through to the vocabulary branch of the router — navigating to a
+   * category that does not exist.
+   */
+  function forget(id: string) {
+    const next = items.value.filter((it) => it.id !== id)
+    if (next.length === items.value.length) return
+    items.value = next
+    persist(lang, next)
+  }
+
+  return { items, record, forget }
 }
