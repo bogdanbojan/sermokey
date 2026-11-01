@@ -10,11 +10,20 @@ import (
 	"github.com/bogdanbojan/sermokey/backend/internal/grammar"
 )
 
+// writeJSON serves a response that is not worth caching (errors, and the
+// handful of endpoints whose output is cheap to produce).
 func writeJSON(w http.ResponseWriter, status int, v any) {
-	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	w.WriteHeader(status)
-	if err := json.NewEncoder(w).Encode(v); err != nil {
+	body, err := json.Marshal(v)
+	if err != nil {
 		log.Printf("httpapi: failed to encode response: %v", err)
+		http.Error(w, `{"error":"internal error"}`, http.StatusInternalServerError)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	setVary(w.Header())
+	w.WriteHeader(status)
+	if _, err := w.Write(body); err != nil {
+		log.Printf("httpapi: failed to write response: %v", err)
 	}
 }
 
@@ -44,7 +53,7 @@ func handleLanguages(w http.ResponseWriter, r *http.Request) {
 	for _, l := range languages {
 		out = append(out, LanguageDTO{Code: l.Code(), Name: l.Name()})
 	}
-	writeJSON(w, http.StatusOK, out)
+	writeJSONCached(w, r, http.StatusOK, out, true)
 }
 
 func handleTenses(w http.ResponseWriter, r *http.Request) {
@@ -64,7 +73,7 @@ func handleTenses(w http.ResponseWriter, r *http.Request) {
 			Usage:      th.Usage,
 		})
 	}
-	writeJSON(w, http.StatusOK, out)
+	writeJSONCached(w, r, http.StatusOK, out, true)
 }
 
 func handleTheory(w http.ResponseWriter, r *http.Request) {
@@ -78,7 +87,7 @@ func handleTheory(w http.ResponseWriter, r *http.Request) {
 		writeError(w, http.StatusNotFound, "unknown tense: "+id)
 		return
 	}
-	writeJSON(w, http.StatusOK, toTheoryDTO(th, lang.TenseCategory(th.ID)))
+	writeJSONCached(w, r, http.StatusOK, toTheoryDTO(th, lang.TenseCategory(th.ID)), true)
 }
 
 func toTheoryDTO(th grammar.TenseTheory, category grammar.Category) TheoryDTO {
@@ -109,9 +118,11 @@ func handleVerbs(w http.ResponseWriter, r *http.Request) {
 	if !ok {
 		return
 	}
-	writeJSON(w, http.StatusOK, lang.Verbs())
+	writeJSONCached(w, r, http.StatusOK, lang.Verbs(), true)
 }
 
+// Exercises are generated fresh per request, so they are explicitly not
+// cacheable: an ETag would pin a learner to one set of questions.
 func handleExercises(w http.ResponseWriter, r *http.Request) {
 	lang, ok := languageFromRequest(w, r)
 	if !ok {
@@ -166,7 +177,7 @@ func handleExercises(w http.ResponseWriter, r *http.Request) {
 			Answer:         ex.Answer,
 		})
 	}
-	writeJSON(w, http.StatusOK, out)
+	writeJSONCached(w, r, http.StatusOK, out, true)
 }
 
 func handleVocabCategories(w http.ResponseWriter, r *http.Request) {
@@ -188,7 +199,7 @@ func handleVocabCategories(w http.ResponseWriter, r *http.Request) {
 			WordCount:  counts[c.ID],
 		})
 	}
-	writeJSON(w, http.StatusOK, out)
+	writeJSONCached(w, r, http.StatusOK, out, true)
 }
 
 func handleVocabulary(w http.ResponseWriter, r *http.Request) {
@@ -214,5 +225,5 @@ func handleVocabulary(w http.ResponseWriter, r *http.Request) {
 			Tier:          word.Tier,
 		})
 	}
-	writeJSON(w, http.StatusOK, out)
+	writeJSONCached(w, r, http.StatusOK, out, true)
 }

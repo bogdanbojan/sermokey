@@ -1,12 +1,12 @@
 package httpapi
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"log"
 	"net/http"
 	"os"
-	"strings"
 
 	"github.com/bogdanbojan/sermokey/backend/internal/reading"
 	"github.com/bogdanbojan/sermokey/backend/internal/reading/epub"
@@ -59,10 +59,35 @@ func handleImportText(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Serialised against other imports; see importSlots.
+	if !acquireImportSlot(r) {
+		return
+	}
+	defer releaseImportSlot()
+
+	// ParseMultipartForm's argument is maxMemory, *not* a body cap:
+	// everything above it is spooled to temporary files on disk, with no
+	// limit, and the size check below only runs once that has finished. An
+	// unauthenticated client could therefore write an arbitrary number of
+	// bytes to the server's disk. MaxBytesReader is the actual cap.
+	r.Body = http.MaxBytesReader(w, r.Body, MaxImportBytes+(1<<20))
+
 	if err := r.ParseMultipartForm(8 << 20); err != nil {
+		var tooLarge *http.MaxBytesError
+		if errors.As(err, &tooLarge) {
+			writeError(w, http.StatusRequestEntityTooLarge,
+				fmt.Sprintf("the file is too large (limit %d MB)", MaxImportBytes>>20))
+			return
+		}
 		writeError(w, http.StatusBadRequest, "expected a multipart form upload")
 		return
 	}
+	// ParseMultipartForm may have spooled part of the body to disk.
+	defer func() {
+		if r.MultipartForm != nil {
+			_ = r.MultipartForm.RemoveAll()
+		}
+	}()
 	file, header, err := r.FormFile("file")
 	if err != nil {
 		writeError(w, http.StatusBadRequest, "no file was uploaded (expected a 'file' field)")
@@ -76,7 +101,9 @@ func handleImportText(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// LimitReader rather than trusting header.Size, which is client-supplied.
+	// Defence in depth behind MaxBytesReader. (header.Size is computed by
+	// ReadForm from the bytes it actually read, so it is not in itself
+	// client-controlled — the original comment here claimed otherwise.)
 	data, err := io.ReadAll(io.LimitReader(file, MaxImportBytes+1))
 	if err != nil {
 		writeError(w, http.StatusBadRequest, "could not read the uploaded file")
@@ -85,6 +112,12 @@ func handleImportText(w http.ResponseWriter, r *http.Request) {
 	if len(data) > MaxImportBytes {
 		writeError(w, http.StatusRequestEntityTooLarge,
 			fmt.Sprintf("the file is too large (limit %d MB)", MaxImportBytes>>20))
+		return
+	}
+
+	// Parsing, tokenizing and analyzing a full-length book is minutes of
+	// CPU. Without a check the work continues after the client has gone.
+	if err := r.Context().Err(); err != nil {
 		return
 	}
 
@@ -118,8 +151,12 @@ func handleDeleteText(w http.ResponseWriter, r *http.Request) {
 	}
 	id := r.PathValue("id")
 	if err := p.Library.Remove(id); err != nil {
+		// Sentinel errors, not substring matching on the message. The
+		// previous `strings.Contains(err.Error(), "bundled")` also matched
+		// the *not found* message, which interpolates the caller's id — so
+		// DELETE /api/texts/bundled returned 403 instead of 404.
 		status := http.StatusNotFound
-		if strings.Contains(err.Error(), "bundled") {
+		if errors.Is(err, reading.ErrBundledText) {
 			status = http.StatusForbidden
 		}
 		writeError(w, status, err.Error())

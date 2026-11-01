@@ -22,6 +22,8 @@ import (
 	"encoding/xml"
 	"fmt"
 	"io"
+	"io/fs"
+	"log"
 	"path"
 	"sort"
 	"strings"
@@ -36,9 +38,52 @@ const (
 	MaxSpineItems = 2000
 	// MaxTotalRunes caps the total extracted text.
 	MaxTotalRunes = 12_000_000
-	// maxEntryBytes caps a single decompressed entry, defeating zip bombs.
+	// maxEntryBytes caps a single decompressed entry.
 	maxEntryBytes = 32 << 20
+	// MaxZipEntries caps the archive's central directory. zip.NewReader
+	// reads it eagerly, so a 32 MB file declaring ~700k entries costs
+	// several hundred megabytes of map and a sort before a single byte of
+	// content is read.
+	MaxZipEntries = 20_000
+	// MaxDecompressedBytes caps the *total* decompressed output.
+	//
+	// The per-entry cap alone is not a zip bomb defence. The spine loop
+	// stops on MaxTotalRunes, but that counter only advances for entries
+	// that yield paragraphs — so 2000 chapters of <style> padding, which
+	// extractText discards, decompressed 64 GB while the counter sat at
+	// zero and the break never fired.
+	MaxDecompressedBytes = 256 << 20
 )
+
+// budget is a shared ceiling on decompressed bytes for one parse.
+//
+// Reserving and charging are deliberately separate operations. Charging the
+// per-entry *allowance* up front — which is what this did at first — spends
+// the whole budget in `MaxDecompressedBytes / maxEntryBytes` reads no matter
+// how small the entries are. At 256 MB and 32 MB that is eight reads, three
+// of which go to container.xml, the package document and the table of
+// contents, so every book truncated to about five chapters regardless of
+// its actual size. A 40 KB novel of 120 chapters imported six of them.
+type budget struct{ remaining int64 }
+
+// reserve returns how many bytes the next read may consume, without
+// spending anything. The caller charges what it actually read.
+func (b *budget) reserve(max int64) int64 {
+	if b.remaining <= 0 {
+		return 0
+	}
+	if max > b.remaining {
+		return b.remaining
+	}
+	return max
+}
+
+// charge records bytes that were genuinely decompressed.
+func (b *budget) charge(n int64) {
+	b.remaining -= n
+}
+
+func (b *budget) exhausted() bool { return b.remaining <= 0 }
 
 // Book is a parsed EPUB, ready to be tokenized by reading.Build.
 type Book struct {
@@ -56,13 +101,18 @@ func Parse(r io.ReaderAt, size int64) (*Book, error) {
 	if err != nil {
 		return nil, fmt.Errorf("not a readable EPUB (invalid zip): %w", err)
 	}
+	if len(zr.File) > MaxZipEntries {
+		return nil, fmt.Errorf("the EPUB declares too many files (%d, limit %d)", len(zr.File), MaxZipEntries)
+	}
 	files := indexFiles(zr)
 
-	opfPath, err := rootfilePath(files)
+	bud := &budget{remaining: MaxDecompressedBytes}
+
+	opfPath, err := rootfilePath(files, bud)
 	if err != nil {
 		return nil, err
 	}
-	pkg, err := readPackage(files, opfPath)
+	pkg, err := readPackage(files, opfPath, bud)
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +121,7 @@ func Parse(r io.ReaderAt, size int64) (*Book, error) {
 	// document itself, not to the archive root.
 	base := path.Dir(opfPath)
 
-	titles := tocTitles(files, base, pkg)
+	titles := tocTitles(files, base, pkg, bud)
 
 	book := &Book{Language: primarySubtag(firstNonEmpty(pkg.Metadata.Language...))}
 	book.Meta = reading.DocumentMeta{
@@ -94,8 +144,12 @@ func Parse(r io.ReaderAt, size int64) (*Book, error) {
 	}
 
 	var totalRunes int
+	var skipped int
 	for i, ref := range pkg.Spine.ItemRefs {
-		if i >= MaxSpineItems || totalRunes >= MaxTotalRunes {
+		// The byte budget is checked alongside the rune count, so an
+		// archive whose chapters decompress to megabytes of markup that
+		// yields no paragraphs still terminates.
+		if i >= MaxSpineItems || totalRunes >= MaxTotalRunes || bud.exhausted() {
 			break
 		}
 		href := hrefByID[ref.IDRef]
@@ -103,9 +157,16 @@ func Parse(r io.ReaderAt, size int64) (*Book, error) {
 			continue
 		}
 		full := resolve(base, href)
-		data, err := readEntry(files, full)
+		if full == "" {
+			continue
+		}
+		data, err := readEntry(files, full, bud)
 		if err != nil {
-			continue // a missing or unreadable chapter should not fail the import
+			// A missing or unreadable chapter should not fail the import,
+			// but a book where most chapters fail is worth noticing rather
+			// than silently importing as a two-chapter stub.
+			skipped++
+			continue
 		}
 
 		heading, paragraphs := extractText(data)
@@ -129,6 +190,10 @@ func Parse(r io.ReaderAt, size int64) (*Book, error) {
 
 	if len(book.Sections) == 0 {
 		return nil, fmt.Errorf("no readable text found in the EPUB")
+	}
+	if skipped > 0 {
+		log.Printf("epub: %q imported with %d of %d spine items unreadable",
+			book.Meta.Title, skipped, len(pkg.Spine.ItemRefs))
 	}
 	return book, nil
 }
@@ -171,8 +236,8 @@ type packageXML struct {
 	} `xml:"spine"`
 }
 
-func rootfilePath(files map[string]*zip.File) (string, error) {
-	data, err := readEntry(files, "META-INF/container.xml")
+func rootfilePath(files map[string]*zip.File, bud *budget) (string, error) {
+	data, err := readEntry(files, "META-INF/container.xml", bud)
 	if err != nil {
 		return "", fmt.Errorf("not a valid EPUB: %w", err)
 	}
@@ -188,8 +253,8 @@ func rootfilePath(files map[string]*zip.File) (string, error) {
 	return "", fmt.Errorf("not a valid EPUB: container.xml names no package document")
 }
 
-func readPackage(files map[string]*zip.File, opfPath string) (*packageXML, error) {
-	data, err := readEntry(files, opfPath)
+func readPackage(files map[string]*zip.File, opfPath string, bud *budget) (*packageXML, error) {
+	data, err := readEntry(files, opfPath, bud)
 	if err != nil {
 		return nil, fmt.Errorf("missing package document %s: %w", opfPath, err)
 	}
@@ -220,7 +285,7 @@ func unmarshal(data []byte, v any) error {
 // EPUB 3 nav document or the EPUB 2 NCX. The TOC is the only place a
 // publisher reliably records human chapter names; a heading inside the
 // document is a decent fallback but is often absent or decorative.
-func tocTitles(files map[string]*zip.File, base string, pkg *packageXML) map[string]string {
+func tocTitles(files map[string]*zip.File, base string, pkg *packageXML, bud *budget) map[string]string {
 	out := map[string]string{}
 
 	for _, item := range pkg.Manifest.Items {
@@ -228,7 +293,7 @@ func tocTitles(files map[string]*zip.File, base string, pkg *packageXML) map[str
 			continue
 		}
 		navPath := resolve(base, item.Href)
-		if data, err := readEntry(files, navPath); err == nil {
+		if data, err := readEntry(files, navPath, bud); err == nil {
 			for href, label := range navLinks(data) {
 				out[resolve(path.Dir(navPath), href)] = label
 			}
@@ -241,7 +306,7 @@ func tocTitles(files map[string]*zip.File, base string, pkg *packageXML) map[str
 				continue
 			}
 			ncxPath := resolve(base, item.Href)
-			data, err := readEntry(files, ncxPath)
+			data, err := readEntry(files, ncxPath, bud)
 			if err != nil {
 				break
 			}
@@ -427,7 +492,9 @@ func indexFiles(zr *zip.Reader) map[string]*zip.File {
 	return out
 }
 
-func readEntry(files map[string]*zip.File, name string) ([]byte, error) {
+// readEntry decompresses one archive member, charged against the shared
+// budget so the total across a parse stays bounded.
+func readEntry(files map[string]*zip.File, name string, bud *budget) ([]byte, error) {
 	name = path.Clean(name)
 	f, ok := files[name]
 	if !ok {
@@ -436,12 +503,21 @@ func readEntry(files map[string]*zip.File, name string) ([]byte, error) {
 	if !ok {
 		return nil, fmt.Errorf("%s not found in the archive", name)
 	}
+	allowance := bud.reserve(maxEntryBytes)
+	if allowance <= 0 {
+		return nil, fmt.Errorf("decompression budget exhausted")
+	}
 	rc, err := f.Open()
 	if err != nil {
 		return nil, err
 	}
 	defer rc.Close()
-	return io.ReadAll(io.LimitReader(rc, maxEntryBytes))
+
+	data, err := io.ReadAll(io.LimitReader(rc, allowance))
+	// Charged even on error: the bytes were decompressed either way, which
+	// is the cost the budget exists to bound.
+	bud.charge(int64(len(data)))
+	return data, err
 }
 
 // resolve joins a manifest href to the directory holding the document that
@@ -452,7 +528,13 @@ func resolve(base, href string) string {
 		return path.Clean(strings.TrimPrefix(href, "/"))
 	}
 	joined := path.Clean(path.Join(base, href))
-	return strings.TrimPrefix(joined, "../")
+	// TrimPrefix stripped a single "../", so "../../../x" still escaped.
+	// Nothing from the archive is written to disk today, but this is only
+	// ever used as a lookup key by accident of the current design.
+	if !fs.ValidPath(joined) {
+		return ""
+	}
+	return joined
 }
 
 func stripFragment(href string) string {

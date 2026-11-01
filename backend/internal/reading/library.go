@@ -3,9 +3,21 @@ package reading
 import (
 	"crypto/sha256"
 	"encoding/hex"
+	"errors"
 	"fmt"
+	"slices"
 	"strings"
 	"sync"
+)
+
+// Errors callers are expected to distinguish. These exist so the HTTP layer
+// can pick a status code with errors.Is rather than by matching substrings
+// of a message that embeds caller-supplied input.
+var (
+	// ErrBundledText is returned when a built-in text is asked to be removed.
+	ErrBundledText = errors.New("bundled texts cannot be removed")
+	// ErrNoSuchText is returned when no text has the given id.
+	ErrNoSuchText = errors.New("unknown text")
 )
 
 // Library is a Catalog that layers imported documents over a fixed
@@ -82,17 +94,17 @@ func (l *Library) Add(doc Document) error {
 // and asking to remove one is reported rather than silently ignored.
 func (l *Library) Remove(id string) error {
 	if _, bundled := l.bundled.Get(id); bundled {
-		return fmt.Errorf("%q is a bundled text and cannot be removed", id)
+		return fmt.Errorf("%q: %w", id, ErrBundledText)
 	}
 	l.mu.Lock()
 	defer l.mu.Unlock()
 	if _, ok := l.imported[id]; !ok {
-		return fmt.Errorf("unknown text: %s", id)
+		return fmt.Errorf("unknown text %q: %w", id, ErrNoSuchText)
 	}
 	delete(l.imported, id)
 	for i, existing := range l.order {
 		if existing == id {
-			l.order = append(l.order[:i], l.order[i+1:]...)
+			l.order = slices.Delete(l.order, i, i+1)
 			break
 		}
 	}

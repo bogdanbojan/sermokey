@@ -1,7 +1,6 @@
 package httpapi
 
 import (
-	"log"
 	"net/http"
 	"os"
 	"time"
@@ -21,24 +20,36 @@ func NewRouter() http.Handler {
 	RestoreLibrary()
 
 	mux := http.NewServeMux()
-	mux.HandleFunc("GET /api/health", handleHealth)
-	mux.HandleFunc("GET /api/languages", handleLanguages)
-	mux.HandleFunc("GET /api/tenses", handleTenses)
-	mux.HandleFunc("GET /api/theory/{id}", handleTheory)
-	mux.HandleFunc("GET /api/verbs", handleVerbs)
-	mux.HandleFunc("GET /api/exercises", handleExercises)
-	mux.HandleFunc("GET /api/vocab-categories", handleVocabCategories)
-	mux.HandleFunc("GET /api/vocabulary", handleVocabulary)
-	mux.HandleFunc("GET /api/texts", handleTexts)
-	mux.HandleFunc("GET /api/texts/{id}", handleTextSection)
-	mux.HandleFunc("GET /api/lookup", handleLookup)
+
+	// Read-only routes are bounded individually rather than by the
+	// server-wide WriteTimeout, which has to stay long enough for an
+	// import to finish.
+	const readTimeout = 30 * time.Second
+	get := func(pattern string, h http.HandlerFunc) {
+		mux.Handle(pattern, http.TimeoutHandler(h, readTimeout, `{"error":"request timed out"}`))
+	}
+
+	get("GET /api/health", handleHealth)
+	get("GET /api/languages", handleLanguages)
+	get("GET /api/tenses", handleTenses)
+	get("GET /api/theory/{id}", handleTheory)
+	get("GET /api/verbs", handleVerbs)
+	get("GET /api/exercises", handleExercises)
+	get("GET /api/vocab-categories", handleVocabCategories)
+	get("GET /api/vocabulary", handleVocabulary)
+	get("GET /api/texts", handleTexts)
+	get("GET /api/texts/{id}", handleTextSection)
+	get("GET /api/lookup", handleLookup)
 	// The only non-GET routes in the API. An imported book is content
 	// rather than user state, and is far too large to live in the browser
 	// alongside the decks; see reading_import.go.
 	mux.HandleFunc("POST /api/texts/import", handleImportText)
 	mux.HandleFunc("DELETE /api/texts/{id}", handleDeleteText)
 
-	return withLogging(withCORS(mux))
+	// Recovery sits inside logging so a panicking request is still logged
+	// with its status, and inside CORS so the error response carries the
+	// headers the browser needs in order to surface it at all.
+	return withLogging(withCORS(withRecovery(mux)))
 }
 
 // withCORS allows the configured frontend origin (default: the Vite dev
@@ -51,19 +62,19 @@ func withCORS(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", allowedOrigin)
 		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS")
-		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, If-None-Match")
+		w.Header().Set("Access-Control-Expose-Headers", "ETag")
+		// Vary is declared by the response encoder, not here: see setVary
+		// for why splitting it across the two layers does not survive
+		// http.TimeoutHandler.
 		if r.Method == http.MethodOptions {
+			w.Header().Set("Vary", "Accept-Encoding, Origin")
+			// Without this every cross-origin request pays a preflight
+			// round trip.
+			w.Header().Set("Access-Control-Max-Age", "600")
 			w.WriteHeader(http.StatusNoContent)
 			return
 		}
 		next.ServeHTTP(w, r)
-	})
-}
-
-func withLogging(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		start := time.Now()
-		next.ServeHTTP(w, r)
-		log.Printf("%s %s %s", r.Method, r.URL.Path, time.Since(start))
 	})
 }

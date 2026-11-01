@@ -44,7 +44,7 @@ func handleTexts(w http.ResponseWriter, r *http.Request) {
 	for _, m := range metas {
 		out = append(out, toReadingTextDTO(m, p.Library.IsImported(m.ID)))
 	}
-	writeJSON(w, http.StatusOK, out)
+	writeJSONCached(w, r, http.StatusOK, out, true)
 }
 
 // toReadingTextDTO is shared by the list and import endpoints so the two
@@ -113,7 +113,9 @@ func handleTextSection(w http.ResponseWriter, r *http.Request) {
 		paragraphs = append(paragraphs, ReadingParagraphDTO{Text: para.Text, Spans: spans})
 	}
 
-	writeJSON(w, http.StatusOK, ReadingSectionDTO{
+	// The single largest payload in the API, re-fetched on every section
+	// navigation and fully determined by the document id and index.
+	writeJSONCached(w, r, http.StatusOK, ReadingSectionDTO{
 		TextID:       doc.Meta.ID,
 		Title:        doc.Meta.Title,
 		SectionTitle: section.Title,
@@ -123,7 +125,7 @@ func handleTextSection(w http.ResponseWriter, r *http.Request) {
 		Source:       doc.Meta.Source,
 		Paragraphs:   paragraphs,
 		Lexicon:      pool.entries,
-	})
+	}, true)
 }
 
 // handleLookup resolves an arbitrary surface form or phrase. The reader
@@ -174,12 +176,26 @@ func newEntryPool(analyze func(string) []reading.Analysis) *entryPool {
 
 // ref returns the pool index for a surface form, analyzing it on first
 // sight, or NoEntry when the dictionary has nothing for it.
+//
+// The *key* is analyzed, not the raw surface. The two differ in case, and
+// the analyzer branches on capitalisation when guessing proper nouns — so
+// passing the raw surface while caching under the folded one meant
+// "Claire" and "claire" shared a slot and whichever happened to occur
+// first in the document silently fixed the reading for both. The same word
+// could be glossed as a name in one paragraph and a common noun in
+// another, depending only on paragraph order.
+//
+// Folding is safe here because the reliable proper-noun signal is not
+// capitalisation at all: it is the document's name set, decided once from
+// mid-sentence capitalisation and looked up case-insensitively (see
+// ProperNounAware). Sentence-initial capitals — the only thing this
+// discards — are precisely the noise that pass exists to ignore.
 func (p *entryPool) ref(surface string) int {
 	key := strings.ToLower(surface)
 	if i, ok := p.byForm[key]; ok {
 		return i
 	}
-	analyses := p.analyze(surface)
+	analyses := p.analyze(key)
 	if len(analyses) == 0 {
 		p.byForm[key] = NoEntry
 		return NoEntry
